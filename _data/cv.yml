@@ -66,7 +66,7 @@
   contents:
     - title: <a href="https://github.com/Jeybird248/ESL-web-app">Grammaraide</a>
       year: 2023-now
-      description: Web app that can assist ESL (English Second Language) learners in improving grammar accuracy and reading comprehension skills. Link to the website demo: [Link](http://jehyeok2.web.illinois.edu/)
+      description: "Web app that can assist ESL (English Second Language) learners in improving grammar accuracy and reading comprehension skills. Link to the website demo:" [Link](http://jehyeok2.web.illinois.edu/)
     - title: <a href="https://github.com/Jeybird248/Chrome-Extension">Youtube Video Note Taker</a>
       year: 2023-2023
       description: A tool designed to streamline the conversion of videos into transcripts and generate organized PDF notes.
