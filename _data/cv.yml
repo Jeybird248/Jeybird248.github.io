@@ -2,96 +2,79 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
+      value: Jehyeok Yeon
     - name: Date of Birth
-      value: 14th March 1879
+      value: 16th October 2003
     - name: Languages
-      value: English, German
+      value: English, Korean
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: B.S. in Computer Science + Linguistics
+      institution: University of Illinois Urbana-Champaign
+      year: 2022-2025
       description:
-        - Description 1.
+        - GPA - 3.94
         - Description 2.
-        - title: Description 3.
+        - title: Coursework
           contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+            - Data Structures, Computational Linguistics, Corpus Linguistics, Database Systems, Digital Signal Processing, Computer Systems, Data Mining, Statistics and Probability I, Discrete Structures
 
-- title: Experience
+- title: Relevant Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: AI Data Scientist Intern
+      institution: Hanwha Life CO.
+      year: 2024 - now
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Taking part in a Global Internship in Seoul, South Korea with participants from across the globe.
+        - Developing a question and answer chatbot tailored for insurance products, leveraging large language models and natural language processing techniques.
+        - Implementing innovative strategies to optimize the collection and meticulous fine-tuning of structured and unstructured data pertinent to insurance.
+
+    - title: Research Intern
+      institution: Political Ideology and Entrepreneurship Lab
+      year: 2023 - now
       description:
-        - Description 1.
-        - Description 2.
+        - Conducted longitudinal research to quantify the political ideology of CEOs using publically available data.
+        - Developed and applied novel algorithms to classify CEOs along the changes in political spectrum over time.
+        - Presented research findings as a poster presentation at the Undergraduate Research Symposium.
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
+    - title: AI Research Intern
+      institution: University of Illinois Urbana-Champaign, ATLAS
+      year: 2023 - now
       description:
+        - Conceptualized and developed a web-based platform aimed at enhancing the reading comprehension and grammar proficiency of ESL students.
+        - Integrated NLP methods to generate diverse and contextually relevant quizzes and exercises based on reading passages suitable for ESL learners at different proficiency levels.
+        - Solicited feedback from ESL students, educators, and language learning experts through user testing, surveys, and focus groups to iteratively refine and enhance the web app's features and content.
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+    - title: Data Analyst
+      institution: University of Illinois Urbana-Champaign, Illinois Leadership Center
+      year: 2023-2024
+      description:
+        - Conducts data analysis using Excel and Tableau to extract actionable insights.
+        - Produces data reports, visualizations, and presentations for ILC workshops and programs.
 
-- title: Open Source Projects
+    - title: Machine Learning Intern	
+      institution: University of Illinois Urbana-Champaign, ATLAS
+      year: 2022-2023
+        - Employed Python frameworks such as PyTorch or scikit-learn for machine learning model development.
+        - Applied predictive algorithms for in-depth analysis, interpretation, and identification of trends and patterns in diverse datasets.
+
+- title: Relevant Projects
   type: time_table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: <a href="https://github.com/Jeybird248/ESL-web-app">Grammaraide</a>
+      year: 2023-now
+      description: Web app that can assist ESL (English Second Language) learners in improving grammar accuracy and reading comprehension skills. Link to the website demo: <a href="http://jehyeok2.web.illinois.edu/">Link</a>
+    - title: <a href="https://github.com/Jeybird248/Chrome-Extension">Youtube Video Note Taker</a>
+      year: 2023-2023
+      description: A tool designed to streamline the conversion of videos into transcripts and generate organized PDF notes.
 
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 1921
+    - year: 2023
       items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+        - Get Experience scholarship
+        - 2024 Student Employee of the Year Nominee
