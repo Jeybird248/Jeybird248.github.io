@@ -1,81 +1,105 @@
 ---
 layout: page
-title: project 1
-description: with background image
+title: ESL Learning Assistant
+description: Web app that can assist ESL (English Second Language) learners in improving grammar accuracy and reading comprehension skills. 
 img: assets/img/12.jpg
 importance: 1
 category: work
 related_publications: true
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+The ESL Learning Assistant is a Flask-based web application designed to help English as a Second Language (ESL) learners improve their language skills. This interactive tool offers a range of features to enhance English proficiency, including grammar correction, article reading comprehension, and AI-powered Q&A sessions.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+**Note:** Currently, the functionalities of this application are not working as intended due to the backend not being hosted at the moment. The project is still under development, and full functionality will be restored once hosting issues are resolved.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+## Key Features
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+### Grammar Correction
+- Analyzes user input for grammatical errors
+- Provides corrections with detailed explanations
+- Helps learners understand and improve their writing skills
 
-You can also put regular text between your rows of images, even citations {% cite einstein1950meaning %}.
-Say you wanted to write a bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+### Article Reading Comprehension
+- Fetches random news articles for reading practice
+- Generates comprehension questions based on article content
+- Offers both multiple-choice and short answer questions
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+### Interactive Q&A Sessions
+- Allows users to engage in dynamic question-and-answer interactions
+- Powered by AI to provide accurate and helpful responses
+- Enhances conversational skills and vocabulary
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+### Conversation Storage
+- Saves user interactions for future reference
+- Enables learners to track their progress over time
 
-{% raw %}
+## Technology Stack
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
+- **Backend Framework:** Flask
+- **Frontend:** HTML, CSS, JavaScript
+- **Cross-Origin Resource Sharing:** CORS
+- **String Matching:** FuzzyWuzzy
+- **News Article Fetching:** PyGoogleNews
+- **Article Parsing:** Newspaper3k
+- **Natural Language Processing:** NLTK
+- **API Calls:** Requests library
+- **AI Text Processing:** Mixtral API
 
-{% endraw %}
+## Setup and Installation
+
+1. Clone the repository:
+
+>  git clone https://github.com/Jeybird248/ESL-web-app.git
+
+2. Navigate to the project directory:
+
+>  cd ESL-web-app 
+
+3. Install required dependencies:
+
+>  pip install -r requirements.txt 
+
+4. Set up environment variables:
+- MIXTRAL_URL: URL for the Mixtral API
+- MIXTRAL_USERNAME: Your Mixtral API username
+- MIXTRAL_PASSWORD: Your Mixtral API password
+
+5. Run the Flask application:
+
+>  python app.py 
+
+6. Access the application at `http://localhost:5000`
+
+## API Endpoints
+
+- `/`: Home page
+- `/grammar`: Grammar correction page
+- `/article`: Article reading page
+- `/about`: About page
+- `/fetch_article_text`: Fetches and processes a random news article
+- `/submit`: Handles user input for grammar correction and Q&A
+
+## Current Limitations
+
+As mentioned earlier, the application's functionalities are currently limited due to backend hosting issues. Users may experience:
+- Inability to perform grammar corrections
+- Failure to fetch new articles
+- Non-functional Q&A sessions
+
+We are actively working on resolving these issues to provide a fully functional learning experience.
+
+## Contributing
+
+Contributions to improve the ESL Learning Assistant are welcome. Please feel free to submit pull requests or open issues for bugs and feature requests.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgements
+
+- Mixtral API for AI-powered text processing
+- PyGoogleNews for news article fetching
+- Newspaper3k for article parsing
+
+For any queries or suggestions, please open an issue on the GitHub repository.

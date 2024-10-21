@@ -7,6 +7,13 @@
       value: 16th October 2003
     - name: Languages
       value: English, Korean
+    - name: Contact
+      value: tommy8289@gmail.com
+    - name: Languages
+      value: Python, C++, SQL, Java, HTML/CSS/Javascript
+    - name: Frameworks
+      value:  React, LangChain, ElasticSearch, PyTorch, OpenCV, Tensorflow, Flask, Django, Git, Docker
+
 
 - title: Education
   type: time_table
@@ -16,37 +23,39 @@
       year: 2022-2025
       description:
         - GPA - 3.94
-        - Description 2.
+        - Dean's List
+        - title: Clubs
+          contents:
+            - Codable (President), ACM, Project Code
         - title: Coursework
           contents:
-            - Data Structures, Computational Linguistics, Corpus Linguistics, Database Systems, Digital Signal Processing, Computer Systems, Data Mining, Statistics and Probability I, Discrete Structures
+            - Data Structures, Computational Linguistics, Corpus Linguistics, Database Systems, Digital Signal Processing, Computer Systems, Senior Project, Statistics and Probability I, Discrete Structures, Algorithms
 
 - title: Relevant Experience
   type: time_table
   contents:
     - title: AI Data Scientist Intern
-      institution: Hanwha Life CO.
-      year: 2024 - now
+      institution: Hanwha Life Insurance
+      year: 2024
       description:
-        - Taking part in a Global Internship in Seoul, South Korea with participants from across the globe.
-        - Developing a question and answer chatbot tailored for insurance products, leveraging large language models and natural language processing techniques.
-        - Implementing innovative strategies to optimize the collection and meticulous fine-tuning of structured and unstructured data pertinent to insurance.
+        - Used ElasticSearch, Langchain, LlamaIndex, and streamlit to develop a fullstack application specializing in the insurance domain utilizing a hybrid retriever; improved upon standard models by 4.27 times.
+        - Implemented advanced RAG strategies such as reranking, query defragmentation, and HyDE to optimize the indexing and retrieving of both structured and unstructured multimodal data and documents.
 
-    - title: Research Intern
-      institution: Political Ideology and Entrepreneurship Lab
-      year: 2023 - now
+    - title: Machine Learning Intern
+      institution: ATLAS
+      year: 2023-2024
       description:
-        - Conducted longitudinal research to quantify the political ideology of CEOs using publically available data.
+        - Used PyTorch and scikit-learn to train a predictive machine learning model for identification of trends and patterns in Chicago weather sensor data.
+        - Led research with a postdoctoral Agriculture scholar to train a machine learning model to analyze and identify the impact of different temporal conditions to wheat yield using live agriculture data from Canada.
+
+    - title: Computational Research Assistant
+      institution: Political Ideology and Entrepreneurship Lab
+      year: 2023-2024
+      description:
+        - Engineered automated Python tools for collecting, quantifying, and analyzing data related to political ideology of CEOs and their respective earnings reports.
+        - Conducted longitudinal research to quantify the political ideology of CEOs using publicly available data.
         - Developed and applied novel algorithms to classify CEOs along the changes in political spectrum over time.
         - Presented research findings as a poster presentation at the Undergraduate Research Symposium.
-
-    - title: AI Research Intern
-      institution: University of Illinois Urbana-Champaign, ATLAS
-      year: 2023 - now
-      description:
-        - Conceptualized and developed a web-based platform aimed at enhancing the reading comprehension and grammar proficiency of ESL students.
-        - Integrated NLP methods to generate diverse and contextually relevant quizzes and exercises based on reading passages suitable for ESL learners at different proficiency levels.
-        - Solicited feedback from ESL students, educators, and language learning experts through user testing, surveys, and focus groups to iteratively refine and enhance the web app's features and content.
 
     - title: Data Analyst
       institution: University of Illinois Urbana-Champaign, Illinois Leadership Center
@@ -55,26 +64,36 @@
         - Conducts data analysis using Excel and Tableau to extract actionable insights.
         - Produces data reports, visualizations, and presentations for ILC workshops and programs.
 
-    - title: Machine Learning Intern	
-      institution: University of Illinois Urbana-Champaign, ATLAS
-      year: 2022-2023
-        - Employed Python frameworks such as PyTorch or scikit-learn for machine learning model development.
-        - Applied predictive algorithms for in-depth analysis, interpretation, and identification of trends and patterns in diverse datasets.
-
 - title: Relevant Projects
   type: time_table
   contents:
-    - title: <a href="https://github.com/Jeybird248/ESL-web-app">Grammaraide</a>
-      year: 2023-now
-      description: Web app that can assist ESL (English Second Language) learners in improving grammar accuracy and reading comprehension skills. Link to the website demo >> [Link](http://jehyeok2.web.illinois.edu/)
-    - title: <a href="https://github.com/Jeybird248/Chrome-Extension">Youtube Video Note Taker</a>
-      year: 2023-2023
-      description: A tool designed to streamline the conversion of videos into transcripts and generate organized PDF notes.
+    - title: <a href="https://classtranscribe.illinois.edu/">ClassTranscribe
+      year: 2024 - Current
+      description:
+        - Used React, Python, and Docker to develop accessibility features for ClassTranscribe, enabling transcript editing and chapter break insertion for low-vision users.
+        - Implemented full-stack solutions to transform lecture videos into accessible, picture book-style content, enhancing user experience for visually impaired students.
+
+    - title: <a href="https://github.com/Jeybird248/ESL-web-app">ESL Learning Hub Web App (Grammaraide)</a>
+      year: 2023-2024
+      description:
+        - Used Flask, HTML, CSS, and Javascript to develop a website to enhance the reading comprehension and grammar proficiency of ESL students in a personalized way.
+        - Integrated NLP methods along with a LLM pipeline integration to generate diverse and contextually relevant quizzes and exercises based on reading passages suitable for ESL learners at different proficiency levels.
+
+    - title: <a href="https://github.com/Jeybird248/Chrome-Extension">Note Generation Chrome Extension</a>
+      year: 2023
+      description:
+        - Used Flask, HTML, and Javascript to develop a Chrome extension integrating an open-source LLM Mixtral and OpenAI's speech-to-text model wav2vec 2.0.
+        - Automated note generation from YouTube videos, video files, and audio files for enhanced productivity.
+
+    - title: <a href="https://github.com/Codable-UIUC/Chopstick101">Chopstick 101
+      year: 2022-2023
+      description:
+        - Used Tensorflow and OpenCV to develop a machine learning program that analyzes and rates realtime chopstick holding positions applying LSTM on the hand landmark positions.
 
 - title: Honors and Awards
   type: time_table
   contents:
     - year: 2023
       items:
-        - Get Experience scholarship
+        - Get Experience Scholarship
         - 2024 Student Employee of the Year Nominee
