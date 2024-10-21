@@ -1,7 +1,7 @@
 ---
 layout: page
 title: ESL Learning Assistant
-description: Web app that can assist ESL (English Second Language) learners in improving grammar accuracy and reading comprehension skills. 
+description: Web app that can assist ESL (English Second Language) learners in improving grammar accuracy and reading comprehension skills.
 img: assets/img/12.jpg
 importance: 1
 category: work
@@ -15,21 +15,25 @@ The ESL Learning Assistant is a Flask-based web application designed to help Eng
 ## Key Features
 
 ### Grammar Correction
+
 - Analyzes user input for grammatical errors
 - Provides corrections with detailed explanations
 - Helps learners understand and improve their writing skills
 
 ### Article Reading Comprehension
+
 - Fetches random news articles for reading practice
 - Generates comprehension questions based on article content
 - Offers both multiple-choice and short answer questions
 
 ### Interactive Q&A Sessions
+
 - Allows users to engage in dynamic question-and-answer interactions
 - Powered by AI to provide accurate and helpful responses
 - Enhances conversational skills and vocabulary
 
 ### Conversation Storage
+
 - Saves user interactions for future reference
 - Enables learners to track their progress over time
 
@@ -49,24 +53,25 @@ The ESL Learning Assistant is a Flask-based web application designed to help Eng
 
 1. Clone the repository:
 
->  git clone https://github.com/Jeybird248/ESL-web-app.git
+> git clone https://github.com/Jeybird248/ESL-web-app.git
 
 2. Navigate to the project directory:
 
->  cd ESL-web-app 
+> cd ESL-web-app
 
 3. Install required dependencies:
 
->  pip install -r requirements.txt 
+> pip install -r requirements.txt
 
 4. Set up environment variables:
+
 - MIXTRAL_URL: URL for the Mixtral API
 - MIXTRAL_USERNAME: Your Mixtral API username
 - MIXTRAL_PASSWORD: Your Mixtral API password
 
 5. Run the Flask application:
 
->  python app.py 
+> python app.py
 
 6. Access the application at `http://localhost:5000`
 
@@ -82,6 +87,7 @@ The ESL Learning Assistant is a Flask-based web application designed to help Eng
 ## Current Limitations
 
 As mentioned earlier, the application's functionalities are currently limited due to backend hosting issues. Users may experience:
+
 - Inability to perform grammar corrections
 - Failure to fetch new articles
 - Non-functional Q&A sessions

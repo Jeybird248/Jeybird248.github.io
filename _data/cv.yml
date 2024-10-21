@@ -12,8 +12,7 @@
     - name: Languages
       value: Python, C++, SQL, Java, HTML/CSS/Javascript
     - name: Frameworks
-      value:  React, LangChain, ElasticSearch, PyTorch, OpenCV, Tensorflow, Flask, Django, Git, Docker
-
+      value: React, LangChain, ElasticSearch, PyTorch, OpenCV, Tensorflow, Flask, Django, Git, Docker
 
 - title: Education
   type: time_table

@@ -13,7 +13,7 @@ social: true # includes social icons at the bottom of the page
 
 Greetings! I'm Jehyeok Yeon, a dedicated student pursuing my studies in Computer Science and Linguistics at the University of Illinois Urbana-Champaign (UIUC). I am passionate about exploring the synergy between technology and language, delving into the fascinating realm where computer languages meet human ones.
 
-At Illinois, I've been actively involved in various projects and experiences that align with my interests. I'm currently working on ClassTranscribe, developing accessibility features for low-vision users and implementing full-stack solutions to transform lecture videos into accessible content. I've also recently presented my work about the intersection between political ideology and entrepreneurship at the Undergraduate Research Symposium. 
+At Illinois, I've been actively involved in various projects and experiences that align with my interests. I'm currently working on ClassTranscribe, developing accessibility features for low-vision users and implementing full-stack solutions to transform lecture videos into accessible content. I've also recently presented my work about the intersection between political ideology and entrepreneurship at the Undergraduate Research Symposium.
 
 Last summer, I had the chance to work as an AI Data Scientist at Hanwha Life Insurance, where I be developed a fullstack application specializing in the insurance domain utilizing advanced RAG strategies with Large Language Models and a hybrid retriever utilizing ElasticSearch.
 
