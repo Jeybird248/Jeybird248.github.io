@@ -8,11 +8,13 @@
     - name: Languages
       value: English, Korean
     - name: Contact
-      value: tommy8289@gmail.com
-    - name: Languages
-      value: Python, C++, SQL, Java, HTML/CSS/Javascript
-    - name: Frameworks
-      value: React, LangChain, ElasticSearch, PyTorch, OpenCV, Tensorflow, Flask, Django, Git, Docker
+      value: tommy8289@gmail.com, (619) - 513 - 1181
+    - name: LinkedIn
+      value: https://www.linkedin.com/in/jehyeoky
+    - name: Programming Languages
+      value: Python, C++, SQL, Java, HTML/CSS/JavaScript, C#
+    - name: Frameworks and Tools
+      value: React, LangChain, ElasticSearch, PyTorch, OpenCV, TensorFlow, Flask, Django, Git, Docker, Streamlit, MySQL, Google Cloud Platform, RESTful APIs
 
 - title: Education
   type: time_table
@@ -21,31 +23,31 @@
       institution: University of Illinois Urbana-Champaign
       year: 2022-2025
       description:
-        - GPA - 3.94
+        - GPA - 3.9
         - Dean's List
         - title: Clubs
           contents:
             - Codable (President), ACM, Project Code
         - title: Coursework
           contents:
-            - Data Structures, Computational Linguistics, Corpus Linguistics, Database Systems, Digital Signal Processing, Computer Systems, Senior Project, Statistics and Probability I, Discrete Structures, Algorithms
+            - Data Structures, Computational Linguistics, Corpus Linguistics, Database Systems, Digital Signal Processing, Computer Systems, Senior Project, Statistics and Probability I, Discrete Structures, Algorithms, Programming Languages and Compilers, Cloud Computing Application
 
 - title: Relevant Experience
   type: time_table
   contents:
     - title: AI Data Scientist Intern
       institution: Hanwha Life Insurance
-      year: 2024
+      year: 2024-2024
       description:
-        - Used ElasticSearch, Langchain, LlamaIndex, and streamlit to develop a fullstack application specializing in the insurance domain utilizing a hybrid retriever; improved upon standard models by 4.27 times.
-        - Implemented advanced RAG strategies such as reranking, query defragmentation, and HyDE to optimize the indexing and retrieving of both structured and unstructured multimodal data and documents.
+        - Developed a full-stack chatbot application specializing in insurance domain using ElasticSearch, Langchain, LlamaIndex, and Streamlit, implementing a hybrid retriever that improved standard models by 427%.
+        - Optimized query performance and accuracy by implementing advanced RAG strategies including reranking, query defragmentation, and Hypothetical Document Embeddings (HyDE).
 
     - title: Machine Learning Intern
       institution: ATLAS
       year: 2023-2024
       description:
-        - Used PyTorch and scikit-learn to train a predictive machine learning model for identification of trends and patterns in Chicago weather sensor data.
-        - Led research with a postdoctoral Agriculture scholar to train a machine learning model to analyze and identify the impact of different temporal conditions to wheat yield using live agriculture data from Canada.
+        - Developed predictive machine learning models using PyTorch and scikit-learn, achieving 82% accuracy in trend analysis of Chicago weather sensor data, enabling more precise urban climate monitoring.
+        - Processed over 100,000 rows of Canadian agriculture data to analyze temporal conditions' impact on wheat yield, contributing to improved crop management strategies.
 
     - title: Computational Research Assistant
       institution: Political Ideology and Entrepreneurship Lab
@@ -66,28 +68,34 @@
 - title: Relevant Projects
   type: time_table
   contents:
-    - title: <a href="https://classtranscribe.illinois.edu/">ClassTranscribe
-      year: 2024 - Current
+    - title: <a href="https://github.com/Jeybird248/Eclipse">Workout Planner Application (Eclipse) </a>
+      year: Current
       description:
-        - Used React, Python, and Docker to develop accessibility features for ClassTranscribe, enabling transcript editing and chapter break insertion for low-vision users.
+        - Developed a full-stack workout planning application using React, Node.js, and MySQL, deployed on Google Cloud Platform with RESTful APIs for efficient data communication.
+        - Implemented comprehensive CRUD operations for workout routines, exercises, diets, and user profiles, ensuring seamless data management and real-time synchronization.
+
+    - title: <a href="https://classtranscribe.illinois.edu/">ClassTranscribe</a>
+      year: Current
+      description:
+        - Engineered React components and C# .NET Core backend services to enhance accessibility for visually impaired students.
         - Implemented full-stack solutions to transform lecture videos into accessible, picture book-style content, enhancing user experience for visually impaired students.
 
     - title: <a href="https://github.com/Jeybird248/ESL-web-app">ESL Learning Hub Web App (Grammaraide)</a>
       year: 2023-2024
       description:
-        - Used Flask, HTML, CSS, and Javascript to develop a website to enhance the reading comprehension and grammar proficiency of ESL students in a personalized way.
-        - Integrated NLP methods along with a LLM pipeline integration to generate diverse and contextually relevant quizzes and exercises based on reading passages suitable for ESL learners at different proficiency levels.
+        - Designed and implemented a Flask-based web application with responsive frontend using HTML5, CSS3, and JavaScript to enhance ESL students' reading comprehension and grammar proficiency.
+        - Integrated advanced NLP methods and LLM pipeline to generate personalized, contextually relevant quizzes and exercises, catering to various ESL proficiency levels.
 
     - title: <a href="https://github.com/Jeybird248/Chrome-Extension">Note Generation Chrome Extension</a>
-      year: 2023
+      year: 2023-2023
       description:
-        - Used Flask, HTML, and Javascript to develop a Chrome extension integrating an open-source LLM Mixtral and OpenAI's speech-to-text model wav2vec 2.0.
-        - Automated note generation from YouTube videos, video files, and audio files for enhanced productivity.
+        - Developed a Chrome extension utilizing Flask backend and JavaScript frontend, integrating the open-source LLM Mixtral and OpenAI's wav2vec 2.0 speech-to-text model.
+        - Achieved 85% accuracy in automated note generation from YouTube videos and audio files, enhancing user productivity by over 10 hours per week.
 
-    - title: <a href="https://github.com/Codable-UIUC/Chopstick101">Chopstick 101
+    - title: <a href="https://github.com/Codable-UIUC/Chopstick101">Chopstick 101</a>
       year: 2022-2023
       description:
-        - Used Tensorflow and OpenCV to develop a machine learning program that analyzes and rates realtime chopstick holding positions applying LSTM on the hand landmark positions.
+        - Used TensorFlow and OpenCV to develop a machine learning program that analyzes and rates real-time chopstick holding positions applying LSTM on the hand landmark positions.
 
 - title: Honors and Awards
   type: time_table
