@@ -16,9 +16,9 @@ The answer lies somewhere between societal disillusionment and a desperate need 
 
 ## Why We Love Watching Nobodies Become Somebodies
 
-Let’s talk about *isekai*. If you’re not familiar, it’s a genre of Japanese storytelling where characters are whisked away to another world (think *The Matrix* but with more swords and badly written existential crises). These stories thrive on one simple premise: losers get second chances. Whether it’s the socially inept gamer who becomes an overpowered hero or the book-obsessed-psychopath who manages to razzle-dazzle medieval peasants with modern knowledge, isekai offers the ultimate fantasy—escaping your current life and starting over as someone extraordinary.
+Let’s talk about _isekai_. If you’re not familiar, it’s a genre of Japanese storytelling where characters are whisked away to another world (think _The Matrix_ but with more swords and badly written existential crises). These stories thrive on one simple premise: losers get second chances. Whether it’s the socially inept gamer who becomes an overpowered hero or the book-obsessed-psychopath who manages to razzle-dazzle medieval peasants with modern knowledge, isekai offers the ultimate fantasy—escaping your current life and starting over as someone extraordinary.
 
-And it’s not just Japan. Western media loves this trope too. Remember *Ready Player One*? A broke, awkward kid saves the virtual universe because he knows obscure trivia about 80s pop culture. Or how about *Harry Potter*, unloved, downtrodden boy living under the stairs discovers he’s actually a wizard destined to defeat the most feared dark lord in history? These stories resonate because they tap into a universal longing: the hope that maybe, just maybe, we’re destined for something greater than our boring, underwhelming lives.
+And it’s not just Japan. Western media loves this trope too. Remember _Ready Player One_? A broke, awkward kid saves the virtual universe because he knows obscure trivia about 80s pop culture. Or how about _Harry Potter_, unloved, downtrodden boy living under the stairs discovers he’s actually a wizard destined to defeat the most feared dark lord in history? These stories resonate because they tap into a universal longing: the hope that maybe, just maybe, we’re destined for something greater than our boring, underwhelming lives.
 
 But here’s the catch—these narratives often cheat. The protagonist doesn’t succeed because they work hard or grow as a person; they succeed because they’re "chosen" or stumble upon godlike powers. It’s escapism at its finest but also its most dangerous.
 
@@ -34,7 +34,7 @@ And maybe that’s the point. In a world where real-life challenges feel insurmo
 
 ## The Case for Struggle: Why We Might Need to Suffer
 
-Here’s an uncomfortable truth: growth requires discomfort. No amount of magical thinking or escapist fantasies can replace the value of hard work and perseverance. And deep down, we know this. It’s why stories like *Rocky* or *Good Will Hunting* still resonate—they remind us that greatness isn’t handed out; it’s earned through struggle.
+Here’s an uncomfortable truth: growth requires discomfort. No amount of magical thinking or escapist fantasies can replace the value of hard work and perseverance. And deep down, we know this. It’s why stories like _Rocky_ or _Good Will Hunting_ still resonate—they remind us that greatness isn’t handed out; it’s earned through struggle.
 
 So how do we reconcile this with our love for loser-to-hero narratives? By rethinking what "acceptance" really means. True acceptance isn’t about resigning yourself to mediocrity; it’s about acknowledging where you are while striving to become better.
 
@@ -42,8 +42,8 @@ Imagine if media leaned into this idea—flawed characters who don’t just stum
 
 ## Unleashing Your Inner Gigachad
 
-Let me introduce you to Korea’s first viral meme of 2025: the Inner Gigachad. What started as a joke about embracing absurd confidence when the world seemed to be burning around us quickly became a rallying cry for self-improvement. People plastered a mixture of broken English and Korean glued together with pure charisma and confidence across their social media feeds, paired with images of chiseled figures captioned with lines like, "Hey 만삣삐, you have to trust yourself to take action. Only you can decide what the right decision is." 
+Let me introduce you to Korea’s first viral meme of 2025: the Inner Gigachad. What started as a joke about embracing absurd confidence when the world seemed to be burning around us quickly became a rallying cry for self-improvement. People plastered a mixture of broken English and Korean glued together with pure charisma and confidence across their social media feeds, paired with images of chiseled figures captioned with lines like, "Hey 만삣삐, you have to trust yourself to take action. Only you can decide what the right decision is."
 
-It was ridiculous. It was over-the-top. But it worked. The *Inner Gigachad* wasn’t about actually being perfect—it was about channeling an audacious belief in yourself, even when you felt like a total loser. It was about showing up for life with the same swagger as someone who thinks they’re invincible, even if you’re barely holding it together.  
+It was ridiculous. It was over-the-top. But it worked. The _Inner Gigachad_ wasn’t about actually being perfect—it was about channeling an audacious belief in yourself, even when you felt like a total loser. It was about showing up for life with the same swagger as someone who thinks they’re invincible, even if you’re barely holding it together.
 
-So maybe you’re not destined to save the multiverse or lead a rebellion against a dystopian regime. Maybe your story is smaller—quieter—but no less heroic. Whether it's learning a new skill, mending a broken relationship, or simply getting out of bed when everything feels impossible, these are the battles that define us. So STOP 띵킹 만삣삐, a day will come where your hard work is rewarded, not by some benevolent hand-waving god, but by you yourself. 
+So maybe you’re not destined to save the multiverse or lead a rebellion against a dystopian regime. Maybe your story is smaller—quieter—but no less heroic. Whether it's learning a new skill, mending a broken relationship, or simply getting out of bed when everything feels impossible, these are the battles that define us. So STOP 띵킹 만삣삐, a day will come where your hard work is rewarded, not by some benevolent hand-waving god, but by you yourself.
