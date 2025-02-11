@@ -53,9 +53,11 @@ GEM
     ffi (1.16.3)
     forwardable-extended (2.6.0)
     gemoji (4.1.0)
-    google-protobuf (4.26.1-aarch64-linux)
+    google-protobuf (4.29.3-aarch64-linux)
+      bigdecimal
       rake (>= 13)
-    google-protobuf (4.26.1-x86_64-linux)
+    google-protobuf (4.29.3-x86_64-linux)
+      bigdecimal
       rake (>= 13)
     html-pipeline (2.14.3)
       activesupport (>= 2)
@@ -155,10 +157,11 @@ GEM
     mutex_m (0.2.0)
     namae (1.2.0)
       racc (~> 1.7)
-    nokogiri (1.16.4-aarch64-linux)
+    nokogiri (1.18.2-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.16.4-x86_64-linux)
+    nokogiri (1.18.2-x86_64-linux-gnu)
       racc (~> 1.4)
+    observer (0.1.2)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (5.0.5)
@@ -212,6 +215,7 @@ DEPENDENCIES
   jekyll-twitter-plugin
   jemoji
   mini_racer
+  observer
   unicode_utils
   webrick
 

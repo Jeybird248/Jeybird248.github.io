@@ -8,7 +8,7 @@
     - name: Languages
       value: English, Korean
     - name: Contact
-      value: tommy8289@gmail.com, (619) - 513 - 1181
+      value: tommy8289@gmail.com
     - name: LinkedIn
       value: https://www.linkedin.com/in/jehyeoky
     - name: Programming Languages
@@ -30,11 +30,25 @@
             - Codable (President), ACM, Project Code
         - title: Coursework
           contents:
-            - Data Structures, Computational Linguistics, Corpus Linguistics, Database Systems, Digital Signal Processing, Computer Systems, Senior Project, Statistics and Probability I, Discrete Structures, Algorithms, Programming Languages and Compilers, Cloud Computing Application
+            - Data Structures, Computational Linguistics, Corpus Linguistics, Database Systems, Digital Signal Processing, Computer Systems, Senior Project, Statistics and Probability I, Discrete Structures, Algorithms, Programming Languages and Compilers, Applied Machine Learning, Data Mining
 
 - title: Relevant Experience
   type: time_table
   contents:
+    - title: Research Assistant
+      institution: FOCAL Lab@UIUC
+      year: 2024-current
+      description:
+        - Conducting in-depth research on the impact of demographic and social biases in agentic AI systems deployed on web-based graphical user interfaces (GUIs).
+        - Designing and executing experiments to uncover and optimize potential avenues for adversarial exploitation.
+
+    - title: Research Assistant
+      institution: UDL and Accessibility Research Group
+      year: 2024-current
+      description:
+        - Evaluating effectiveness leadership and organizational theories in enhancing collaboration and performance of multi-agent AI frameworks under adversarial conditions.
+        - Analyzing AI agents' ability to detect and mitigate subtle malicious injections by integrating human-inspired leadership dynamics.
+
     - title: AI Data Scientist Intern
       institution: Hanwha Life Insurance
       year: 2024-2024
@@ -68,14 +82,22 @@
 - title: Relevant Projects
   type: time_table
   contents:
-    - title: <a href="https://github.com/Jeybird248/Eclipse">Workout Planner Application (Eclipse) </a>
+    - title: <a href="https://github.com/Deeetox/FrontEnd">Deetox</a>
       year: Current
+      description:
+        - Developing a mobile app promoting intellectual growth and digital detox through curated lessons in philosophy, art, music, and literature.  
+        - Delivering a seamless cross-platform experience using Flutter (iOS/Android) and Firebase for real-time data synchronization and user authentication. 
+        - Automating daily lesson generation with large language models (LLMs), optimizing content generation workflows.   
+
+
+    - title: <a href="https://github.com/Jeybird248/Eclipse">Workout Planner Application (Eclipse) </a>
+      year: 2024-2024
       description:
         - Developed a full-stack workout planning application using React, Node.js, and MySQL, deployed on Google Cloud Platform with RESTful APIs for efficient data communication.
         - Implemented comprehensive CRUD operations for workout routines, exercises, diets, and user profiles, ensuring seamless data management and real-time synchronization.
 
     - title: <a href="https://classtranscribe.illinois.edu/">ClassTranscribe</a>
-      year: Current
+      year: 2024-2024
       description:
         - Engineered React components and C# .NET Core backend services to enhance accessibility for visually impaired students.
         - Implemented full-stack solutions to transform lecture videos into accessible, picture book-style content, enhancing user experience for visually impaired students.
@@ -96,11 +118,3 @@
       year: 2022-2023
       description:
         - Used TensorFlow and OpenCV to develop a machine learning program that analyzes and rates real-time chopstick holding positions applying LSTM on the hand landmark positions.
-
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 2023
-      items:
-        - Get Experience Scholarship
-        - 2024 Student Employee of the Year Nominee
