@@ -85,10 +85,9 @@
     - title: <a href="https://github.com/Deeetox/FrontEnd">Deetox</a>
       year: Current
       description:
-        - Developing a mobile app promoting intellectual growth and digital detox through curated lessons in philosophy, art, music, and literature.  
-        - Delivering a seamless cross-platform experience using Flutter (iOS/Android) and Firebase for real-time data synchronization and user authentication. 
-        - Automating daily lesson generation with large language models (LLMs), optimizing content generation workflows.   
-
+        - Developing a mobile app promoting intellectual growth and digital detox through curated lessons in philosophy, art, music, and literature.
+        - Delivering a seamless cross-platform experience using Flutter (iOS/Android) and Firebase for real-time data synchronization and user authentication.
+        - Automating daily lesson generation with large language models (LLMs), optimizing content generation workflows.
 
     - title: <a href="https://github.com/Jeybird248/Eclipse">Workout Planner Application (Eclipse) </a>
       year: 2024-2024
