@@ -28,7 +28,7 @@ Here's the uncomfortable truth: trauma has a way of fast-tracking maturity. For 
 
 Maybe you were forced into adulthood too soon. Maybe life gave you more funerals than birthday parties. Whatever the case, this so-called "maturity" often comes from enduring what no child—or adolescent—should have to. You get so used to being the bridge between worlds that you forget you were supposed to have solid ground of your own. Every conversation, every decision, every moment of uncertainty—you smooth it over, make it easier for everyone else. And in the process, you learn to shrink, to silence your own needs, because there's never room for them when you're too busy holding everything together.
 
-Then one day, you look around and realize you don't even know what it feels like to exist without carrying someone else's weight. Being labeled “mature” doesn't sound like a compliment anymore, does it?
+Then one day, you look around and realize you don't even know what it feels like to exist without carrying someone else's weight. Being labeled "mature" doesn't sound like a compliment anymore, does it?
 
 ## The Turning Point
 
@@ -42,7 +42,7 @@ Maturity is often mistaken for composure, responsibility, or the ability to shou
 
 But perspective is a double-edged sword. Sometimes it's a gift, letting you see beyond yourself, helping you make sense of others. Other times, it's a weight—one that distances you from the people around you, makes innocence feel like a language you can no longer speak. There are things you can only see because you don't know any better—like believing in Santa Claus or thinking your high school crush is your soulmate.
 
-When we label kids as "mature," we risk robbing them of those blissfully ignorant moments. Instead of encouraging them to explore and make mistakes, we saddle them with expectations they didn't ask for and probably can't meet without sacrificing some part of their innocence until one day, they wake up and realize they've spent more time being “grown” than just being.
+When we label kids as "mature," we risk robbing them of those blissfully ignorant moments. Instead of encouraging them to explore and make mistakes, we saddle them with expectations they didn't ask for and probably can't meet without sacrificing some part of their innocence until one day, they wake up and realize they've spent more time being "grown" than just being.
 
 So if you ever meet someone who seems mature for their age, don't just applaud them for it. Ask them how they're really doing—because chances are, they've been carrying more than their fair share of weight for far too long. To let them explore without fear of judgment. To make mistakes without feeling like they're letting everyone down.
 
