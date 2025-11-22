@@ -8,39 +8,95 @@
     - name: Languages
       value: English, Korean
     - name: Contact
-      value: tommy8289@gmail.com
+      value: jehyeok2@illinois.edu
     - name: LinkedIn
       value: https://www.linkedin.com/in/jehyeoky
     - name: Programming Languages
-      value: Python, C++, SQL, Java, HTML/CSS/JavaScript, C#
+      value: Python, C++, SQL, Java, HTML/CSS/JavaScript, C#, Temporal
     - name: Frameworks and Tools
-      value: React, LangChain, ElasticSearch, PyTorch, OpenCV, TensorFlow, Flask, Django, Git, Docker, Streamlit, MySQL, Google Cloud Platform, RESTful APIs
+      value: React, LangChain, ElasticSearch, PyTorch, OpenCV, TensorFlow, Flask, Django, Git, Docker, Streamlit, MySQL, Google Cloud Platform, RESTful APIs, ChromaDB, Mlflow, Spring Boot
 
 - title: Education
   type: time_table
   contents:
     - title: B.S. in Computer Science + Linguistics
       institution: University of Illinois Urbana-Champaign
-      year: 2022-2025
+      year: August 2022-December 2025
       description:
-        - GPA - 3.9
+        - GPA - 3.92
         - Dean's List
         - title: Clubs
           contents:
             - Codable (President), ACM, Project Code
         - title: Coursework
           contents:
-            - Data Structures, Computational Linguistics, Corpus Linguistics, Database Systems, Digital Signal Processing, Computer Systems, Senior Project, Statistics and Probability I, Discrete Structures, Algorithms, Programming Languages and Compilers, Applied Machine Learning, Data Mining
+            - Machine Learning, Data Mining, Database Systems, Robot Manipulation, Corpus Linguistics, Computational Linguistics, Algorithms, Data Structures, Compilers, Discrete Structures, Computer Systems, Senior Project, Statistics and Probability I
+
+- title: Research Interests
+  type: list
+  contents:
+    - Trustworthy AI
+    - Explainable AI
+    - Formal Methods
+    - Generative AI
+    - Multimodal Models
+    - Agentic AI
+
+- title: Publications
+  type: list
+  contents:
+    - Hangoo Kang*, Jehyeok Yeon*, Gagandeep Singh. **TRAP: Targeted Redirecting of Agentic Preferences.** NeurIPS 2025. (*indicates equal contribution)
+    - Jehyeok Yeon, Isha Chaudhary, Gagandeep Singh. **Certifying Robustness of Agent Tool-Selection Under Adversarial Attacks.** (Under Review)
+    - Jehyeok Yeon, Yifan Wu, Federico Cinus, Luca Luceri. **GSAE: Graph-Regularized Sparse Autoencoders for Robust LLM Safety Steering.** (Under Review)
+    - Jehyeok Yeon, Lawrence Angrave. **The Power of Friendship: Analyzing Leadership and Adversarial Attacks in Multi-Agent Collaboration.** ACM Collective Intelligence 2025 Poster Acceptance.
 
 - title: Relevant Experience
   type: time_table
   contents:
+    - title: Visiting Researcher
+      institution: Max Planck Institute for Intelligent Systems
+      year: January 2026 - August 2026
+      description:
+        - Will be conducting research at the AI Safety and Alignment group under Maksym Andriushchenko about understanding and improving safety of computer use AI agents.
+
     - title: Research Assistant
       institution: FOCAL Lab@UIUC
-      year: 2024-current
+      year: November 2024 - Current
       description:
+        - Achieved **100% ASR** on SoTA vision-language models via novel embedding-level semantic injection and diffusion decoding (first-author, advised by Prof. Gagandeep Singh).
+        - Developed the first statistical certification framework for agentic AI tool selection under adversarial scenarios via LLM-based adversarial distributions (first-author, advised by Prof. Gagandeep Singh).
         - Conducting in-depth research on the impact of demographic and social biases in agentic AI systems deployed on web-based graphical user interfaces (GUIs).
         - Designing and executing experiments to uncover and optimize potential avenues for adversarial exploitation.
+
+    - title: Research Assistant
+      institution: ISI@USC
+      year: February 2025 - Current
+      description:
+        - Designed a graph-based analysis method to uncover features related to LLM refusal behavior using graph Laplacian regularization on sparse autoencoders (first-author, advised by Prof. Luca Luceri).
+        - Built a steering mechanism that uses a dual gating system with hysteresis to enable control over safety behaviors while maintaining strong utility, performing **40% better** than previous safety steering methods.
+
+    - title: Machine Learning Intern
+      institution: Intradiem
+      year: May 2025 - August 2025
+      description:
+        - Trained and tuned a feedforward neural network to predict agent burnout and attrition; optimized for imbalanced classes, achieving **17% F1 lift** and robust generalization to unseen shifts.
+        - Deployed an agent burnout and attrition prediction model as Spring Boot API; served **12k QPS** at <180 ms latency, automating retraining and drift detection using Temporal and Mlflow for 99.95% uptime.
+
+    - title: AI Data Scientist Intern
+      institution: Hanwha Life Insurance
+      year: June 2024-August 2024
+      description:
+        - Developed a hybrid semantic-lexical retrieval architecture for complex tabular data using ElasticSearch and ChromaDB, improving recall on legal document QA datasets by **427%**.
+        - Built a retrieval augmented generation chatbot by integrating a cross-encoder reranking, multi-step query decomposition, and Hypothetical Document Embeddings, raising MRR by **38%**.
+        - Optimized query performance and accuracy by implementing advanced RAG strategies including reranking, query defragmentation, and Hypothetical Document Embeddings (HyDE).
+
+    - title: Machine Learning Intern
+      institution: ATLAS
+      year: May 2023-August 2024
+      description:
+        - Developed a high-fidelity forecasting system using real-time Chicago city sensor data, fusing multi-modal IoT streams and high-res imagery via LSTM-TCN hybrids in PyTorch; achieved a **27% reduction in RMSE** and 0.91 F1 on severe event prediction.
+        - Engineered cross-modal attention for feature alignment and validated robustness with adversarial stress tests, maintaining **93% accuracy** under noisy sensor dropout and outperforming baseline uni-modal models by **18%**.
+        - Processed over 100,000 rows of Canadian agriculture data to analyze temporal conditions' impact on wheat yield, contributing to improved crop management strategies.
 
     - title: Research Assistant
       institution: UDL and Accessibility Research Group
@@ -49,20 +105,6 @@
         - Evaluating effectiveness leadership and organizational theories in enhancing collaboration and performance of multi-agent AI frameworks under adversarial conditions.
         - Analyzing AI agents' ability to detect and mitigate subtle malicious injections by integrating human-inspired leadership dynamics.
 
-    - title: AI Data Scientist Intern
-      institution: Hanwha Life Insurance
-      year: 2024-2024
-      description:
-        - Developed a full-stack chatbot application specializing in insurance domain using ElasticSearch, Langchain, LlamaIndex, and Streamlit, implementing a hybrid retriever that improved standard models by 427%.
-        - Optimized query performance and accuracy by implementing advanced RAG strategies including reranking, query defragmentation, and Hypothetical Document Embeddings (HyDE).
-
-    - title: Machine Learning Intern
-      institution: ATLAS
-      year: 2023-2024
-      description:
-        - Developed predictive machine learning models using PyTorch and scikit-learn, achieving 82% accuracy in trend analysis of Chicago weather sensor data, enabling more precise urban climate monitoring.
-        - Processed over 100,000 rows of Canadian agriculture data to analyze temporal conditions' impact on wheat yield, contributing to improved crop management strategies.
-
     - title: Computational Research Assistant
       institution: Political Ideology and Entrepreneurship Lab
       year: 2023-2024
@@ -70,7 +112,6 @@
         - Engineered automated Python tools for collecting, quantifying, and analyzing data related to political ideology of CEOs and their respective earnings reports.
         - Conducted longitudinal research to quantify the political ideology of CEOs using publicly available data.
         - Developed and applied novel algorithms to classify CEOs along the changes in political spectrum over time.
-        - Presented research findings as a poster presentation at the Undergraduate Research Symposium.
 
     - title: Data Analyst
       institution: University of Illinois Urbana-Champaign, Illinois Leadership Center
@@ -78,6 +119,13 @@
       description:
         - Conducts data analysis using Excel and Tableau to extract actionable insights.
         - Produces data reports, visualizations, and presentations for ILC workshops and programs.
+
+- title: Ongoing Projects (To be submitted in 2026)
+  type: list
+  contents:
+    - Jehyeok Yeon, Isha Chaudhary, Gagandeep Singh. **When Context Breaks Representation: Understanding Layer-Input Failures in LLMs** (Working Title).
+    - Jehyeok Yeon, Federico Cinus, Luca Luceri. **Temporal Tomography of Conceptual Learning: An SAE-based Analysis of LLM Pre-training** (Working Title).
+    - Jehyeok Yeon, Hyeonjeong Ha. **All Roads Flow to Rome: Securing Multimodal Models Against Cross-Modality Attacks** (Working Title).
 
 - title: Relevant Projects
   type: time_table
@@ -117,3 +165,8 @@
       year: 2022-2023
       description:
         - Used TensorFlow and OpenCV to develop a machine learning program that analyzes and rates real-time chopstick holding positions applying LSTM on the hand landmark positions.
+
+- title: Honors and Awards
+  type: list
+  contents:
+    - Get Experience Scholarship (2023)
