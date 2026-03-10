@@ -8,22 +8,29 @@
     - name: Languages
       value: English, Korean
     - name: Contact
-      value: jehyeok2@illinois.edu
+      value: tommy8289@gmail.com
+    - name: Website
+      value: jeybird248.github.io
     - name: LinkedIn
       value: https://www.linkedin.com/in/jehyeoky
     - name: Programming Languages
       value: Python, C++, SQL, Java, HTML/CSS/JavaScript, C#, Temporal
     - name: Frameworks and Tools
-      value: React, LangChain, ElasticSearch, PyTorch, OpenCV, TensorFlow, Flask, Django, Git, Docker, Streamlit, MySQL, Google Cloud Platform, RESTful APIs, ChromaDB, Mlflow, Spring Boot
+      value: React, LangChain, ElasticSearch, PyTorch, OpenCV, TensorFlow, Flask, Django, Git, Docker, Streamlit, MySQL, Google Cloud Platform, RESTful APIs, ChromaDB, Mlflow, Spring Boot, Transformers, VLLM, TransformerLens, W&B
 
 - title: Education
   type: time_table
   contents:
+    - title: Ph.D. in Computer Science
+      institution: Max Planck Institute for Intelligent Systems
+      year: 2026 - Current
+      description:
+        - Advisor: Prof. Maksym Andriushchenko
     - title: B.S. in Computer Science + Linguistics
       institution: University of Illinois Urbana-Champaign
-      year: August 2022-December 2025
+      year: 2022 - 2025
       description:
-        - GPA - 3.92
+        - GPA: 3.92/4.0
         - Dean's List
         - title: Clubs
           contents:
@@ -32,82 +39,90 @@
           contents:
             - Machine Learning, Data Mining, Database Systems, Robot Manipulation, Corpus Linguistics, Computational Linguistics, Algorithms, Data Structures, Compilers, Discrete Structures, Computer Systems, Senior Project, Statistics and Probability I
 
-- title: Research Interests
-  type: list
-  contents:
-    - Trustworthy AI
-    - Explainable AI
-    - Formal Methods
-    - Generative AI
-    - Multimodal Models
-    - Agentic AI
-
 - title: Publications
   type: list
   contents:
     - Hangoo Kang*, Jehyeok Yeon*, Gagandeep Singh. **TRAP: Targeted Redirecting of Agentic Preferences.** NeurIPS 2025. (*indicates equal contribution)
-    - Jehyeok Yeon, Isha Chaudhary, Gagandeep Singh. **Certifying Robustness of Agent Tool-Selection Under Adversarial Attacks.** (Under Review)
+    - Jehyeok Yeon, Isha Chaudhary, Gagandeep Singh. **Certifying Robustness of Agent Tool-Selection Under Adversarial Attacks.** ICLR 2026 AIWILD Workshop.
     - Jehyeok Yeon, Yifan Wu, Federico Cinus, Luca Luceri. **GSAE: Graph-Regularized Sparse Autoencoders for Robust LLM Safety Steering.** (Under Review)
+    - Jehyeok Yeon, Hyeonjeong Ha, Qiusi Zhan, Heng Ji. **Securing Multimodal AI through Internal Information Decomposition.** (Under Review)
     - Jehyeok Yeon, Lawrence Angrave. **The Power of Friendship: Analyzing Leadership and Adversarial Attacks in Multi-Agent Collaboration.** ACM Collective Intelligence 2025 Poster Acceptance.
 
 - title: Relevant Experience
   type: time_table
   contents:
-    - title: Visiting Researcher
+    - title: AI Consultant
+      institution: AI Medical Triage Start-up (Stealth)
+      year: 2026 - Current
+      description:
+        - Designing a medical triage system to normalize symptoms and establish a zero-shot diagnostic baseline.
+        - Building multi-agent Agentic RAG pipelines to ensure reliable and hallucination-free veterinary diagnostics.
+
+    - title: Visiting Student Researcher
       institution: Max Planck Institute for Intelligent Systems
-      year: January 2026 - August 2026
+      year: 2026 - Current
       description:
         - Will be conducting research at the AI Safety and Alignment group under Maksym Andriushchenko about understanding and improving safety of computer use AI agents.
+        - Conducting Agentic R&D research to create benchmarks for AI optimization tasks.
+
+    - title: Visiting Student Researcher
+      institution: University of Southern California
+      year: 2025 - 2026
+      description:
+        - Designed a graph-based analysis method to uncover features related to LLM refusal behavior using graph Laplacian regularization on sparse autoencoders (first-author, advised by Prof. Luca Luceri).
+        - Built a steering mechanism that uses a dual gating system with hysteresis to enable control over safety behaviors while maintaining strong utility, performing **40% better** than previous safety steering methods.
+        - Conducted Information Geometry research to model and analyze LLM internals as complex, non-linear data structures.
 
     - title: Research Assistant
-      institution: FOCAL Lab@UIUC
-      year: November 2024 - Current
+      institution: University of Illinois Urbana-Champaign
+      year: 2024 - 2026
       description:
         - Achieved **100% ASR** on SoTA vision-language models via novel embedding-level semantic injection and diffusion decoding (first-author, advised by Prof. Gagandeep Singh).
         - Developed the first statistical certification framework for agentic AI tool selection under adversarial scenarios via LLM-based adversarial distributions (first-author, advised by Prof. Gagandeep Singh).
         - Conducting in-depth research on the impact of demographic and social biases in agentic AI systems deployed on web-based graphical user interfaces (GUIs).
         - Designing and executing experiments to uncover and optimize potential avenues for adversarial exploitation.
-
-    - title: Research Assistant
-      institution: ISI@USC
-      year: February 2025 - Current
-      description:
-        - Designed a graph-based analysis method to uncover features related to LLM refusal behavior using graph Laplacian regularization on sparse autoencoders (first-author, advised by Prof. Luca Luceri).
-        - Built a steering mechanism that uses a dual gating system with hysteresis to enable control over safety behaviors while maintaining strong utility, performing **40% better** than previous safety steering methods.
+        - Conducted quantitative certification research to model and evaluate the safety of agentic AI systems.
+        - Conducted AI Security research to develop a novel indirect prompt injection method utilizing semantic injection on images.
 
     - title: Machine Learning Intern
       institution: Intradiem
-      year: May 2025 - August 2025
+      year: 2025
       description:
         - Trained and tuned a feedforward neural network to predict agent burnout and attrition; optimized for imbalanced classes, achieving **17% F1 lift** and robust generalization to unseen shifts.
         - Deployed an agent burnout and attrition prediction model as Spring Boot API; served **12k QPS** at <180 ms latency, automating retraining and drift detection using Temporal and Mlflow for 99.95% uptime.
+        - Reduced false-negative burnout classifications by 35% by building feature extraction pipelines with PyTorch, Temporal, and distributed SQL.
+        - Built predictive models to detect burnout anomalies across terabytes of call center telemetry data.
 
-    - title: AI Data Scientist Intern
+    - title: AI Data Scientist
       institution: Hanwha Life Insurance
-      year: June 2024-August 2024
+      year: 2024
       description:
         - Developed a hybrid semantic-lexical retrieval architecture for complex tabular data using ElasticSearch and ChromaDB, improving recall on legal document QA datasets by **427%**.
         - Built a retrieval augmented generation chatbot by integrating a cross-encoder reranking, multi-step query decomposition, and Hypothetical Document Embeddings, raising MRR by **38%**.
         - Optimized query performance and accuracy by implementing advanced RAG strategies including reranking, query defragmentation, and Hypothetical Document Embeddings (HyDE).
+        - Deployed a RAG Agent utilizing LangChain, ChromaDB, and fine-tuned instruction models.
+        - Optimized hybrid retrieval and prompt orchestration to improve average query accuracy by 40% while maintaining resolution overhead in domain-specific QA tasks.
 
     - title: Machine Learning Intern
       institution: ATLAS
-      year: May 2023-August 2024
+      year: 2023 - 2024
       description:
         - Developed a high-fidelity forecasting system using real-time Chicago city sensor data, fusing multi-modal IoT streams and high-res imagery via LSTM-TCN hybrids in PyTorch; achieved a **27% reduction in RMSE** and 0.91 F1 on severe event prediction.
         - Engineered cross-modal attention for feature alignment and validated robustness with adversarial stress tests, maintaining **93% accuracy** under noisy sensor dropout and outperforming baseline uni-modal models by **18%**.
         - Processed over 100,000 rows of Canadian agriculture data to analyze temporal conditions' impact on wheat yield, contributing to improved crop management strategies.
+        - Engineered a real-time predictive model utilizing hyper-local streaming sensor data for the city of Chicago, enhancing the city's resource allocation and optimizing response times by 15% during peak events.
+        - Minimized inference latency for meteorological forecasting using TensorFlow Lite and ElasticSearch.
 
     - title: Research Assistant
       institution: UDL and Accessibility Research Group
-      year: 2024-current
+      year: 2024 - Current
       description:
         - Evaluating effectiveness leadership and organizational theories in enhancing collaboration and performance of multi-agent AI frameworks under adversarial conditions.
         - Analyzing AI agents' ability to detect and mitigate subtle malicious injections by integrating human-inspired leadership dynamics.
 
     - title: Computational Research Assistant
       institution: Political Ideology and Entrepreneurship Lab
-      year: 2023-2024
+      year: 2023 - 2024
       description:
         - Engineered automated Python tools for collecting, quantifying, and analyzing data related to political ideology of CEOs and their respective earnings reports.
         - Conducted longitudinal research to quantify the political ideology of CEOs using publicly available data.
@@ -115,7 +130,7 @@
 
     - title: Data Analyst
       institution: University of Illinois Urbana-Champaign, Illinois Leadership Center
-      year: 2023-2024
+      year: 2023 - 2024
       description:
         - Conducts data analysis using Excel and Tableau to extract actionable insights.
         - Produces data reports, visualizations, and presentations for ILC workshops and programs.
@@ -138,35 +153,41 @@
         - Automating daily lesson generation with large language models (LLMs), optimizing content generation workflows.
 
     - title: <a href="https://github.com/Jeybird248/Eclipse">Workout Planner Application (Eclipse) </a>
-      year: 2024-2024
+      year: 2024
       description:
         - Developed a full-stack workout planning application using React, Node.js, and MySQL, deployed on Google Cloud Platform with RESTful APIs for efficient data communication.
         - Implemented comprehensive CRUD operations for workout routines, exercises, diets, and user profiles, ensuring seamless data management and real-time synchronization.
 
     - title: <a href="https://classtranscribe.illinois.edu/">ClassTranscribe</a>
-      year: 2024-2024
+      year: 2024
       description:
         - Engineered React components and C# .NET Core backend services to enhance accessibility for visually impaired students.
         - Implemented full-stack solutions to transform lecture videos into accessible, picture book-style content, enhancing user experience for visually impaired students.
 
     - title: <a href="https://github.com/Jeybird248/ESL-web-app">ESL Learning Hub Web App (Grammaraide)</a>
-      year: 2023-2024
+      year: 2023 - 2024
       description:
         - Designed and implemented a Flask-based web application with responsive frontend using HTML5, CSS3, and JavaScript to enhance ESL students' reading comprehension and grammar proficiency.
         - Integrated advanced NLP methods and LLM pipeline to generate personalized, contextually relevant quizzes and exercises, catering to various ESL proficiency levels.
 
     - title: <a href="https://github.com/Jeybird248/Chrome-Extension">Note Generation Chrome Extension</a>
-      year: 2023-2023
+      year: 2023
       description:
         - Developed a Chrome extension utilizing Flask backend and JavaScript frontend, integrating the open-source LLM Mixtral and OpenAI's wav2vec 2.0 speech-to-text model.
         - Achieved 85% accuracy in automated note generation from YouTube videos and audio files, enhancing user productivity by over 10 hours per week.
 
     - title: <a href="https://github.com/Codable-UIUC/Chopstick101">Chopstick 101</a>
-      year: 2022-2023
+      year: 2022 - 2023
       description:
         - Used TensorFlow and OpenCV to develop a machine learning program that analyzes and rates real-time chopstick holding positions applying LSTM on the hand landmark positions.
+
+- title: Talks
+  type: list
+  contents:
+    - Rise of Indirect Prompt Injection Methods on Open Environment Agents, AI Safety Tübingen Reading Group
 
 - title: Honors and Awards
   type: list
   contents:
-    - Get Experience Scholarship (2023)
+    - Get Experience Scholarship (2023, 2026)
+    - Sandia Data Challenge Finalist Award (2025)

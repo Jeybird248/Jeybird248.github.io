@@ -11,9 +11,9 @@ profile:
 social: true # includes social icons at the bottom of the page
 ---
 
-Oh, hey there! I'm Jehyeok Yeon, an incoming PhD student with a focus on building intelligent systems that are both technically robust and socially responsible. I was previously at the University of Illinois Urbana-Champaign, where I was previously advised by [Professor Gagandeep Singh](https://ggndpsngh.github.io/) at the FOCAL Lab. During Spring and Summer 2026 I'll be working with [Maksym Andriushchenko](https://www.andriushchenko.me/) at the AI Safety and Alignment group at the ELLIS Institute Tübingen and the Max Planck Institute for Intelligent Systems.
+Oh, hey there! I'm Jehyeok Yeon, an incoming PhD student at Max Planck Institute for Intelligent Systems with [Maksym Andriushchenko](https://www.andriushchenko.me/) with a focus on building intelligent systems that are both technically robust and socially responsible. I was previously at the University of Illinois Urbana-Champaign, where I was previously advised by [Professor Gagandeep Singh](https://ggndpsngh.github.io/) at the FOCAL Lab.
 
-My research focuses on trustworthy and explainable AI. I'm interested in how we can design systems, particularly autonomous agents, that make decisions while remaining predictable, safe, and aligned with human intent. In particular, I explore how we can formalize and evaluate agency in AI systems. More broadly, I'm interested in the theoretical foundations of AI behavior and how these can be strengthened and/or exploited.
+My current research interest focuses on scalable oversight and "superalignment". As AI models become more capable, I believe it's more important than ever to be able to continue evaluating and analyzing these models, even if the models become smarter than us. This could mean creating more difficult tasks with no ground truth answer, finding scalable ways to control and interpret models, or reverse-engineering their internal representations to guarantee their hidden objectives match our instructions.
 
 Outside of research, I care a lot about writing, both creative and academic, and how it shapes the way we think. I spend a lot of time walking and thinking through ideas, and I try to catch theatre performances whenever I can. There's something powerful about live storytelling that reminds me why I study intelligence in the first place.
 
