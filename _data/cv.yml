@@ -21,11 +21,6 @@
 - title: Education
   type: time_table
   contents:
-    - title: Ph.D. in Computer Science
-      institution: Max Planck Institute for Intelligent Systems
-      year: 2026 - Current
-      description:
-        - Advisor: Prof. Maksym Andriushchenko
     - title: B.S. in Computer Science + Linguistics
       institution: University of Illinois Urbana-Champaign
       year: 2022 - 2025
