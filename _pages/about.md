@@ -11,7 +11,7 @@ profile:
 social: true # includes social icons at the bottom of the page
 ---
 
-Oh, hey there! I'm Jehyeok Yeon, an incoming PhD student at Max Planck Institute for Intelligent Systems with [Maksym Andriushchenko](https://www.andriushchenko.me/) with a focus on building intelligent systems that are both technically robust and socially responsible. I was previously at the University of Illinois Urbana-Champaign, where I was previously advised by [Professor Gagandeep Singh](https://ggndpsngh.github.io/) at the FOCAL Lab.
+Oh, hey there! I'm Jehyeok Yeon, a current research intern at Max Planck Institute for Intelligent Systems with [Maksym Andriushchenko](https://www.andriushchenko.me/) with a focus on building intelligent systems that are both technically robust and socially responsible. I was previously at the University of Illinois Urbana-Champaign, where I was previously advised by [Professor Gagandeep Singh](https://ggndpsngh.github.io/) at the FOCAL Lab.
 
 My current research interest focuses on scalable oversight and "superalignment". As AI models become more capable, I believe it's more important than ever to be able to continue evaluating and analyzing these models, even if the models become smarter than us. This could mean creating more difficult tasks with no ground truth answer, finding scalable ways to control and interpret models, or reverse-engineering their internal representations to guarantee their hidden objectives match our instructions.
 
