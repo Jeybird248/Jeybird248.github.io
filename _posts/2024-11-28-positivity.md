@@ -3,7 +3,7 @@ layout: post
 title: "Opinion: The Problem with ‘Positivity Culture'"
 date: 2024-11-28 2:48:00
 description: Because Toxic Positivity may be actually harming us
-tags:
+tags: [mental-health, culture, philosophy]
 categories: opinion
 thumbnail: assets/img/positivity.png
 ---

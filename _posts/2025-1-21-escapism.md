@@ -3,7 +3,7 @@ layout: post
 title: "Opinion: Escapsim, Complacency, and the Inner Gigachad"
 date: 2025-1-21 2:48:00
 description: Because sometimes you need the stick more than the carrot
-tags:
+tags: [motivation, growth, philosophy]
 categories: opinion
 thumbnail: assets/img/escapism.png
 ---

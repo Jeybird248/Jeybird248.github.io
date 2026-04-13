@@ -3,7 +3,7 @@ layout: post
 title: "Reflection: It Builds Character but"
 date: 2025-2-10 2:48:00
 description: Because you can look back but you can't go back
-tags:
+tags: [growth, identity, nostalgia]
 categories: reflection
 thumbnail: assets/img/maturity.png
 ---
