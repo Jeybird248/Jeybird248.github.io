@@ -34,15 +34,6 @@
           contents:
             - Machine Learning, Data Mining, Database Systems, Robot Manipulation, Corpus Linguistics, Computational Linguistics, Algorithms, Data Structures, Compilers, Discrete Structures, Computer Systems, Senior Project, Statistics and Probability I
 
-- title: Publications
-  type: list
-  contents:
-    - Hangoo Kang*, Jehyeok Yeon*, Gagandeep Singh. **TRAP: Targeted Redirecting of Agentic Preferences.** NeurIPS 2025. (*indicates equal contribution)
-    - Jehyeok Yeon, Isha Chaudhary, Gagandeep Singh. **Certifying Robustness of Agent Tool-Selection Under Adversarial Attacks.** ICLR 2026 AIWILD Workshop.
-    - Jehyeok Yeon, Yifan Wu, Federico Cinus, Luca Luceri. **GSAE: Graph-Regularized Sparse Autoencoders for Robust LLM Safety Steering.** (Under Review)
-    - Jehyeok Yeon, Hyeonjeong Ha, Qiusi Zhan, Heng Ji. **Securing Multimodal AI through Internal Information Decomposition.** (Under Review)
-    - Jehyeok Yeon, Lawrence Angrave. **The Power of Friendship: Analyzing Leadership and Adversarial Attacks in Multi-Agent Collaboration.** ACM Collective Intelligence 2025 Poster Acceptance.
-
 - title: Relevant Experience
   type: time_table
   contents:
@@ -129,13 +120,6 @@
       description:
         - Conducts data analysis using Excel and Tableau to extract actionable insights.
         - Produces data reports, visualizations, and presentations for ILC workshops and programs.
-
-- title: Ongoing Projects (To be submitted in 2026)
-  type: list
-  contents:
-    - Jehyeok Yeon, Isha Chaudhary, Gagandeep Singh. **When Context Breaks Representation: Understanding Layer-Input Failures in LLMs** (Working Title).
-    - Jehyeok Yeon, Federico Cinus, Luca Luceri. **Temporal Tomography of Conceptual Learning: An SAE-based Analysis of LLM Pre-training** (Working Title).
-    - Jehyeok Yeon, Hyeonjeong Ha. **All Roads Flow to Rome: Securing Multimodal Models Against Cross-Modality Attacks** (Working Title).
 
 - title: Relevant Projects
   type: time_table

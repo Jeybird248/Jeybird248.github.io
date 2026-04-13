@@ -224,8 +224,14 @@ let initTheme = () => {
 
   setThemeSetting(themeSetting);
 
-  // Add event listener to the theme toggle button.
+  // Re-apply theme once the DOM is ready. The first applyTheme() runs in <head>
+  // before body is parsed, so DOM-dependent steps (e.g. adding .table-dark to
+  // <table> elements) silently no-op. Re-running after DOMContentLoaded ensures
+  // tables inside partials like news / latest_posts pick up the correct theme
+  // on initial load instead of only after the first toggle.
   document.addEventListener("DOMContentLoaded", function () {
+    applyTheme();
+
     const mode_toggle = document.getElementById("light-toggle");
 
     mode_toggle.addEventListener("click", function () {

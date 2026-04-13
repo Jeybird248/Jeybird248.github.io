@@ -2,6 +2,66 @@
  * CV shared styles
  *****************************/
 
+// Force CV card contents to pick up the themed text color. Bootstrap's
+// .list-group-item / .card defaults otherwise bleed a dark color into
+// dark mode, making body text match the card background.
+.cv {
+  .card,
+  .card-title,
+  .card-text,
+  .list-group-item,
+  ul.items,
+  ul.subitems,
+  ul.timeline,
+  h6.title,
+  td.institution,
+  td.department,
+  .item,
+  .item-title,
+  .subitem,
+  p,
+  li {
+    color: var(--global-text-color);
+  }
+
+  // Prevent long coursework / description strings from bleeding past the
+  // right edge of the card on narrow viewports.
+  .card,
+  .list-group-item,
+  ul.items,
+  ul.subitems,
+  .item,
+  .item-title,
+  .subitem,
+  td.institution,
+  td.department {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  // The time_table uses a fixed 75px year column + a 10-col content column.
+  // On very narrow screens the content column can still collide with the
+  // badge; add a bit of breathing room.
+  .list-group-item .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  // Institution rows use a borderless <table> layout — make sure the right
+  // cell can wrap cleanly.
+  table.institution td.institution,
+  table.institution td.department {
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  // Bullet list indentation inside the description can otherwise collide
+  // with the surrounding .ml-md-4.
+  ul.items {
+    padding-left: 1.2rem;
+  }
+}
+
 div.container-link-button {
   margin-right: 0.5rem;
 }
