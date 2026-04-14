@@ -32,25 +32,22 @@ layout: default
       {% endif %}
     {% endfor %}
 
-    {%- comment -%} ── Pass data as JS variables (avoids minifier mangling JSON blocks) ── {%- endcomment -%}
-    <script>
-      var CV_RAW_DATA = {{ site.data.cv | jsonify }};
-      var CV_NEWS_DATA = [
-        {%- assign sorted_news = site.news | sort: "date" | reverse -%}
-        {%- assign first_news = true -%}
-        {%- for item in sorted_news -%}
-          {%- if item.inline -%}
-            {%- unless first_news -%},{%- endunless -%}
-            {%- assign first_news = false -%}
-            {
-              year: {{ item.date | date: "%Y" | jsonify }},
-              text: {{ item.content | strip_html | strip | jsonify }},
-              date: {{ item.date | date: "%b %Y" | jsonify }}
-            }
-          {%- endif -%}
-        {%- endfor -%}
-      ];
-    </script>
+    {%- comment -%} ── CV data as JS (safe: jsonify on pure YAML, no user HTML) ── {%- endcomment -%}
+    <script>var CV_RAW_DATA = {{ site.data.cv | jsonify }};</script>
+
+    {%- comment -%} ── News data as hidden HTML (avoids uglifier touching emoji HTML) ── {%- endcomment -%}
+    <div id="cv-news-src" style="display:none" aria-hidden="true">
+      {%- assign sorted_news = site.news | sort: "date" | reverse -%}
+      {%- for item in sorted_news -%}
+        {%- if item.inline -%}
+          <span
+            data-year="{{ item.date | date: '%Y' }}"
+            data-date="{{ item.date | date: '%b %Y' }}"
+            data-text="{{ item.content | strip_html | strip | escape }}"
+          ></span>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
 
     {%- comment -%} ── Filter buttons ── {%- endcomment -%}
     <div class="tl-filters">
@@ -81,7 +78,13 @@ layout: default
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const rawSections = CV_RAW_DATA;
-  const newsItems   = CV_NEWS_DATA;
+  const newsItems = Array.from(document.querySelectorAll("#cv-news-src span")).map(function(el) {
+    return {
+      year: el.dataset.year,
+      text: el.dataset.text,
+      date: el.dataset.date
+    };
+  });
   const catColors = { education: "#3498db", experience: "#9b59b6", project: "#e67e22", milestone: "#f1c40f" };
 
   // ── Flatten cv.yml sections into events ──
