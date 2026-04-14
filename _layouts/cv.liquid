@@ -6,13 +6,10 @@ layout: default
     <h1 class="post-title">
       {{ page.title }}
       {% if page.cv_pdf %}
-        <a
-          href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="float-right"
-          ><i class="fa-solid fa-file-pdf"></i
-        ></a>
+        <a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}"
+           target="_blank" rel="noopener noreferrer" class="float-right">
+          <i class="fa-solid fa-file-pdf"></i>
+        </a>
       {% endif %}
     </h1>
     {% if page.description %}
@@ -21,28 +18,281 @@ layout: default
   </header>
 
   <article>
-    <div class="cv">
-      {% for entry in site.data.cv %}
-        <a class="anchor" id="{{ entry.title }}"></a>
-        <div class="card mt-3 p-3">
-          <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
-          <div>
-            {% if entry.type == 'list' %}
-              {% include cv/list.liquid %}
-            {% elsif entry.type == 'map' %}
-              {% include cv/map.liquid %}
-            {% elsif entry.type == 'nested_list' %}
-              {% include cv/nested_list.liquid %}
-            {% elsif entry.type == 'time_table' %}
-              {% include cv/time_table.liquid %}
-            {% elsif entry.type == 'list_groups' %}
-              {% include cv/list_groups.liquid %}
-            {% else %}
-              {{ entry.contents }}
-            {% endif %}
-          </div>
+    {%- comment -%} ── General Information ── {%- endcomment -%}
+    {% for entry in site.data.cv %}
+      {% if entry.type == 'map' %}
+        <div class="cv-info-grid">
+          {% for content in entry.contents %}
+            <div class="cv-info-item">
+              <span class="cv-info-label">{{ content.name }}</span>
+              <span class="cv-info-value">{{ content.value }}</span>
+            </div>
+          {% endfor %}
         </div>
-      {% endfor %}
+      {% endif %}
+    {% endfor %}
+
+    {%- comment -%} ── Serialize timeline data as JSON for JS ── {%- endcomment -%}
+    <script id="cv-data" type="application/json">
+    {
+      "events": [
+        {% assign first_evt = true %}
+        {% for entry in site.data.cv %}
+          {% if entry.type == 'time_table' %}
+            {% assign cat = 'experience' %}
+            {% if entry.title contains 'Education' %}{% assign cat = 'education' %}
+            {% elsif entry.title contains 'Project' %}{% assign cat = 'project' %}
+            {% endif %}
+            {% for content in entry.contents %}
+              {% unless first_evt %},{% endunless %}
+              {% assign first_evt = false %}
+              {
+                "year": {{ content.year | jsonify }},
+                "title": {{ content.title | jsonify }},
+                "institution": {{ content.institution | default: "" | jsonify }},
+                "category": {{ cat | jsonify }},
+                "description": [
+                  {% for item in content.description %}
+                    {% if item.contents %}
+                      {% assign joined_contents = item.contents | join: ", " %}
+                      {{ item.title | append: ": " | append: joined_contents | jsonify }}
+                    {% elsif item.title %}
+                      {% if item.value %}
+                        {{ item.title | append: ": " | append: item.value | jsonify }}
+                      {% else %}
+                        {{ item.title | jsonify }}
+                      {% endif %}
+                    {% else %}
+                      {{ item | jsonify }}
+                    {% endif %}
+                    {% unless forloop.last %},{% endunless %}
+                  {% endfor %}
+                ]
+              }
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+        {% comment %} ── News / announcements as milestones ── {% endcomment %}
+        {% assign sorted_news = site.news | sort: "date" | reverse %}
+        {% for item in sorted_news %}
+          {% if item.inline %}
+            ,{
+              "year": {{ item.date | date: "%Y" | jsonify }},
+              "title": {{ item.content | strip_html | strip | jsonify }},
+              "htmlTitle": {{ item.content | strip | jsonify }},
+              "institution": "",
+              "category": "milestone",
+              "date": {{ item.date | date: "%b %Y" | jsonify }},
+              "description": []
+            }
+          {% endif %}
+        {% endfor %}
+      ],
+      "lists": [
+        {% assign first_list = true %}
+        {% for entry in site.data.cv %}
+          {% if entry.type == 'list' %}
+            {% unless first_list %},{% endunless %}
+            {% assign first_list = false %}
+            {
+              "title": {{ entry.title | jsonify }},
+              "items": {{ entry.contents | jsonify }}
+            }
+          {% endif %}
+        {% endfor %}
+      ]
+    }
+    </script>
+
+    {%- comment -%} ── Filter buttons ── {%- endcomment -%}
+    <div class="tl-filters">
+      <button class="tl-filter active" data-filter="all">All</button>
+      <button class="tl-filter" data-filter="education">
+        <span class="tl-filter-dot" style="background:#3498db"></span>Education
+      </button>
+      <button class="tl-filter" data-filter="experience">
+        <span class="tl-filter-dot" style="background:#9b59b6"></span>Experience
+      </button>
+      <button class="tl-filter" data-filter="milestone">
+        <span class="tl-filter-dot" style="background:#f1c40f"></span>Milestones
+      </button>
     </div>
+
+    {%- comment -%} ── Timeline (built by JS) ── {%- endcomment -%}
+    <div class="cv-timeline" id="cv-timeline"></div>
+
+    {%- comment -%} ── Projects grid (built by JS) ── {%- endcomment -%}
+    <h3 class="cv-section-heading" id="projects-heading" style="display:none">Projects</h3>
+    <div class="cv-projects-grid" id="cv-projects"></div>
+
+    {%- comment -%} ── Talks & Awards (built by JS) ── {%- endcomment -%}
+    <div id="cv-lists"></div>
   </article>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const data = JSON.parse(document.getElementById("cv-data").textContent);
+  const catColors = { education: "#3498db", experience: "#9b59b6", project: "#e67e22", milestone: "#f1c40f" };
+
+  // ── Separate projects from timeline events ──
+  const timelineRaw = data.events.filter(e => e.category !== "project");
+  const projects    = data.events.filter(e => e.category === "project");
+
+  // ── Group timeline events by start year ──
+  function startYear(y) {
+    if (!y) return 0;
+    return parseInt(String(y).split(/\s*-\s*/)[0]) || 0;
+  }
+
+  const yearMap = {};
+  timelineRaw.forEach(e => {
+    const sy = startYear(e.year);
+    if (!yearMap[sy]) yearMap[sy] = [];
+    yearMap[sy].push(e);
+  });
+
+  const sortedYears = Object.keys(yearMap).map(Number).sort((a, b) => b - a);
+
+  // ── Render timeline ──
+  const tl = document.getElementById("cv-timeline");
+
+  sortedYears.forEach((yr, idx) => {
+    const group = yearMap[yr];
+    const node = document.createElement("div");
+    node.className = "tl-event " + (idx % 2 === 0 ? "tl-left" : "tl-right");
+    // store all categories present in this group for filtering
+    const cats = [...new Set(group.map(e => e.category))];
+    node.dataset.categories = cats.join(",");
+
+    // pick dot color: prioritize education > experience > milestone
+    const dotCat = cats.includes("education") ? "education"
+                 : cats.includes("experience") ? "experience"
+                 : cats[0];
+
+    let html = '<div class="tl-dot tl-dot--' + dotCat + '"></div>';
+    html += '<div class="tl-card">';
+    html += '<span class="tl-year-marker">' + yr + '</span>';
+
+    group.forEach((entry, ei) => {
+      const hasBullets = entry.description && entry.description.length > 0;
+      const isMilestone = entry.category === "milestone";
+
+      html += '<div class="tl-entry' + (ei > 0 ? ' tl-entry-border' : '') + (isMilestone ? ' tl-entry--milestone' : '') + '">';
+
+      if (isMilestone) {
+        // Milestones: render the HTML content (preserves links), show month+year
+        html += '<div class="tl-milestone-body">';
+        html += '<i class="fa-solid fa-star tl-milestone-icon"></i>';
+        html += '<div>';
+        html += '<div class="tl-milestone-text">' + (entry.htmlTitle || entry.title) + '</div>';
+        if (entry.date) html += '<span class="tl-year-range">' + entry.date + '</span>';
+        html += '</div></div>';
+      } else {
+        // Regular entries
+        html += '<div class="tl-entry-head">';
+        html += '<div>';
+        if (entry.title) html += '<h4 class="tl-title">' + entry.title + '</h4>';
+        if (entry.institution) html += '<p class="tl-institution">' + entry.institution + '</p>';
+        if (entry.year) html += '<span class="tl-year-range">' + entry.year + '</span>';
+        html += '</div>';
+        if (hasBullets) {
+          html += '<button class="tl-expand" aria-label="Toggle details"><i class="fa-solid fa-chevron-down"></i></button>';
+        }
+        html += '</div>';
+
+        if (hasBullets) {
+          html += '<ul class="tl-detail">';
+          entry.description.forEach(d => {
+            html += '<li>' + d + '</li>';
+          });
+          html += '</ul>';
+        }
+      }
+
+      html += '</div>'; // .tl-entry
+    });
+
+    html += '</div>'; // .tl-card
+    node.innerHTML = html;
+    tl.appendChild(node);
+  });
+
+  // ── Render projects grid ──
+  if (projects.length > 0) {
+    document.getElementById("projects-heading").style.display = "";
+    const grid = document.getElementById("cv-projects");
+    projects.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "cv-project-card";
+      let h = '';
+      if (p.title) h += '<h4>' + p.title + '</h4>';
+      if (p.year) h += '<span class="tl-year-range">' + p.year + '</span>';
+      if (p.description && p.description.length > 0) {
+        h += '<ul>';
+        p.description.forEach(d => { h += '<li>' + d + '</li>'; });
+        h += '</ul>';
+      }
+      card.innerHTML = h;
+      grid.appendChild(card);
+    });
+  }
+
+  // ── Render lists (talks, awards) ──
+  const listsEl = document.getElementById("cv-lists");
+  data.lists.forEach(list => {
+    const sec = document.createElement("div");
+    sec.className = "cv-minor-section";
+    let h = '<h3>' + list.title + '</h3><ul>';
+    list.items.forEach(item => { h += '<li>' + item + '</li>'; });
+    h += '</ul>';
+    sec.innerHTML = h;
+    listsEl.appendChild(sec);
+  });
+
+  // ── Expand / collapse ──
+  document.querySelectorAll(".tl-expand").forEach(btn => {
+    btn.addEventListener("click", function () {
+      this.closest(".tl-entry").classList.toggle("expanded");
+    });
+  });
+
+  // ── Filters ──
+  const allNodes = Array.from(tl.querySelectorAll(".tl-event"));
+
+  document.querySelectorAll(".tl-filter").forEach(btn => {
+    btn.addEventListener("click", function () {
+      document.querySelectorAll(".tl-filter").forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+      const f = this.dataset.filter;
+      let visIdx = 0;
+      allNodes.forEach(node => {
+        const cats = node.dataset.categories.split(",");
+        if (f === "all" || cats.includes(f)) {
+          node.style.display = "";
+          node.classList.remove("tl-left", "tl-right");
+          node.classList.add(visIdx % 2 === 0 ? "tl-left" : "tl-right");
+          visIdx++;
+        } else {
+          node.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // ── Scroll-triggered fade-in ──
+  if ("IntersectionObserver" in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("tl-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    allNodes.forEach(e => obs.observe(e));
+  } else {
+    allNodes.forEach(e => e.classList.add("tl-visible"));
+  }
+});
+</script>

@@ -21,12 +21,18 @@
 - title: Education
   type: time_table
   contents:
+    - title: Ph.D. in Computer Science
+      institution: Max Planck Institute for Intelligent Systems & ELLIS Institute
+      year: 2026 - 2030
+
     - title: B.S. in Computer Science + Linguistics
       institution: University of Illinois Urbana-Champaign
       year: 2022 - 2025
       description:
-        - GPA: 3.92/4.0
-        - Dean's List
+        - title: GPA
+          value: 3.92/4.0
+        - title: Dean's List
+          value: 
         - title: Clubs
           contents:
             - Codable (President), ACM, Project Code
@@ -39,16 +45,16 @@
   contents:
     - title: AI Consultant
       institution: AI Medical Triage Start-up (Stealth)
-      year: 2026 - Current
+      year: 2026
       description:
         - Designing a medical triage system to normalize symptoms and establish a zero-shot diagnostic baseline.
         - Building multi-agent Agentic RAG pipelines to ensure reliable and hallucination-free veterinary diagnostics.
 
     - title: Visiting Student Researcher
       institution: Max Planck Institute for Intelligent Systems
-      year: 2026 - Current
+      year: 2026
       description:
-        - Will be conducting research at the AI Safety and Alignment group under Maksym Andriushchenko about understanding and improving safety of computer use AI agents.
+        - Conducting research at the AI Safety and Alignment group under Maksym Andriushchenko about understanding and improving safety of computer use AI agents.
         - Conducting Agentic R&D research to create benchmarks for AI optimization tasks.
 
     - title: Visiting Student Researcher
@@ -56,14 +62,14 @@
       year: 2025 - 2026
       description:
         - Designed a graph-based analysis method to uncover features related to LLM refusal behavior using graph Laplacian regularization on sparse autoencoders (first-author, advised by Prof. Luca Luceri).
-        - Built a steering mechanism that uses a dual gating system with hysteresis to enable control over safety behaviors while maintaining strong utility, performing **40% better** than previous safety steering methods.
+        - Built a steering mechanism that uses a dual gating system with hysteresis to enable control over safety behaviors while maintaining strong utility, performing 40% better than previous safety steering methods.
         - Conducted Information Geometry research to model and analyze LLM internals as complex, non-linear data structures.
 
     - title: Research Assistant
       institution: University of Illinois Urbana-Champaign
       year: 2024 - 2026
       description:
-        - Achieved **100% ASR** on SoTA vision-language models via novel embedding-level semantic injection and diffusion decoding (first-author, advised by Prof. Gagandeep Singh).
+        - Achieved 100% ASR on SoTA vision-language models via novel embedding-level semantic injection and diffusion decoding (first-author, advised by Prof. Gagandeep Singh).
         - Developed the first statistical certification framework for agentic AI tool selection under adversarial scenarios via LLM-based adversarial distributions (first-author, advised by Prof. Gagandeep Singh).
         - Conducting in-depth research on the impact of demographic and social biases in agentic AI systems deployed on web-based graphical user interfaces (GUIs).
         - Designing and executing experiments to uncover and optimize potential avenues for adversarial exploitation.
@@ -74,8 +80,8 @@
       institution: Intradiem
       year: 2025
       description:
-        - Trained and tuned a feedforward neural network to predict agent burnout and attrition; optimized for imbalanced classes, achieving **17% F1 lift** and robust generalization to unseen shifts.
-        - Deployed an agent burnout and attrition prediction model as Spring Boot API; served **12k QPS** at <180 ms latency, automating retraining and drift detection using Temporal and Mlflow for 99.95% uptime.
+        - Trained and tuned a feedforward neural network to predict agent burnout and attrition; optimized for imbalanced classes, achieving 17% F1 lift and robust generalization to unseen shifts.
+        - Deployed an agent burnout and attrition prediction model as Spring Boot API; served 12k QPS at <180 ms latency, automating retraining and drift detection using Temporal and Mlflow for 99.95% uptime.
         - Reduced false-negative burnout classifications by 35% by building feature extraction pipelines with PyTorch, Temporal, and distributed SQL.
         - Built predictive models to detect burnout anomalies across terabytes of call center telemetry data.
 
@@ -83,8 +89,8 @@
       institution: Hanwha Life Insurance
       year: 2024
       description:
-        - Developed a hybrid semantic-lexical retrieval architecture for complex tabular data using ElasticSearch and ChromaDB, improving recall on legal document QA datasets by **427%**.
-        - Built a retrieval augmented generation chatbot by integrating a cross-encoder reranking, multi-step query decomposition, and Hypothetical Document Embeddings, raising MRR by **38%**.
+        - Developed a hybrid semantic-lexical retrieval architecture for complex tabular data using ElasticSearch and ChromaDB, improving recall on legal document QA datasets by 427%.
+        - Built a retrieval augmented generation chatbot by integrating a cross-encoder reranking, multi-step query decomposition, and Hypothetical Document Embeddings, raising MRR by 38%.
         - Optimized query performance and accuracy by implementing advanced RAG strategies including reranking, query defragmentation, and Hypothetical Document Embeddings (HyDE).
         - Deployed a RAG Agent utilizing LangChain, ChromaDB, and fine-tuned instruction models.
         - Optimized hybrid retrieval and prompt orchestration to improve average query accuracy by 40% while maintaining resolution overhead in domain-specific QA tasks.
@@ -93,15 +99,15 @@
       institution: ATLAS
       year: 2023 - 2024
       description:
-        - Developed a high-fidelity forecasting system using real-time Chicago city sensor data, fusing multi-modal IoT streams and high-res imagery via LSTM-TCN hybrids in PyTorch; achieved a **27% reduction in RMSE** and 0.91 F1 on severe event prediction.
-        - Engineered cross-modal attention for feature alignment and validated robustness with adversarial stress tests, maintaining **93% accuracy** under noisy sensor dropout and outperforming baseline uni-modal models by **18%**.
+        - Developed a high-fidelity forecasting system using real-time Chicago city sensor data, fusing multi-modal IoT streams and high-res imagery via LSTM-TCN hybrids in PyTorch; achieved a 27% reduction in RMSE and 0.91 F1 on severe event prediction.
+        - Engineered cross-modal attention for feature alignment and validated robustness with adversarial stress tests, maintaining 93% accuracy under noisy sensor dropout and outperforming baseline uni-modal models by 18%.
         - Processed over 100,000 rows of Canadian agriculture data to analyze temporal conditions' impact on wheat yield, contributing to improved crop management strategies.
         - Engineered a real-time predictive model utilizing hyper-local streaming sensor data for the city of Chicago, enhancing the city's resource allocation and optimizing response times by 15% during peak events.
         - Minimized inference latency for meteorological forecasting using TensorFlow Lite and ElasticSearch.
 
     - title: Research Assistant
       institution: UDL and Accessibility Research Group
-      year: 2024 - Current
+      year: 2024 - 2025
       description:
         - Evaluating effectiveness leadership and organizational theories in enhancing collaboration and performance of multi-agent AI frameworks under adversarial conditions.
         - Analyzing AI agents' ability to detect and mitigate subtle malicious injections by integrating human-inspired leadership dynamics.
@@ -125,7 +131,7 @@
   type: time_table
   contents:
     - title: <a href="https://github.com/Deeetox/FrontEnd">Deetox</a>
-      year: Current
+      year: 2024 - 2025
       description:
         - Developing a mobile app promoting intellectual growth and digital detox through curated lessons in philosophy, art, music, and literature.
         - Delivering a seamless cross-platform experience using Flutter (iOS/Android) and Firebase for real-time data synchronization and user authentication.
@@ -168,5 +174,6 @@
 - title: Honors and Awards
   type: list
   contents:
+    - NSF Graduate Research Fellowship (Offer) (2026)
     - Get Experience Scholarship (2023, 2026)
     - Sandia Data Challenge Finalist Award (2025)

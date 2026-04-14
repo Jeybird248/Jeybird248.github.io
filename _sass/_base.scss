@@ -573,15 +573,26 @@ footer.sticky-bottom {
   .page-item {
     .page-link {
       color: var(--global-text-color);
+      background-color: var(--global-bg-color);
+      border-color: var(--global-divider-color);
 
       &:hover {
-        color: $black-color;
+        color: var(--global-theme-color);
+        background-color: var(--global-card-bg-color);
+        border-color: var(--global-divider-color);
       }
+    }
+
+    &.disabled .page-link {
+      color: var(--global-text-color-light);
+      background-color: var(--global-bg-color);
+      border-color: var(--global-divider-color);
     }
 
     &.active .page-link {
       color: $white-color;
       background-color: var(--global-theme-color);
+      border-color: var(--global-theme-color);
 
       &:hover {
         background-color: var(--global-theme-color);

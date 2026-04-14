@@ -5,7 +5,7 @@ date: 2025-12-25 10:00:00
 description: Every lock we build comes with the key taped to the back
 tags: [AI Safety, Jailbreaking, Adversarial AI, Alignment, Interpretability]
 categories: opinion
-thumbnail: assets/img/jailbreak_arms_race.png
+thumbnail: 
 featured: true
 ---
 
