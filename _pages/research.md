@@ -25,39 +25,29 @@ nav_order: 3
   .constellation-container svg:active {
     cursor: grabbing;
   }
-  /* theme (cluster) nodes */
-  .node-theme circle {
-    stroke-width: 2px;
-    cursor: default;
-  }
-  .node-theme text {
-    font-size: 11px;
-    font-weight: 600;
-    fill: var(--global-text-color);
-    pointer-events: none;
-    text-anchor: middle;
-  }
-  /* paper nodes */
   .node-paper circle {
-    stroke-width: 1.5px;
+    stroke-width: 2px;
     cursor: pointer;
-    transition: r 0.15s ease;
   }
   .node-paper:hover circle {
-    filter: brightness(1.2);
+    filter: brightness(1.25);
   }
   .node-paper text {
-    font-size: 10px;
+    font-size: 10.5px;
     fill: var(--global-text-color);
     pointer-events: none;
     text-anchor: middle;
   }
-  /* edges */
   .edge {
-    stroke-opacity: 0.25;
-    stroke-width: 1.5px;
+    stroke-opacity: 0.18;
+    stroke-width: 2px;
   }
-  /* detail panel */
+  .edge-label {
+    font-size: 8.5px;
+    fill: var(--global-text-color-light);
+    pointer-events: none;
+    text-anchor: middle;
+  }
   .detail-panel {
     position: absolute;
     top: 12px;
@@ -151,7 +141,7 @@ nav_order: 3
   }
 </style>
 
-<p class="constellation-hint">click a paper node to see details &middot; drag to rearrange</p>
+<p class="constellation-hint">click a node to see details &middot; drag to rearrange &middot; edges = shared research themes</p>
 
 <div class="legend" id="legend"></div>
 
@@ -171,14 +161,13 @@ nav_order: 3
 
 <script>
 (function() {
-  // ── data ──────────────────────────────────────────────────
   const themeColors = {
-    "Adversarial Attacks":       "#e74c3c",
-    "AI Safety & Steering":      "#9b59b6",
-    "Multi-Agent Systems":       "#2ecc71",
-    "Agentic AI":                "#3498db",
-    "Multimodal":                "#e67e22",
-    "Certification":             "#1abc9c"
+    "Adversarial Attacks":  "#e74c3c",
+    "AI Safety & Steering": "#9b59b6",
+    "Multi-Agent Systems":  "#2ecc71",
+    "Agentic AI":           "#3498db",
+    "Multimodal":           "#e67e22",
+    "Certification":        "#1abc9c"
   };
 
   const papers = [
@@ -186,8 +175,7 @@ nav_order: 3
       id: "trap",
       title: "TRAP: Targeted Redirecting of Agentic Preferences",
       authors: "Jehyeok Yeon*, Hangoo Kang*, Gagandeep Singh",
-      year: 2025,
-      venue: "NeurIPS 2025",
+      year: 2025, venue: "NeurIPS 2025",
       themes: ["Adversarial Attacks", "Multi-Agent Systems", "Agentic AI"],
       links: { publications: "/publications/" }
     },
@@ -195,8 +183,7 @@ nav_order: 3
       id: "certify",
       title: "Certifying Robustness of Agent Tool-Selection Under Adversarial Attacks",
       authors: "Jehyeok Yeon, Isha Chaudhary, Gagandeep Singh",
-      year: 2025,
-      venue: "ICLR 2026 Workshop",
+      year: 2025, venue: "ICLR 2026 Workshop",
       themes: ["Adversarial Attacks", "Certification", "Agentic AI"],
       links: { website: "https://llmcert-t.certifyllm.com/", publications: "/publications/" }
     },
@@ -204,8 +191,7 @@ nav_order: 3
       id: "flowguard",
       title: "Securing Multimodal AI through Internal Information Decomposition",
       authors: "Jehyeok Yeon, Hyeonjeong Ha, Qiusi Zhan, Heng Ji",
-      year: 2025,
-      venue: "Under Review",
+      year: 2025, venue: "Under Review",
       themes: ["Adversarial Attacks", "Multimodal", "AI Safety & Steering"],
       links: { publications: "/publications/" }
     },
@@ -213,8 +199,7 @@ nav_order: 3
       id: "gsae",
       title: "GSAE: Graph-Regularized Sparse Autoencoders for Robust LLM Safety Steering",
       authors: "Jehyeok Yeon, Federico Cinus, Yifan Wu, Luca Luceri",
-      year: 2025,
-      venue: "Under Review",
+      year: 2025, venue: "Under Review",
       themes: ["AI Safety & Steering", "Certification"],
       links: { publications: "/publications/" }
     },
@@ -222,47 +207,51 @@ nav_order: 3
       id: "friendship",
       title: "The Power of Friendship: Analyzing Leadership and Adversarial Attacks in Multi-Agent Collaboration",
       authors: "Jehyeok Yeon",
-      year: 2025,
-      venue: "ACM Collective Intelligence 2025",
+      year: 2025, venue: "ACM Collective Intelligence 2025",
       themes: ["Multi-Agent Systems", "Adversarial Attacks"],
       links: { publications: "/publications/" }
     }
   ];
 
-  const themes = Object.keys(themeColors);
-
-  // build graph nodes & links
+  // ── Build paper-to-paper edges from shared themes ──
   const nodes = [];
   const links = [];
 
-  themes.forEach(t => {
-    nodes.push({ id: t, type: "theme", label: t, color: themeColors[t] });
-  });
-
   papers.forEach(p => {
-    // paper node color = blend of its themes, or just first theme
     nodes.push({
-      id: p.id, type: "paper", label: p.title.length > 40 ? p.title.substring(0, 37) + "..." : p.title,
-      fullTitle: p.title, color: themeColors[p.themes[0]], data: p
-    });
-    p.themes.forEach(t => {
-      links.push({ source: p.id, target: t, color: themeColors[t] });
+      id: p.id, label: p.title, color: themeColors[p.themes[0]], data: p
     });
   });
 
-  // ── layout ────────────────────────────────────────────────
+  // Connect every pair of papers that share at least one theme
+  for (let i = 0; i < papers.length; i++) {
+    for (let j = i + 1; j < papers.length; j++) {
+      const shared = papers[i].themes.filter(t => papers[j].themes.includes(t));
+      if (shared.length > 0) {
+        links.push({
+          source: papers[i].id,
+          target: papers[j].id,
+          shared: shared,
+          strength: shared.length,
+          color: themeColors[shared[0]]
+        });
+      }
+    }
+  }
+
+  // ── Layout ──
   const container = document.querySelector(".constellation-container");
   const width = container.clientWidth;
-  const height = Math.max(420, Math.min(560, width * 0.6));
+  const height = Math.max(380, Math.min(500, width * 0.55));
   const svg = d3.select("#constellation")
     .attr("viewBox", [0, 0, width, height])
     .attr("height", height);
 
   const simulation = d3.forceSimulation(nodes)
-    .force("link", d3.forceLink(links).id(d => d.id).distance(d => d.source.type === "theme" || d.target.type === "theme" ? 100 : 60).strength(0.6))
-    .force("charge", d3.forceManyBody().strength(d => d.type === "theme" ? -300 : -120))
+    .force("link", d3.forceLink(links).id(d => d.id).distance(d => 160 / d.strength).strength(d => 0.3 * d.strength))
+    .force("charge", d3.forceManyBody().strength(-250))
     .force("center", d3.forceCenter(width / 2, height / 2))
-    .force("collision", d3.forceCollide().radius(d => d.type === "theme" ? 40 : 28));
+    .force("collision", d3.forceCollide().radius(50));
 
   // edges
   const link = svg.append("g")
@@ -270,39 +259,33 @@ nav_order: 3
     .data(links)
     .join("line")
     .attr("class", "edge")
-    .attr("stroke", d => d.color);
+    .attr("stroke", d => d.color)
+    .attr("stroke-width", d => 1 + d.strength);
 
-  // nodes
+  // edge labels (shared theme names)
+  const edgeLabels = svg.append("g")
+    .selectAll("text")
+    .data(links)
+    .join("text")
+    .attr("class", "edge-label")
+    .text(d => d.shared.join(", "));
+
+  // paper nodes
   const node = svg.append("g")
     .selectAll("g")
     .data(nodes)
     .join("g")
-    .attr("class", d => d.type === "theme" ? "node-theme" : "node-paper");
+    .attr("class", "node-paper");
 
-  // theme circles
-  node.filter(d => d.type === "theme")
-    .append("circle")
-    .attr("r", 28)
-    .attr("fill", d => d.color + "22")
-    .attr("stroke", d => d.color);
-
-  node.filter(d => d.type === "theme")
-    .append("text")
-    .attr("dy", "0.35em")
-    .text(d => d.label);
-
-  // paper circles
-  node.filter(d => d.type === "paper")
-    .append("circle")
-    .attr("r", 18)
-    .attr("fill", d => d.color + "44")
+  node.append("circle")
+    .attr("r", 24)
+    .attr("fill", d => d.color + "33")
     .attr("stroke", d => d.color)
     .on("click", (event, d) => showDetail(d.data));
 
-  node.filter(d => d.type === "paper")
-    .append("text")
-    .attr("dy", 30)
-    .text(d => d.label);
+  node.append("text")
+    .attr("dy", 36)
+    .text(d => d.label.length > 30 ? d.label.substring(0, 27) + "..." : d.label);
 
   // drag
   node.call(d3.drag()
@@ -310,9 +293,7 @@ nav_order: 3
       if (!event.active) simulation.alphaTarget(0.3).restart();
       d.fx = d.x; d.fy = d.y;
     })
-    .on("drag", (event, d) => {
-      d.fx = event.x; d.fy = event.y;
-    })
+    .on("drag", (event, d) => { d.fx = event.x; d.fy = event.y; })
     .on("end", (event, d) => {
       if (!event.active) simulation.alphaTarget(0);
       d.fx = null; d.fy = null;
@@ -323,10 +304,13 @@ nav_order: 3
     link
       .attr("x1", d => d.source.x).attr("y1", d => d.source.y)
       .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+    edgeLabels
+      .attr("x", d => (d.source.x + d.target.x) / 2)
+      .attr("y", d => (d.source.y + d.target.y) / 2 - 4);
     node.attr("transform", d => `translate(${d.x},${d.y})`);
   });
 
-  // ── detail panel ──────────────────────────────────────────
+  // ── Detail panel ──
   const panel = document.getElementById("detail-panel");
 
   function showDetail(p) {
@@ -355,24 +339,23 @@ nav_order: 3
         linksEl.appendChild(a);
       });
     }
-
     panel.classList.add("visible");
   }
 
   document.getElementById("close-detail").addEventListener("click", () => {
     panel.classList.remove("visible");
   });
-
   svg.on("click", (event) => {
     if (event.target === svg.node()) panel.classList.remove("visible");
   });
 
-  // ── legend ────────────────────────────────────────────────
+  // ── Legend (from themes actually used) ──
+  const usedThemes = [...new Set(papers.flatMap(p => p.themes))];
   const legend = document.getElementById("legend");
-  themes.forEach(t => {
+  usedThemes.forEach(t => {
     const item = document.createElement("span");
     item.className = "legend-item";
-    item.innerHTML = `<span class="legend-dot" style="background:${themeColors[t]}"></span>${t}`;
+    item.innerHTML = '<span class="legend-dot" style="background:' + themeColors[t] + '"></span>' + t;
     legend.appendChild(item);
   });
 })();

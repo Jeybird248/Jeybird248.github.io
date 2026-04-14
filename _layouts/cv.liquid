@@ -32,77 +32,26 @@ layout: default
       {% endif %}
     {% endfor %}
 
-    {%- comment -%} ── Serialize timeline data as JSON for JS ── {%- endcomment -%}
-    <script id="cv-data" type="application/json">
-    {
-      "events": [
-        {% assign first_evt = true %}
-        {% for entry in site.data.cv %}
-          {% if entry.type == 'time_table' %}
-            {% assign cat = 'experience' %}
-            {% if entry.title contains 'Education' %}{% assign cat = 'education' %}
-            {% elsif entry.title contains 'Project' %}{% assign cat = 'project' %}
-            {% endif %}
-            {% for content in entry.contents %}
-              {% unless first_evt %},{% endunless %}
-              {% assign first_evt = false %}
-              {
-                "year": {{ content.year | jsonify }},
-                "title": {{ content.title | jsonify }},
-                "institution": {{ content.institution | default: "" | jsonify }},
-                "category": {{ cat | jsonify }},
-                "description": [
-                  {% for item in content.description %}
-                    {% if item.contents %}
-                      {% assign joined_contents = item.contents | join: ", " %}
-                      {{ item.title | append: ": " | append: joined_contents | jsonify }}
-                    {% elsif item.title %}
-                      {% if item.value %}
-                        {{ item.title | append: ": " | append: item.value | jsonify }}
-                      {% else %}
-                        {{ item.title | jsonify }}
-                      {% endif %}
-                    {% else %}
-                      {{ item | jsonify }}
-                    {% endif %}
-                    {% unless forloop.last %},{% endunless %}
-                  {% endfor %}
-                ]
-              }
-            {% endfor %}
-          {% endif %}
-        {% endfor %}
-        {% comment %} ── News / announcements as milestones ── {% endcomment %}
-        {% assign sorted_news = site.news | sort: "date" | reverse %}
-        {% for item in sorted_news %}
-          {% if item.inline %}
-            ,{
-              "year": {{ item.date | date: "%Y" | jsonify }},
-              "title": {{ item.content | strip_html | strip | jsonify }},
-              "htmlTitle": {{ item.content | strip | jsonify }},
-              "institution": "",
-              "category": "milestone",
-              "date": {{ item.date | date: "%b %Y" | jsonify }},
-              "description": []
-            }
-          {% endif %}
-        {% endfor %}
-      ],
-      "lists": [
-        {% assign first_list = true %}
-        {% for entry in site.data.cv %}
-          {% if entry.type == 'list' %}
-            {% unless first_list %},{% endunless %}
-            {% assign first_list = false %}
-            {
-              "title": {{ entry.title | jsonify }},
-              "items": {{ entry.contents | jsonify }}
-            }
-          {% endif %}
-        {% endfor %}
-      ]
-    }
-    </script>
+    {%- comment -%} ── Pass raw cv data via jsonify (guaranteed valid JSON) ── {%- endcomment -%}
+    <script id="cv-raw" type="application/json">{{ site.data.cv | jsonify }}</script>
+
+    {%- comment -%} ── News / announcements for milestones ── {%- endcomment -%}
+    <script id="cv-news" type="application/json">[
+      {%- assign sorted_news = site.news | sort: "date" | reverse -%}
+      {%- assign first_news = true -%}
+      {%- for item in sorted_news -%}
+        {%- if item.inline -%}
+          {%- unless first_news -%},{%- endunless -%}
+          {%- assign first_news = false -%}
+          {
+            "year": {{ item.date | date: "%Y" | jsonify }},
+            "text": {{ item.content | strip_html | strip | jsonify }},
+            "html": {{ item.content | strip | jsonify }},
+            "date": {{ item.date | date: "%b %Y" | jsonify }}
+          }
+        {%- endif -%}
+      {%- endfor -%}
+    ]</script>
 
     {%- comment -%} ── Filter buttons ── {%- endcomment -%}
     <div class="tl-filters">
@@ -132,12 +81,67 @@ layout: default
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const data = JSON.parse(document.getElementById("cv-data").textContent);
+  const rawSections = JSON.parse(document.getElementById("cv-raw").textContent);
+  const newsItems   = JSON.parse(document.getElementById("cv-news").textContent);
   const catColors = { education: "#3498db", experience: "#9b59b6", project: "#e67e22", milestone: "#f1c40f" };
 
+  // ── Flatten cv.yml sections into events ──
+  const allEvents = [];
+  const listSections = [];
+
+  rawSections.forEach(function(section) {
+    if (section.type === "map") return; // handled by Liquid above
+
+    if (section.type === "list") {
+      listSections.push({ title: section.title, items: section.contents });
+      return;
+    }
+
+    if (section.type === "time_table") {
+      var cat = "experience";
+      if (section.title && section.title.toLowerCase().indexOf("education") !== -1) cat = "education";
+      else if (section.title && section.title.toLowerCase().indexOf("project") !== -1) cat = "project";
+
+      (section.contents || []).forEach(function(entry) {
+        // Flatten description items to strings
+        var desc = [];
+        (entry.description || []).forEach(function(item) {
+          if (typeof item === "string") {
+            desc.push(item);
+          } else if (item && item.contents) {
+            desc.push((item.title || "") + ": " + item.contents.join(", "));
+          } else if (item && item.title) {
+            desc.push(item.title + (item.value ? ": " + item.value : ""));
+          }
+        });
+
+        allEvents.push({
+          year: entry.year ? String(entry.year) : "",
+          title: entry.title || "",
+          institution: entry.institution || "",
+          category: cat,
+          description: desc
+        });
+      });
+    }
+  });
+
+  // ── Add news as milestones ──
+  newsItems.forEach(function(n) {
+    allEvents.push({
+      year: n.year,
+      title: n.text,
+      htmlTitle: n.html,
+      institution: "",
+      category: "milestone",
+      date: n.date,
+      description: []
+    });
+  });
+
   // ── Separate projects from timeline events ──
-  const timelineRaw = data.events.filter(e => e.category !== "project");
-  const projects    = data.events.filter(e => e.category === "project");
+  const timelineRaw = allEvents.filter(e => e.category !== "project");
+  const projects    = allEvents.filter(e => e.category === "project");
 
   // ── Group timeline events by start year ──
   function startYear(y) {
@@ -240,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ── Render lists (talks, awards) ──
   const listsEl = document.getElementById("cv-lists");
-  data.lists.forEach(list => {
+  listSections.forEach(list => {
     const sec = document.createElement("div");
     sec.className = "cv-minor-section";
     let h = '<h3>' + list.title + '</h3><ul>';
