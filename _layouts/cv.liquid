@@ -32,26 +32,25 @@ layout: default
       {% endif %}
     {% endfor %}
 
-    {%- comment -%} ── Pass raw cv data via jsonify (guaranteed valid JSON) ── {%- endcomment -%}
-    <script id="cv-raw" type="application/json">{{ site.data.cv | jsonify }}</script>
-
-    {%- comment -%} ── News / announcements for milestones ── {%- endcomment -%}
-    <script id="cv-news" type="application/json">[
-      {%- assign sorted_news = site.news | sort: "date" | reverse -%}
-      {%- assign first_news = true -%}
-      {%- for item in sorted_news -%}
-        {%- if item.inline -%}
-          {%- unless first_news -%},{%- endunless -%}
-          {%- assign first_news = false -%}
-          {
-            "year": {{ item.date | date: "%Y" | jsonify }},
-            "text": {{ item.content | strip_html | strip | jsonify }},
-            "html": {{ item.content | strip | jsonify }},
-            "date": {{ item.date | date: "%b %Y" | jsonify }}
-          }
-        {%- endif -%}
-      {%- endfor -%}
-    ]</script>
+    {%- comment -%} ── Pass data as JS variables (avoids minifier mangling JSON blocks) ── {%- endcomment -%}
+    <script>
+      var CV_RAW_DATA = {{ site.data.cv | jsonify }};
+      var CV_NEWS_DATA = [
+        {%- assign sorted_news = site.news | sort: "date" | reverse -%}
+        {%- assign first_news = true -%}
+        {%- for item in sorted_news -%}
+          {%- if item.inline -%}
+            {%- unless first_news -%},{%- endunless -%}
+            {%- assign first_news = false -%}
+            {
+              year: {{ item.date | date: "%Y" | jsonify }},
+              text: {{ item.content | strip_html | strip | jsonify }},
+              date: {{ item.date | date: "%b %Y" | jsonify }}
+            }
+          {%- endif -%}
+        {%- endfor -%}
+      ];
+    </script>
 
     {%- comment -%} ── Filter buttons ── {%- endcomment -%}
     <div class="tl-filters">
@@ -81,8 +80,8 @@ layout: default
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const rawSections = JSON.parse(document.getElementById("cv-raw").textContent);
-  const newsItems   = JSON.parse(document.getElementById("cv-news").textContent);
+  const rawSections = CV_RAW_DATA;
+  const newsItems   = CV_NEWS_DATA;
   const catColors = { education: "#3498db", experience: "#9b59b6", project: "#e67e22", milestone: "#f1c40f" };
 
   // ── Flatten cv.yml sections into events ──
@@ -131,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
     allEvents.push({
       year: n.year,
       title: n.text,
-      htmlTitle: n.html,
       institution: "",
       category: "milestone",
       date: n.date,
@@ -189,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
         html += '<div class="tl-milestone-body">';
         html += '<i class="fa-solid fa-star tl-milestone-icon"></i>';
         html += '<div>';
-        html += '<div class="tl-milestone-text">' + (entry.htmlTitle || entry.title) + '</div>';
+        html += '<div class="tl-milestone-text">' + entry.title + '</div>';
         if (entry.date) html += '<span class="tl-year-range">' + entry.date + '</span>';
         html += '</div></div>';
       } else {

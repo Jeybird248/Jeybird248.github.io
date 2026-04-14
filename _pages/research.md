@@ -176,7 +176,7 @@ nav_order: 3
       title: "TRAP: Targeted Redirecting of Agentic Preferences",
       authors: "Jehyeok Yeon*, Hangoo Kang*, Gagandeep Singh",
       year: 2025, venue: "NeurIPS 2025",
-      themes: ["Adversarial Attacks", "Multi-Agent Systems", "Agentic AI"],
+      themes: ["Adversarial Attacks", "Agentic AI"],
       links: { publications: "/publications/" }
     },
     {
@@ -184,7 +184,7 @@ nav_order: 3
       title: "Certifying Robustness of Agent Tool-Selection Under Adversarial Attacks",
       authors: "Jehyeok Yeon, Isha Chaudhary, Gagandeep Singh",
       year: 2025, venue: "ICLR 2026 Workshop",
-      themes: ["Adversarial Attacks", "Certification", "Agentic AI"],
+      themes: ["Certification", "Adversarial Attacks", "Agentic AI"],
       links: { website: "https://llmcert-t.certifyllm.com/", publications: "/publications/" }
     },
     {
@@ -192,7 +192,7 @@ nav_order: 3
       title: "Securing Multimodal AI through Internal Information Decomposition",
       authors: "Jehyeok Yeon, Hyeonjeong Ha, Qiusi Zhan, Heng Ji",
       year: 2025, venue: "Under Review",
-      themes: ["Adversarial Attacks", "Multimodal", "AI Safety & Steering"],
+      themes: ["Multimodal", "AI Safety & Steering"],
       links: { publications: "/publications/" }
     },
     {
@@ -200,7 +200,7 @@ nav_order: 3
       title: "GSAE: Graph-Regularized Sparse Autoencoders for Robust LLM Safety Steering",
       authors: "Jehyeok Yeon, Federico Cinus, Yifan Wu, Luca Luceri",
       year: 2025, venue: "Under Review",
-      themes: ["AI Safety & Steering", "Certification"],
+      themes: ["AI Safety & Steering"],
       links: { publications: "/publications/" }
     },
     {
