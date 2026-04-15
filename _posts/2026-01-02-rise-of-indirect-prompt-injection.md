@@ -1,16 +1,10 @@
 ---
 layout: post
-title: "Opinion: We Need a Same-Origin Policy for AI Agents"
+title: "Research: We Need a Same-Origin Policy for AI Agents"
 date: 2026-01-02 12:00:00
 description: Your agent followed instructions perfectly. That was the problem.
-tags:
-  - AI Security
-  - Agentic AI
-  - Adversarial Attacks
-  - Prompt Injection
-  - TRAP
-categories:
-  - opinion
+tags: [AI Security, Agentic AI, Adversarial Attacks, Prompt Injection]
+categories: research
 thumbnail:
 ---
 
