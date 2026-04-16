@@ -43,7 +43,7 @@ layout: default
           <span
             data-year="{{ item.date | date: '%Y' }}"
             data-date="{{ item.date | date: '%b %Y' }}"
-            data-text="{{ item.content | strip_html | strip | escape }}"
+            data-text="{{ item.content | emojify | strip_html | strip | escape }}"
           ></span>
         {%- endif -%}
       {%- endfor -%}

@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2026-04-13 10:00:00-0400
+date: 2026-03-02 10:00:00-0400
 inline: true
 related_posts: false
 ---
 
-Offered acceptance for the NSF Graduate Research Fellowship Program!
+LLMCert-T accepted to Agents in the Wild: Safety, Security, and Beyond Workshop at ICLR 2026!
