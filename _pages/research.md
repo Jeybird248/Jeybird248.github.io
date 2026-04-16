@@ -163,11 +163,12 @@ nav_order: 3
 (function() {
   const themeColors = {
     "Adversarial Attacks":  "#e74c3c",
-    "AI Safety & Steering": "#9b59b6",
+    "Representation Learning/Engineering": "#9b59b6",
     "Multi-Agent Systems":  "#2ecc71",
     "Agentic AI":           "#3498db",
     "Multimodal":           "#e67e22",
-    "Certification":        "#1abc9c"
+    "Certification":        "#1abc9c",
+    "Information Geometry": "#2B2D42"
   };
 
   const papers = [
@@ -192,7 +193,7 @@ nav_order: 3
       title: "Securing Multimodal AI through Internal Information Decomposition",
       authors: "Jehyeok Yeon, Hyeonjeong Ha, Qiusi Zhan, Heng Ji",
       year: 2025, venue: "Under Review",
-      themes: ["Multimodal", "AI Safety & Steering"],
+      themes: ["Multimodal", "Representation Learning/Engineering"],
       links: { publications: "/publications/" }
     },
     {
@@ -200,7 +201,7 @@ nav_order: 3
       title: "GSAE: Graph-Regularized Sparse Autoencoders for Robust LLM Safety Steering",
       authors: "Jehyeok Yeon, Federico Cinus, Yifan Wu, Luca Luceri",
       year: 2025, venue: "Under Review",
-      themes: ["AI Safety & Steering"],
+      themes: ["Representation Learning/Engineering", "Information Geometry"],
       links: { publications: "/publications/" }
     },
     {

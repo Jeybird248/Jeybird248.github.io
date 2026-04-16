@@ -6,17 +6,13 @@
     - name: Date of Birth
       value: 16th October 2003
     - name: Languages
-      value: English, Korean
+      value: English, Korean, German
     - name: Contact
       value: tommy8289@gmail.com
     - name: Website
       value: jeybird248.github.io
     - name: LinkedIn
       value: https://www.linkedin.com/in/jehyeoky
-    - name: Programming Languages
-      value: Python, C++, SQL, Java, HTML/CSS/JavaScript, C#, Temporal
-    - name: Frameworks and Tools
-      value: React, LangChain, ElasticSearch, PyTorch, OpenCV, TensorFlow, Flask, Django, Git, Docker, Streamlit, MySQL, Google Cloud Platform, RESTful APIs, ChromaDB, Mlflow, Spring Boot, Transformers, VLLM, TransformerLens, W&B
 
 - title: Education
   type: time_table
@@ -54,16 +50,13 @@
       institution: Max Planck Institute for Intelligent Systems
       year: 2026
       description:
-        - Conducting research at the AI Safety and Alignment group under Maksym Andriushchenko about understanding and improving safety of computer use AI agents.
-        - Conducting Agentic R&D research to create benchmarks for AI optimization tasks.
+        - Conducting research at the AI Safety and Alignment group under Maksym Andriushchenko to create benchmarks for AI optimization tasks.
 
     - title: Visiting Student Researcher
       institution: University of Southern California
       year: 2025 - 2026
       description:
         - Designed a graph-based analysis method to uncover features related to LLM refusal behavior using graph Laplacian regularization on sparse autoencoders (first-author, advised by Prof. Luca Luceri).
-        - Built a steering mechanism that uses a dual gating system with hysteresis to enable control over safety behaviors while maintaining strong utility, performing 40% better than previous safety steering methods.
-        - Conducted Information Geometry research to model and analyze LLM internals as complex, non-linear data structures.
 
     - title: Research Assistant
       institution: University of Illinois Urbana-Champaign
@@ -71,10 +64,6 @@
       description:
         - Achieved 100% ASR on SoTA vision-language models via novel embedding-level semantic injection and diffusion decoding (first-author, advised by Prof. Gagandeep Singh).
         - Developed the first statistical certification framework for agentic AI tool selection under adversarial scenarios via LLM-based adversarial distributions (first-author, advised by Prof. Gagandeep Singh).
-        - Conducting in-depth research on the impact of demographic and social biases in agentic AI systems deployed on web-based graphical user interfaces (GUIs).
-        - Designing and executing experiments to uncover and optimize potential avenues for adversarial exploitation.
-        - Conducted quantitative certification research to model and evaluate the safety of agentic AI systems.
-        - Conducted AI Security research to develop a novel indirect prompt injection method utilizing semantic injection on images.
 
     - title: Machine Learning Intern
       institution: Intradiem
@@ -109,8 +98,8 @@
       institution: UDL and Accessibility Research Group
       year: 2024 - 2025
       description:
-        - Evaluating effectiveness leadership and organizational theories in enhancing collaboration and performance of multi-agent AI frameworks under adversarial conditions.
-        - Analyzing AI agents' ability to detect and mitigate subtle malicious injections by integrating human-inspired leadership dynamics.
+        - Evaluated effectiveness leadership and organizational theories in enhancing collaboration and performance of multi-agent AI frameworks under adversarial conditions.
+        - Analyzed AI agents' ability to detect and mitigate subtle malicious injections by integrating human-inspired leadership dynamics.
 
     - title: Computational Research Assistant
       institution: Political Ideology and Entrepreneurship Lab
@@ -126,45 +115,6 @@
       description:
         - Conducts data analysis using Excel and Tableau to extract actionable insights.
         - Produces data reports, visualizations, and presentations for ILC workshops and programs.
-
-- title: Relevant Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/Deeetox/FrontEnd">Deetox</a>
-      year: 2024 - 2025
-      description:
-        - Developing a mobile app promoting intellectual growth and digital detox through curated lessons in philosophy, art, music, and literature.
-        - Delivering a seamless cross-platform experience using Flutter (iOS/Android) and Firebase for real-time data synchronization and user authentication.
-        - Automating daily lesson generation with large language models (LLMs), optimizing content generation workflows.
-
-    - title: <a href="https://github.com/Jeybird248/Eclipse">Workout Planner Application (Eclipse) </a>
-      year: 2024
-      description:
-        - Developed a full-stack workout planning application using React, Node.js, and MySQL, deployed on Google Cloud Platform with RESTful APIs for efficient data communication.
-        - Implemented comprehensive CRUD operations for workout routines, exercises, diets, and user profiles, ensuring seamless data management and real-time synchronization.
-
-    - title: <a href="https://classtranscribe.illinois.edu/">ClassTranscribe</a>
-      year: 2024
-      description:
-        - Engineered React components and C# .NET Core backend services to enhance accessibility for visually impaired students.
-        - Implemented full-stack solutions to transform lecture videos into accessible, picture book-style content, enhancing user experience for visually impaired students.
-
-    - title: <a href="https://github.com/Jeybird248/ESL-web-app">ESL Learning Hub Web App (Grammaraide)</a>
-      year: 2023 - 2024
-      description:
-        - Designed and implemented a Flask-based web application with responsive frontend using HTML5, CSS3, and JavaScript to enhance ESL students' reading comprehension and grammar proficiency.
-        - Integrated advanced NLP methods and LLM pipeline to generate personalized, contextually relevant quizzes and exercises, catering to various ESL proficiency levels.
-
-    - title: <a href="https://github.com/Jeybird248/Chrome-Extension">Note Generation Chrome Extension</a>
-      year: 2023
-      description:
-        - Developed a Chrome extension utilizing Flask backend and JavaScript frontend, integrating the open-source LLM Mixtral and OpenAI's wav2vec 2.0 speech-to-text model.
-        - Achieved 85% accuracy in automated note generation from YouTube videos and audio files, enhancing user productivity by over 10 hours per week.
-
-    - title: <a href="https://github.com/Codable-UIUC/Chopstick101">Chopstick 101</a>
-      year: 2022 - 2023
-      description:
-        - Used TensorFlow and OpenCV to develop a machine learning program that analyzes and rates real-time chopstick holding positions applying LSTM on the hand landmark positions.
 
 - title: Talks
   type: list
