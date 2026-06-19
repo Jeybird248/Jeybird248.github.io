@@ -45,7 +45,7 @@ The result is a cynical effect on defense research. I've personally talked to mu
 
 I don't think reviewers are necessarily wrong to demand rigor. Deployments need robust defenses at the end of the day. But there's a difference between "this defense should be evaluated rigorously" and "this defense must solve the entire problem to be publishable." The former is good science. The latter is a bar that nothing currently clears, which means it's effectively filtering out all defense work. A defense that covers 60% of known attacks and explains _why_ it fails on the other 40% is more valuable than one that claims 95% coverage on a narrow benchmark. The field needs to learn to reward partial progress on the hard problem instead of only rewarding complete solutions to easy ones. In a way, academia is encouraging reward hacking on its own system.
 
-## Activation Steering: A Case Study
+## Activation steering: a case study
 
 Set aside the incentive problem for a moment. Even if the field were pouring resources into defense, the technical picture is discouraging, because the defenses we _do_ have are more fragile than they appear.
 
