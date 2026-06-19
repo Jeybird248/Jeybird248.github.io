@@ -220,7 +220,7 @@ nav_order: 3
       authors: "Jehyeok Yeon, Ben Rank, Maksym Andriushchenko",
       year: 2026, venue: "ICML 2026 AIWILD (Spotlight)",
       themes: ["Long Horizon Agents", "Scalable Oversight", "Agentic AI"],
-      links: { publications: "/publications/" }
+      links: { website: "https://inferencebench.ai/", publications: "/publications/" }
     },
     {
       id: "researcharena",
