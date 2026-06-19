@@ -5,7 +5,7 @@ date: 2026-01-17 11:00:00
 description: "We gave AI tools, memory, and internet access. It played 2048."
 tags: [Agentic AI, AI Safety, Cybersecurity, Multi-Agent Systems]
 categories: opinion
-thumbnail: 
+thumbnail:
 ---
 
 In late 2025, a group of researchers gave several frontier AI models a simple task: design, run, and analyze a human subjects experiment. They gave the models computing environments, internet access, and a collaborative workspace. The models had weeks to work [1].
@@ -78,7 +78,7 @@ Every vulnerability I've described above traces back to the same architectural c
 
 The fixes people talk about, better prompt engineering, more safety training, red-teaming, are all interventions at the wrong level. They're trying to teach the model to be more skeptical about text by giving it more text telling it to be skeptical. You can see the ceiling from here.
 
-What would real solutions look like? I mean, I don't think *anyone* knows how to build them yet. One thing could be cryptographic verification of tool integrity, so that an agent can confirm a tool hasn't been tampered with instead of just reading its description and hoping for the best. Another could be capability-based access control, where an agent has permission to do exactly what the current task requires and nothing else, revoked the moment the task is done. Runtime monitors that operate at the representation level rather than the text level, catching anomalous behavior patterns instead of scanning for suspicious strings. Formal specifications of what agents are and aren't allowed to do, verified at the system level rather than requested at the prompt level.
+What would real solutions look like? I mean, I don't think _anyone_ knows how to build them yet. One thing could be cryptographic verification of tool integrity, so that an agent can confirm a tool hasn't been tampered with instead of just reading its description and hoping for the best. Another could be capability-based access control, where an agent has permission to do exactly what the current task requires and nothing else, revoked the moment the task is done. Runtime monitors that operate at the representation level rather than the text level, catching anomalous behavior patterns instead of scanning for suspicious strings. Formal specifications of what agents are and aren't allowed to do, verified at the system level rather than requested at the prompt level.
 
 The problem is, these are hard problems. Some of them might be open research questions for years. And in the meantime, every major tech company is shipping agents to production because the competitive pressure to launch is stronger than the engineering pressure to secure.
 

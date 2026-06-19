@@ -168,7 +168,9 @@ nav_order: 3
     "Agentic AI":           "#3498db",
     "Multimodal":           "#e67e22",
     "Certification":        "#1abc9c",
-    "Information Geometry": "#2B2D42"
+    "Information Geometry": "#2B2D42",
+    "Scalable Oversight":   "#f1c40f",
+    "Long Horizon Agents":  "#e84393"
   };
 
   const papers = [
@@ -192,7 +194,7 @@ nav_order: 3
       id: "flowguard",
       title: "Securing Multimodal AI through Internal Information Decomposition",
       authors: "Jehyeok Yeon, Hyeonjeong Ha, Qiusi Zhan, Heng Ji",
-      year: 2025, venue: "Under Review",
+      year: 2026, venue: "ICML 2026 (Spotlight)",
       themes: ["Multimodal", "Representation Learning/Engineering"],
       links: { publications: "/publications/" }
     },
@@ -200,16 +202,32 @@ nav_order: 3
       id: "gsae",
       title: "GSAE: Graph-Regularized Sparse Autoencoders for Robust LLM Safety Steering",
       authors: "Jehyeok Yeon, Federico Cinus, Yifan Wu, Luca Luceri",
-      year: 2025, venue: "Under Review",
+      year: 2026, venue: "ICML 2026 AI4GOOD",
       themes: ["Representation Learning/Engineering", "Information Geometry"],
       links: { publications: "/publications/" }
     },
     {
       id: "friendship",
       title: "The Power of Friendship: Analyzing Leadership and Adversarial Attacks in Multi-Agent Collaboration",
-      authors: "Jehyeok Yeon",
+      authors: "Jehyeok Yeon, Lawrence Angrave",
       year: 2025, venue: "ACM Collective Intelligence 2025",
       themes: ["Multi-Agent Systems", "Adversarial Attacks"],
+      links: { publications: "/publications/" }
+    },
+    {
+      id: "inferencebench",
+      title: "InferenceBench: A Benchmark for Open-Ended LLM Inference Optimization by AI Agents",
+      authors: "Jehyeok Yeon, Ben Rank, Maksym Andriushchenko",
+      year: 2026, venue: "ICML 2026 AIWILD (Spotlight)",
+      themes: ["Long Horizon Agents", "Scalable Oversight", "Agentic AI"],
+      links: { publications: "/publications/" }
+    },
+    {
+      id: "researcharena",
+      title: "ResearchArena: Evaluating Sabotage and Monitoring in Automated AI R&D",
+      authors: "Ben Rank*, Lena Libon*, Jehyeok Yeon, et al.",
+      year: 2026, venue: "Under Review",
+      themes: ["Long Horizon Agents", "Scalable Oversight"],
       links: { publications: "/publications/" }
     }
   ];

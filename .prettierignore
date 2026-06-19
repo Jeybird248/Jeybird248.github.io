@@ -1,0 +1,4 @@
+# Jekyll resolves Liquid ({{ ... }}) in this file before Sass compiles it,
+# so Prettier/PostCSS cannot parse the raw source and reports a false
+# "CssSyntaxError: Unknown word". Skip it — the built CSS is valid.
+assets/css/main.scss

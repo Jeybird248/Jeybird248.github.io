@@ -19,16 +19,21 @@
   contents:
     - title: Ph.D. in Computer Science
       institution: Max Planck Institute for Intelligent Systems & ELLIS Institute
-      year: 2026 - 2030
+      year: 2026 - 2029
+      description:
+        - title: Advisor
+          value: Maksym Andriushchenko
 
     - title: B.S. in Computer Science + Linguistics
       institution: University of Illinois Urbana-Champaign
       year: 2022 - 2025
       description:
+        - title: Advisor
+          value: Prof. Gagandeep Singh
         - title: GPA
           value: 3.92/4.0
         - title: Dean's List
-          value: 
+          value:
         - title: Clubs
           contents:
             - Codable (President), ACM, Project Code
@@ -36,34 +41,64 @@
           contents:
             - Machine Learning, Data Mining, Database Systems, Robot Manipulation, Corpus Linguistics, Computational Linguistics, Algorithms, Data Structures, Compilers, Discrete Structures, Computer Systems, Senior Project, Statistics and Probability I
 
-- title: Relevant Experience
+- title: Research Experience
   type: time_table
   contents:
+    - title: Research Scholar
+      institution: London AI Safety Research Labs
+      year: 2026
+      description:
+        - Incoming cohort working on the Science of Evaluations with the UK AI Security Institute (advised by Cozmin Ududec).
+
+    - title: Visiting Student Researcher
+      institution: Max Planck Institute for Intelligent Systems
+      year: 2026
+      description:
+        - Conducted Agentic R&D research to build long-horizon benchmarks for AI optimization tasks (advised by Maksym Andriushchenko).
+
+    - title: Visiting Student Researcher
+      institution: University of Southern California
+      year: 2025 - 2026
+      description:
+        - Conducted Information Geometry research to model and analyze LLM internals as complex, non-linear data structures (first-author, advised by Prof. Luca Luceri).
+
+    - title: Research Assistant
+      institution: University of Illinois Urbana-Champaign
+      year: 2024 - 2026
+      description:
+        - Conducted quantitative certification research to model and evaluate the safety of agentic AI systems (first-author, advised by Prof. Gagandeep Singh)
+        - Conducted AI Security research to develop a novel indirect prompt injection method utilizing semantic injection on images (first-author, advised by Prof. Gagandeep Singh).
+
+    - title: Research Assistant
+      institution: UDL and Accessibility Research Group
+      year: 2024 - 2025
+      description:
+        - Evaluated effectiveness leadership and organizational theories in enhancing collaboration and performance of multi-agent AI frameworks under adversarial conditions.
+        - Analyzed AI agents' ability to detect and mitigate subtle malicious injections by integrating human-inspired leadership dynamics.
+
+    - title: Computational Research Assistant
+      institution: Political Ideology and Entrepreneurship Lab
+      year: 2023 - 2024
+      description:
+        - Engineered automated Python tools for collecting, quantifying, and analyzing data related to political ideology of CEOs and their respective earnings reports.
+        - Conducted longitudinal research to quantify the political ideology of CEOs using publicly available data.
+        - Developed and applied novel algorithms to classify CEOs along the changes in political spectrum over time.
+
+- title: Work Experience
+  type: time_table
+  contents:
+    - title: External Research Advisor
+      institution: Google DeepMind
+      year: 2026
+      description:
+        - Collaborating with the Core Data and Eval team on evaluation methodology, benchmark design, and research direction related to long-horizon agentic capability (under NDA).
+
     - title: AI Consultant
       institution: AI Medical Triage Start-up (Stealth)
       year: 2026
       description:
         - Designing a medical triage system to normalize symptoms and establish a zero-shot diagnostic baseline.
         - Building multi-agent Agentic RAG pipelines to ensure reliable and hallucination-free veterinary diagnostics.
-
-    - title: Visiting Student Researcher
-      institution: Max Planck Institute for Intelligent Systems
-      year: 2026
-      description:
-        - Conducting research at the AI Safety and Alignment group under Maksym Andriushchenko to create benchmarks for AI optimization tasks.
-
-    - title: Visiting Student Researcher
-      institution: University of Southern California
-      year: 2025 - 2026
-      description:
-        - Designed a graph-based analysis method to uncover features related to LLM refusal behavior using graph Laplacian regularization on sparse autoencoders (first-author, advised by Prof. Luca Luceri).
-
-    - title: Research Assistant
-      institution: University of Illinois Urbana-Champaign
-      year: 2024 - 2026
-      description:
-        - Achieved 100% ASR on SoTA vision-language models via novel embedding-level semantic injection and diffusion decoding (first-author, advised by Prof. Gagandeep Singh).
-        - Developed the first statistical certification framework for agentic AI tool selection under adversarial scenarios via LLM-based adversarial distributions (first-author, advised by Prof. Gagandeep Singh).
 
     - title: Machine Learning Intern
       institution: Intradiem
@@ -94,21 +129,6 @@
         - Engineered a real-time predictive model utilizing hyper-local streaming sensor data for the city of Chicago, enhancing the city's resource allocation and optimizing response times by 15% during peak events.
         - Minimized inference latency for meteorological forecasting using TensorFlow Lite and ElasticSearch.
 
-    - title: Research Assistant
-      institution: UDL and Accessibility Research Group
-      year: 2024 - 2025
-      description:
-        - Evaluated effectiveness leadership and organizational theories in enhancing collaboration and performance of multi-agent AI frameworks under adversarial conditions.
-        - Analyzed AI agents' ability to detect and mitigate subtle malicious injections by integrating human-inspired leadership dynamics.
-
-    - title: Computational Research Assistant
-      institution: Political Ideology and Entrepreneurship Lab
-      year: 2023 - 2024
-      description:
-        - Engineered automated Python tools for collecting, quantifying, and analyzing data related to political ideology of CEOs and their respective earnings reports.
-        - Conducted longitudinal research to quantify the political ideology of CEOs using publicly available data.
-        - Developed and applied novel algorithms to classify CEOs along the changes in political spectrum over time.
-
     - title: Data Analyst
       institution: University of Illinois Urbana-Champaign, Illinois Leadership Center
       year: 2023 - 2024
@@ -119,11 +139,19 @@
 - title: Talks
   type: list
   contents:
-    - Rise of Indirect Prompt Injection Methods on Open Environment Agents, AI Safety Tübingen Reading Group
+    - "What Open-Ended Benchmarks Reveal About AI Research Automation - Google DeepMind, Turing, CAMEL AI, and KAIST (2026)"
+    - "Rise of Indirect Prompt Injection Methods on Open Environment Agents - AI Safety Tübingen Reading Group (2026)"
 
 - title: Honors and Awards
   type: list
   contents:
-    - NSF Graduate Research Fellowship (Offer) (2026)
-    - Get Experience Scholarship (2023, 2026)
+    - NSF Graduate Research Fellowship Program (GRFP) (2026)
+    - AI4GOOD Travel Grant (2026)
     - Sandia Data Challenge Finalist Award (2025)
+    - UIUC Get Experience Scholarship (2024)
+
+- title: Academic Service
+  type: list
+  contents:
+    - "Reviewer - NeurIPS 2026, AI4GOOD Workshop @ ICML 2026, Agents in the Wild @ ICML 2026"
+    - "Teaching Assistant - AI Safety Course, University of Tübingen (Summer 2026)"

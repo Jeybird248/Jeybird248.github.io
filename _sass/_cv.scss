@@ -112,7 +112,9 @@
   box-sizing: border-box;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 
   &.tl-visible {
     opacity: 1;
@@ -123,15 +125,23 @@
     left: 0;
     padding-right: 2.5rem;
     padding-left: 0;
-    .tl-card { margin-left: auto; }
-    .tl-dot { right: -7px; left: auto; }
+    .tl-card {
+      margin-left: auto;
+    }
+    .tl-dot {
+      right: -7px;
+      left: auto;
+    }
   }
 
   &.tl-right {
     left: 50%;
     padding-left: 2.5rem;
     padding-right: 0;
-    .tl-dot { left: -7px; right: auto; }
+    .tl-dot {
+      left: -7px;
+      right: auto;
+    }
   }
 }
 
@@ -148,10 +158,18 @@
   border: 3px solid var(--global-bg-color);
   z-index: 2;
 
-  &--education  { background: #3498db; }
-  &--experience { background: #9b59b6; }
-  &--project    { background: #e67e22; }
-  &--milestone  { background: #f1c40f; }
+  &--education {
+    background: #3498db;
+  }
+  &--experience {
+    background: #9b59b6;
+  }
+  &--project {
+    background: #e67e22;
+  }
+  &--milestone {
+    background: #f1c40f;
+  }
 }
 
 /*****************************
@@ -208,7 +226,9 @@
   a {
     color: var(--global-text-color);
     text-decoration: none;
-    &:hover { color: var(--global-theme-color); }
+    &:hover {
+      color: var(--global-theme-color);
+    }
   }
 }
 
@@ -239,10 +259,14 @@
   font-size: 0.7rem;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  transition: transform 0.2s ease, color 0.15s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.15s ease;
   margin-top: 0.2rem;
 
-  &:hover { color: var(--global-theme-color); }
+  &:hover {
+    color: var(--global-theme-color);
+  }
 }
 
 .tl-detail {
@@ -262,8 +286,13 @@
 }
 
 .tl-entry.expanded {
-  .tl-detail { max-height: 800px; margin-top: 0.4rem; }
-  .tl-expand i { transform: rotate(180deg); }
+  .tl-detail {
+    max-height: 800px;
+    margin-top: 0.4rem;
+  }
+  .tl-expand i {
+    transform: rotate(180deg);
+  }
 }
 
 /*****************************
@@ -305,7 +334,9 @@
     a {
       color: var(--global-theme-color);
       text-decoration: none;
-      &:hover { text-decoration: underline; }
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -353,7 +384,9 @@
     a {
       color: var(--global-theme-color);
       text-decoration: none;
-      &:hover { text-decoration: underline; }
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     // strip the wrapping <p> that markdown rendering adds
@@ -412,7 +445,10 @@
     &.tl-left,
     &.tl-right {
       left: 0;
-      .tl-dot { left: 9px; right: auto; }
+      .tl-dot {
+        left: 9px;
+        right: auto;
+      }
     }
   }
 
