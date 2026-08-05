@@ -3,8 +3,6 @@
   contents:
     - name: Full Name
       value: Jehyeok Yeon
-    - name: Date of Birth
-      value: 16th October 2003
     - name: Languages
       value: English, Korean, German
     - name: Contact
@@ -48,7 +46,7 @@
       institution: London AI Safety Research Labs
       year: 2026
       description:
-        - Incoming cohort working on the Science of Evaluations with the UK AI Security Institute (advised by Cozmin Ududec).
+        - Incoming cohort working on the Science of Evaluations with Generality Labs (Justin Olive) and the UK AI Security Institute (Magda Dubois).
 
     - title: Visiting Student Researcher
       institution: Max Planck Institute for Intelligent Systems
@@ -87,11 +85,6 @@
 - title: Work Experience
   type: time_table
   contents:
-    - title: External Research Advisor
-      institution: Google DeepMind
-      year: 2026
-      description:
-        - Collaborating with the Core Data and Eval team on evaluation methodology, benchmark design, and research direction related to long-horizon agentic capability (under NDA).
 
     - title: AI Consultant
       institution: AI Medical Triage Start-up (Stealth)

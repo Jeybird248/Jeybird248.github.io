@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Excited to be joining **London AI Safety Research Labs** as a Research Scholar this summer, working on the Science of Evaluations with the UK AI Security Institute!
+Excited to be joining **London AI Safety Research Labs** as a Research Scholar this summer, working on the Science of Evaluations with Generality Labs and the UK AI Security Institute!

@@ -17,6 +17,7 @@
   --global-divider-color: rgba(0, 0, 0, 0.1);
   --global-card-bg-color: #{$white-color};
   --global-highlight-color: #{$red-color-dark};
+  --global-spotlight-color: #{$red-color-dark};
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;
@@ -67,6 +68,7 @@ html[data-theme="dark"] {
   --global-distill-app-color: #{$grey-color-light};
   --global-divider-color: #424246;
   --global-card-bg-color: #{$grey-900};
+  --global-spotlight-color: #{$red-color};
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;
