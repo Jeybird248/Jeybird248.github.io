@@ -4,11 +4,9 @@
     - name: Full Name
       value: Jehyeok Yeon
     - name: Languages
-      value: English, Korean, German
+      value: English, Korean, German(?)
     - name: Contact
       value: tommy8289@gmail.com
-    - name: Website
-      value: jeybird248.github.io
     - name: LinkedIn
       value: https://www.linkedin.com/in/jehyeoky
 
@@ -42,11 +40,17 @@
 - title: Research Experience
   type: time_table
   contents:
+    - title: Research Fellow
+      institution: Anthropic
+      year: 2026
+      description:
+        - Incoming cohort of the Anthropic Research Fellowship program, focusing on AI alignment and safety research.
+
     - title: Research Scholar
       institution: London AI Safety Research Labs
       year: 2026
       description:
-        - Incoming cohort working on the Science of Evaluations with Generality Labs (Justin Olive) and the UK AI Security Institute (Magda Dubois).
+        - Worked on the Science of Evaluations with Generality Labs (Justin Olive) and the UK AI Security Institute (Magda Dubois).
 
     - title: Visiting Student Researcher
       institution: Max Planck Institute for Intelligent Systems
@@ -146,5 +150,5 @@
 - title: Academic Service
   type: list
   contents:
-    - "Reviewer - NeurIPS 2026, AI4GOOD Workshop @ ICML 2026, Agents in the Wild @ ICML 2026"
+    - "Reviewer - ICLR 2027, PALM Workshop @ NeurIPS 2026, NeurIPS 2026, AI4GOOD Workshop @ ICML 2026, Agents in the Wild @ ICML 2026"
     - "Teaching Assistant - AI Safety Course, University of Tübingen (Summer 2026)"

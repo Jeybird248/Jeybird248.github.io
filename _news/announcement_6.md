@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-LLMCert-T accepted to Agents in the Wild: Safety, Security, and Beyond Workshop at ICLR 2026!
+**LLMCert-T** accepted to **Agents in the Wild: Safety, Security, and Beyond Workshop** at **ICLR 2026**!

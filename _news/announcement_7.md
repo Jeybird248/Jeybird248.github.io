@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Offered acceptance for the NSF Graduate Research Fellowship Program!
+Offered acceptance for the **NSF Graduate Research Fellowship Program**!
