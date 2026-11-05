@@ -69,15 +69,15 @@
     color: #fff;
 
     .tl-filter-icon {
-  font-size: 0.75rem;
-  opacity: 0.7;
-}
+      font-size: 0.75rem;
+      opacity: 0.7;
+    }
 
-.tl-filter.active .tl-filter-icon {
-  opacity: 1;
-}
+    .tl-filter.active .tl-filter-icon {
+      opacity: 1;
+    }
 
-.tl-filter-dot {
+    .tl-filter-dot {
       border: 2px solid #fff;
     }
   }
@@ -115,7 +115,7 @@
   position: absolute;
   inset: 0;
   overflow: visible;
-  pointer-events: none;      // only the hit areas below take the mouse
+  pointer-events: none; // only the hit areas below take the mouse
 }
 
 .cvt-hit {
