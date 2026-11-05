@@ -13,7 +13,7 @@ footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
 keywords: Jehyeok Yeon, AI safety, scalable oversight, AI evaluation, agentic AI, adversarial robustness, interpretability, machine learning # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: 🐦 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: favicon # "favicon" = bird files (favicon.ico, assets/img/favicon.svg|-32.png|apple-touch-icon.png); or an emoji, or an image name in /assets/img/
 
 url: https://Jeybird248.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root

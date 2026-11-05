@@ -12,17 +12,20 @@
 
 - title: Education
   type: time_table
+  category: education
   contents:
     - title: Ph.D. in Computer Science
       institution: Max Planck Institute for Intelligent Systems & ELLIS Institute
-      year: 2026 - 2029
+      start: "2026-07"
+      end: "present"
       description:
         - title: Advisor
           value: Maksym Andriushchenko
 
     - title: B.S. in Computer Science + Linguistics
       institution: University of Illinois Urbana-Champaign
-      year: 2022 - 2025
+      start: "2022-08"
+      end: "2025-12"
       description:
         - title: Advisor
           value: Prof. Gagandeep Singh
@@ -39,48 +42,56 @@
 
 - title: Research Experience
   type: time_table
+  category: research
   contents:
     - title: Research Fellow
       institution: Anthropic
-      year: 2026
+      start: "2026-11"
+      end: "present"
       description:
-        - Part of the Anthropic Research Fellowship program, focusing on AI alignment and safety research.
+        - Conducting AI alignment and safety research as part of the Anthropic Research Fellowship program.
 
     - title: Research Scholar
       institution: London AI Safety Research Labs
-      year: 2026
+      start: "2026-07"
+      end: "2026-10"
       description:
         - Worked on the Science of Evaluations with Generality Labs (Justin Olive) and the UK AI Security Institute (Magda Dubois).
 
     - title: Visiting Student Researcher
       institution: Max Planck Institute for Intelligent Systems
-      year: 2026
+      start: "2026-01"
+      end: "2026-06"
       description:
         - Conducted Agentic R&D research to build long-horizon benchmarks for AI optimization tasks (advised by Maksym Andriushchenko).
 
     - title: Visiting Student Researcher
       institution: University of Southern California
-      year: 2025 - 2026
+      start: "2025-05"
+      end: "2026-06"
       description:
         - Conducted Information Geometry research to model and analyze LLM internals as complex, non-linear data structures (first-author, advised by Prof. Luca Luceri).
 
     - title: Research Assistant
       institution: University of Illinois Urbana-Champaign
-      year: 2024 - 2026
+      start: "2024-08"
+      end: "2026-06"
       description:
         - Conducted quantitative certification research to model and evaluate the safety of agentic AI systems (first-author, advised by Prof. Gagandeep Singh)
         - Conducted AI Security research to develop a novel indirect prompt injection method utilizing semantic injection on images (first-author, advised by Prof. Gagandeep Singh).
 
     - title: Research Assistant
       institution: UDL and Accessibility Research Group
-      year: 2024 - 2025
+      start: "2024-10"
+      end: "2025-12"
       description:
         - Evaluated effectiveness leadership and organizational theories in enhancing collaboration and performance of multi-agent AI frameworks under adversarial conditions.
         - Analyzed AI agents' ability to detect and mitigate subtle malicious injections by integrating human-inspired leadership dynamics.
 
     - title: Computational Research Assistant
       institution: Political Ideology and Entrepreneurship Lab
-      year: 2023 - 2024
+      start: "2023-10"
+      end: "2024-04"
       description:
         - Engineered automated Python tools for collecting, quantifying, and analyzing data related to political ideology of CEOs and their respective earnings reports.
         - Conducted longitudinal research to quantify the political ideology of CEOs using publicly available data.
@@ -88,17 +99,20 @@
 
 - title: Work Experience
   type: time_table
+  category: industry
   contents:
     - title: AI Consultant
       institution: AI Medical Triage Start-up (Stealth)
-      year: 2026
+      start: "2026-03"
+      end: "2026-05"
       description:
-        - Designing a medical triage system to normalize symptoms and establish a zero-shot diagnostic baseline.
-        - Building multi-agent Agentic RAG pipelines to ensure reliable and hallucination-free veterinary diagnostics.
+        - Designed a medical triage system to normalize symptoms and establish a zero-shot diagnostic baseline.
+        - Built multi-agent Agentic RAG pipelines to ensure reliable and hallucination-free veterinary diagnostics.
 
     - title: Machine Learning Intern
       institution: Intradiem
-      year: 2025
+      start: "2025-06"
+      end: "2025-09"
       description:
         - Trained and tuned a feedforward neural network to predict agent burnout and attrition; optimized for imbalanced classes, achieving 17% F1 lift and robust generalization to unseen shifts.
         - Deployed an agent burnout and attrition prediction model as Spring Boot API; served 12k QPS at <180 ms latency, automating retraining and drift detection using Temporal and Mlflow for 99.95% uptime.
@@ -107,7 +121,8 @@
 
     - title: AI Data Scientist
       institution: Hanwha Life Insurance
-      year: 2024
+      start: "2024-06"
+      end: "2024-08"
       description:
         - Built and deployed a retrieval-augmented generation (RAG) question-answering chatbot over insurance product and policy documents using LangChain, ChromaDB, and fine-tuned instruction models.
         - Developed a hybrid semantic-lexical retrieval architecture for complex tabular insurance documents using ElasticSearch and ChromaDB, improving recall on legal document QA datasets by 427%.
@@ -115,7 +130,8 @@
 
     - title: Machine Learning Intern
       institution: ATLAS
-      year: 2023 - 2024
+      start: "2023-05"
+      end: "2024-08"
       description:
         - Developed a high-fidelity forecasting system using real-time Chicago city sensor data, fusing multi-modal IoT streams and high-res imagery via LSTM-TCN hybrids in PyTorch; achieved a 27% reduction in RMSE and 0.91 F1 on severe event prediction.
         - Engineered cross-modal attention for feature alignment and validated robustness with adversarial stress tests, maintaining 93% accuracy under noisy sensor dropout and outperforming baseline uni-modal models by 18%.
@@ -125,24 +141,30 @@
 
     - title: Data Analyst
       institution: University of Illinois Urbana-Champaign, Illinois Leadership Center
-      year: 2023 - 2024
+      start: "2023-03"
+      end: "2024-05"
       description:
-        - Conducts data analysis using Excel and Tableau to extract actionable insights.
-        - Produces data reports, visualizations, and presentations for ILC workshops and programs.
+        - Conducted data analysis using Excel and Tableau to extract actionable insights.
+        - Produced data reports, visualizations, and presentations for ILC workshops and programs.
 
 - title: Talks
   type: list
   contents:
     - "What Open-Ended Benchmarks Reveal About AI Research Automation - Google DeepMind, Turing, CAMEL AI, and KAIST (2026)"
-    - "Rise of Indirect Prompt Injection Methods on Open Environment Agents - AI Safety Tübingen Reading Group (2026)"
+    - "Rise of Indirect Prompt Injection Methods on Open Environment Agents - AI Safety Tübingen Reading Group (Mar 2026)"
 
 - title: Honors and Awards
-  type: list
+  type: events
+  category: award
   contents:
-    - NSF Graduate Research Fellowship Program (GRFP) (2026)
-    - AI4GOOD Travel Grant (2026)
-    - Sandia Data Challenge Finalist Award (2025)
-    - UIUC Get Experience Scholarship (2024)
+    - title: NSF Graduate Research Fellowship Program (GRFP)
+      date: "2026-04"
+    - title: AI4GOOD Travel Grant
+      date: "2026-07"
+    - title: Sandia Data Challenge Finalist Award
+      date: "2025-11"
+    - title: UIUC Get Experience Scholarship
+      date: "2024-01"
 
 - title: Academic Service
   type: list

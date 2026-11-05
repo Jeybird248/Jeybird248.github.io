@@ -68,7 +68,16 @@
     border-color: var(--global-theme-color);
     color: #fff;
 
-    .tl-filter-dot {
+    .tl-filter-icon {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.tl-filter.active .tl-filter-icon {
+  opacity: 1;
+}
+
+.tl-filter-dot {
       border: 2px solid #fff;
     }
   }
@@ -82,319 +91,377 @@
 }
 
 /*****************************
- * Timeline Structure
+ * Timeline: vertical, stacked labels (newest at top)
  *****************************/
 
-.cv-timeline {
-  position: relative;
-  padding: 1rem 0 2rem;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--global-divider-color);
-    transform: translateX(-50%);
-  }
+.tl-count {
+  font-size: 0.72rem;
+  opacity: 0.65;
+  font-variant-numeric: tabular-nums;
 }
 
-/*****************************
- * Timeline Event (year group)
- *****************************/
-
-.tl-event {
-  position: relative;
-  width: 50%;
-  padding: 0 2.5rem 2rem;
-  box-sizing: border-box;
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
-
-  &.tl-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  &.tl-left {
-    left: 0;
-    padding-right: 2.5rem;
-    padding-left: 0;
-    .tl-card {
-      margin-left: auto;
-    }
-    .tl-dot {
-      right: -7px;
-      left: auto;
-    }
-  }
-
-  &.tl-right {
-    left: 50%;
-    padding-left: 2.5rem;
-    padding-right: 0;
-    .tl-dot {
-      left: -7px;
-      right: auto;
-    }
-  }
+.cvt-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0.25rem 0 1.25rem;
+  -webkit-overflow-scrolling: touch;
 }
 
-/*****************************
- * Dot
- *****************************/
+.cvt-chart {
+  position: relative;
+}
 
-.tl-dot {
+.cvt-svg {
   position: absolute;
-  top: 0.6rem;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 3px solid var(--global-bg-color);
-  z-index: 2;
-
-  &--education {
-    background: #3498db;
-  }
-  &--experience {
-    background: #9b59b6;
-  }
-  &--project {
-    background: #e67e22;
-  }
-  &--milestone {
-    background: #f1c40f;
-  }
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;      // only the hit areas below take the mouse
 }
 
-/*****************************
- * Card (contains 1+ entries)
- *****************************/
-
-.tl-card {
-  position: relative;
-  background: var(--global-card-bg-color);
-  border: 1px solid var(--global-divider-color);
-  border-radius: 8px;
-  padding: 0.8rem 1.1rem;
-  transition: box-shadow 0.2s ease;
-
-  &:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  }
-}
-
-// Large year marker at top of grouped card
-.tl-year-marker {
-  display: block;
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--global-theme-color);
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.01em;
-}
-
-/*****************************
- * Individual entry inside card
- *****************************/
-
-.tl-entry-border {
-  border-top: 1px solid var(--global-divider-color);
-  margin-top: 0.7rem;
-  padding-top: 0.7rem;
-}
-
-.tl-entry-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
-.tl-title {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--global-text-color);
-  margin: 0 0 0.1rem;
-  line-height: 1.3;
-
-  a {
-    color: var(--global-text-color);
-    text-decoration: none;
-    &:hover {
-      color: var(--global-theme-color);
-    }
-  }
-}
-
-.tl-institution {
-  font-size: 0.8rem;
-  color: var(--global-text-color-light);
-  margin: 0;
-}
-
-.tl-year-range {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--global-text-color-light);
-  margin-top: 0.1rem;
-}
-
-/*****************************
- * Expand / Collapse
- *****************************/
-
-.tl-expand {
-  flex-shrink: 0;
-  background: none;
-  border: none;
-  color: var(--global-text-color-light);
+.cvt-hit {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 14;
+  pointer-events: all;
   cursor: pointer;
-  font-size: 0.7rem;
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  transition:
-    transform 0.2s ease,
-    color 0.15s ease;
-  margin-top: 0.2rem;
+}
 
-  &:hover {
+.cvt-g.is-hot circle:not(.cvt-hit),
+.cvt-g.is-active circle:not(.cvt-hit) {
+  stroke: var(--global-theme-color);
+  stroke-width: 2;
+}
+
+/* Year bands + axis */
+
+.cvt-yl {
+  stroke: var(--global-divider-color);
+  stroke-width: 1;
+}
+
+.cvt-axis {
+  stroke: var(--global-text-color);
+  stroke-width: 1;
+}
+
+.cvt-qt {
+  stroke: var(--global-text-color-light);
+  stroke-width: 1;
+}
+
+.cvt-rail {
+  stroke: var(--global-divider-color);
+  stroke-width: 1;
+}
+
+.cvt-todayl {
+  stroke: var(--global-theme-color);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  opacity: 0.7;
+}
+
+.cvt-years {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cvt-yr {
+  position: absolute;
+  left: 0;
+  width: 38px;
+  text-align: right;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--global-text-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.cvt-today {
+  position: absolute;
+  left: 0;
+  width: 38px;
+  text-align: right;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+}
+
+.cvt-head {
+  position: absolute;
+  top: 6px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+/* Lines, dots, connectors */
+
+.cvt-ln {
+  stroke: var(--global-text-color);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+
+  &.is-approx {
+    stroke-dasharray: 3 3;
+    stroke-linecap: butt;
+  }
+}
+
+// ongoing roles: the line keeps going past "today", fading out
+.cvt-tail {
+  stroke: var(--global-text-color);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 3;
+  opacity: 0.55;
+}
+
+.cvt-end {
+  fill: var(--global-text-color);
+
+  &.is-now {
+    fill: var(--global-bg-color);
+    stroke: var(--global-text-color);
+    stroke-width: 1.3;
+  }
+}
+
+circle.is-approx {
+  fill: var(--global-bg-color) !important;
+  stroke-width: 1.6;
+}
+
+.cvt-ld {
+  fill: none;
+  stroke: var(--global-text-color-light);
+  stroke-width: 1;
+  opacity: 0.45;
+  transition: opacity 0.15s ease;
+}
+
+.cvt-ld.is-hot,
+.cvt-ld.is-active {
+  stroke: var(--global-theme-color);
+  opacity: 1;
+}
+
+.cvt-g.is-hot .cvt-ln,
+.cvt-g.is-active .cvt-ln {
+  stroke: var(--global-theme-color);
+  stroke-width: 2.5;
+}
+
+/* Labels */
+
+.cvt-lbl {
+  position: absolute;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  &.cvt-lbl--role:hover .cvt-t,
+  &.is-hot .cvt-t,
+  &.is-open .cvt-t {
     color: var(--global-theme-color);
   }
 }
 
-.tl-detail {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-  font-size: 0.82rem;
-  color: var(--global-text-color);
-  padding-left: 1rem;
-  margin-top: 0;
-
-  li {
-    margin-bottom: 0.25rem;
-    line-height: 1.4;
-    overflow-wrap: anywhere;
-  }
-}
-
-.tl-entry.expanded {
-  .tl-detail {
-    max-height: 800px;
-    margin-top: 0.4rem;
-  }
-  .tl-expand i {
-    transform: rotate(180deg);
-  }
-}
-
-/*****************************
- * Projects Grid
- *****************************/
-
-.cv-section-heading {
-  font-size: 1.1rem;
+.cvt-t {
+  display: block;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: var(--global-theme-color);
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+  line-height: 1.35;
+  color: var(--global-text-color);
+  transition: color 0.15s ease;
 }
 
-.cv-projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+.cvt-s {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  color: var(--global-text-color-light);
 }
 
-.cv-project-card {
-  background: var(--global-card-bg-color);
-  border: 1px solid var(--global-divider-color);
-  border-radius: 8px;
-  padding: 0.9rem 1.1rem;
-  transition: box-shadow 0.2s ease;
+.cvt-dur {
+  margin-left: 0.5rem;
+  font-weight: 500;
+  opacity: 0.75;
+}
 
-  &:hover {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+.cvt-w {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--global-text-color-light);
+  opacity: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+
+.cvt-lbl--event .cvt-t {
+  font-weight: 500;
+}
+
+// left side of the spine: labels right-aligned toward it
+.cvt-lbl.is-left {
+  text-align: right;
+
+  > span {
+    margin-left: auto;
   }
+}
 
-  h4 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--global-text-color);
-    margin: 0 0 0.2rem;
+// label text masks gridlines / the today line running behind it
+.cvt-lbl > span,
+.cvt-more {
+  width: fit-content;
+  max-width: 100%;
+  background: var(--global-bg-color);
+}
+
+.cvt-more {
+  width: auto;
+}
+
+// one-off events: a plain sentence (bold/links from the news post are kept)
+.cvt-lbl--event {
+  cursor: default;
+
+  .cvt-t {
+    font-size: 0.92rem;
+    font-weight: 400;
+    line-height: 1.45;
+
+    p {
+      display: inline;
+      margin: 0;
+    }
+
+    strong,
+    b {
+      font-weight: 600;
+    }
 
     a {
       color: var(--global-theme-color);
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
+}
 
-  .tl-year-range {
-    margin-bottom: 0.4rem;
-  }
+.cvt-icon {
+  margin-right: 0.4rem;
+  font-size: 0.72rem;
+}
+
+/* In-place dropdown */
+
+.cvt-caret {
+  margin-left: 0.4rem;
+  font-size: 0.6rem;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+
+.cvt-lbl.is-open .cvt-caret {
+  transform: rotate(180deg);
+}
+
+.cvt-more {
+  display: none;
+  margin-top: 0.6rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--global-divider-color);
+  text-align: left;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--global-text-color);
+  cursor: auto;
 
   ul {
-    padding-left: 1rem;
-    margin: 0.4rem 0 0;
-    font-size: 0.8rem;
-    color: var(--global-text-color);
+    margin: 0.35rem 0 0;
+    padding-left: 1.1rem;
 
     li {
-      margin-bottom: 0.2rem;
-      line-height: 1.4;
+      margin-bottom: 0.35rem;
       overflow-wrap: anywhere;
     }
   }
+
+  a {
+    color: var(--global-theme-color);
+  }
+
+  p {
+    margin: 0;
+  }
 }
 
-/*****************************
- * Milestone entries
- *****************************/
+.cvt-lbl.is-open .cvt-more {
+  display: block;
+}
 
-.tl-entry--milestone {
-  .tl-milestone-body {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
+.cvt-more-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+
+  i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
   }
+}
 
-  .tl-milestone-icon {
-    color: #f1c40f;
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
-    flex-shrink: 0;
-  }
+.cvt-more-body {
+  margin-top: 0.3rem;
+}
 
-  .tl-milestone-text {
-    font-size: 0.88rem;
-    color: var(--global-text-color);
-    line-height: 1.4;
+/* Filter hover preview */
 
-    a {
-      color: var(--global-theme-color);
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+.cvt-lbl,
+.cvt-g,
+.cvt-ld {
+  transition: opacity 0.2s ease;
+}
 
-    // strip the wrapping <p> that markdown rendering adds
-    p {
-      margin: 0;
-      display: inline;
-    }
-  }
+.cvt-lbl.is-dim,
+.cvt-g.is-dim,
+.cvt-ld.is-dim {
+  opacity: 0.15;
 }
 
 /*****************************
@@ -429,35 +496,12 @@
 }
 
 /*****************************
- * Responsive — single column
+ * Responsive
  *****************************/
 
 @media (max-width: 768px) {
-  .cv-timeline::before {
-    left: 16px;
-  }
-
-  .tl-event {
-    width: 100%;
-    padding-left: 3rem !important;
-    padding-right: 0 !important;
-
-    &.tl-left,
-    &.tl-right {
-      left: 0;
-      .tl-dot {
-        left: 9px;
-        right: auto;
-      }
-    }
-  }
-
   .cv-info-grid {
     grid-template-columns: 1fr;
     padding: 1rem;
-  }
-
-  .cv-projects-grid {
-    grid-template-columns: 1fr;
   }
 }

@@ -2,6 +2,7 @@
 layout: post
 date: 2026-06-17 10:00:00-0400
 inline: true
+kind: paper
 related_posts: false
 ---
 

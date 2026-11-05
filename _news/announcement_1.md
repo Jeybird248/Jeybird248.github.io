@@ -2,6 +2,7 @@
 layout: post
 date: 2024-01-18 10:00:00-0400
 inline: true
+kind: award
 related_posts: false
 ---
 

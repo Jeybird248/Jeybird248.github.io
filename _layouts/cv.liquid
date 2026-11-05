@@ -1,13 +1,28 @@
 ---
 layout: default
 ---
+{%- comment -%}
+  CV timeline: vertical, newest at the top.
+    - Positions: thin vertical lines packed into narrow lanes beside the year axis; labels sit in one
+      column to the right, in date order, joined to each line's start by a thin connector.
+    - Highlights: dots on a rail with a second label column.
+    - Each year's band grows to fit its labels, so busy years get more room instead of the chart getting wider.
+  Sources (each fact lives in one place):
+    - _data/cv.yml  time_table sections -> roles/degrees (spans with start/end)
+                    events sections     -> talks, awards (dated points)
+                    list sections       -> undated blocks below the timeline (e.g. Academic Service)
+                    map section         -> info grid at the top
+    - _news/*.md    -> point events. Front matter `kind:` controls inclusion:
+                       paper / milestone -> shown here
+                       role / award      -> skipped (already covered by cv.yml)
+{%- endcomment -%}
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">
       {{ page.title }}
       {% if page.cv_pdf %}
-        <a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}"
-           target="_blank" rel="noopener noreferrer" class="float-right">
+        <a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}"
+           target="_blank" rel="noopener noreferrer" class="float-right" aria-label="Download CV as PDF">
           <i class="fa-solid fa-file-pdf"></i>
         </a>
       {% endif %}
@@ -18,7 +33,6 @@ layout: default
   </header>
 
   <article>
-    {%- comment -%} ── General Information ── {%- endcomment -%}
     {% for entry in site.data.cv %}
       {% if entry.type == 'map' %}
         <div class="cv-info-grid">
@@ -32,268 +46,443 @@ layout: default
       {% endif %}
     {% endfor %}
 
-    {%- comment -%} ── CV data as JS (safe: jsonify on pure YAML, no user HTML) ── {%- endcomment -%}
     <script>var CV_RAW_DATA = {{ site.data.cv | jsonify }};</script>
 
-    {%- comment -%} ── News data as hidden HTML (avoids uglifier touching emoji HTML) ── {%- endcomment -%}
-    <div id="cv-news-src" style="display:none" aria-hidden="true">
-      {%- assign sorted_news = site.news | sort: "date" | reverse -%}
-      {%- for item in sorted_news -%}
-        {%- if item.inline -%}
-          <span
-            data-year="{{ item.date | date: '%Y' }}"
-            data-date="{{ item.date | date: '%b %Y' }}"
-            data-text="{{ item.content | emojify | strip_html | strip | escape }}"
-          ></span>
+    <div id="cv-news-src" hidden aria-hidden="true">
+      {%- for item in site.news -%}
+        {%- if item.inline and item.kind != 'role' and item.kind != 'award' -%}
+          <div data-date="{{ item.date | date: '%Y-%m' }}" data-kind="{{ item.kind | default: 'milestone' }}">{{ item.content | emojify }}</div>
         {%- endif -%}
       {%- endfor -%}
     </div>
 
-    {%- comment -%} ── Filter buttons ── {%- endcomment -%}
-    <div class="tl-filters">
-      <button class="tl-filter active" data-filter="all">All</button>
-      <button class="tl-filter" data-filter="education">
-        <span class="tl-filter-dot" style="background:#3498db"></span>Education
-      </button>
-      <button class="tl-filter" data-filter="experience">
-        <span class="tl-filter-dot" style="background:#9b59b6"></span>Experience
-      </button>
-      <button class="tl-filter" data-filter="milestone">
-        <span class="tl-filter-dot" style="background:#f1c40f"></span>Milestones
-      </button>
+    <div class="tl-filters" id="cv-filters" role="toolbar" aria-label="Filter timeline"></div>
+    <div class="cvt-scroll" id="cvt-scroll">
+      <div class="cvt-chart" id="cv-timeline"></div>
     </div>
-
-    {%- comment -%} ── Timeline (built by JS) ── {%- endcomment -%}
-    <div class="cv-timeline" id="cv-timeline"></div>
-
-    {%- comment -%} ── Talks & Awards (built by JS) ── {%- endcomment -%}
     <div id="cv-lists"></div>
   </article>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const rawSections = CV_RAW_DATA;
-  const newsItems = Array.from(document.querySelectorAll("#cv-news-src span")).map(function(el) {
-    return {
-      year: el.dataset.year,
-      text: el.dataset.text,
-      date: el.dataset.date
-    };
-  });
-  const catColors = { education: "#3498db", experience: "#9b59b6", project: "#e67e22", milestone: "#f1c40f" };
+  // Three color groups; cv.yml section categories and event kinds map onto them.
+  var GROUPS = {
+    experience: { label: "Experience", color: "#8e5bb5", icon: "fa-briefcase" },
+    academia:   { label: "Academia",   color: "#3b82c4", icon: "fa-graduation-cap" },
+    honors:     { label: "Awards",     color: "#d99a1e", icon: "fa-trophy" }
+  };
+  var SECTION_GROUP = { education: ["academia", "Education"], research: ["experience", "Research"], industry: ["experience", "Industry"] };
+  var EVENT_KINDS = {                // kind -> [group, sublabel, icon]
+    paper:     ["academia", "Paper",     "fa-file-lines"],
+    award:     ["honors",   "Award",     "fa-trophy"],
+    talk:      ["honors",   "Talk",      "fa-microphone"],
+    milestone: ["honors",   "Milestone", "fa-star"]
+  };
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
-  // ── Flatten cv.yml sections into events ──
-  const allEvents = [];
-  const listSections = [];
+  // Layout constants (px)
+  var HEAD_H = 34;          // column headings
+  var AXIS_X = 46;          // year axis (labels sit to its left)
+  var LANE_X0 = 66;         // first position lane
+  var PITCH = 13;           // distance between position lanes
+  var LEADER = 30;          // horizontal run from the last lane to the label column
+  var MIN_YEAR_H = 230;     // a quiet year's height
+  var ROLE_GAP = 26, EVENT_GAP = 16, YEAR_PAD = 64;
+  var LABEL_MAX = 300;      // labels wrap inside this width instead of running sideways
+  var STEP = 22;            // minimum vertical step between consecutive entries (either column)
+  var GAP_K = 50;           // ...or GAP_K * sqrt(months between them), whichever is larger
+  var TODAY_HEADROOM = 54;  // space above the "today" line so ongoing roles visibly continue past it
+  var ONGOING_TAIL = 26;    // how far an ongoing role's line runs above "today"
+  var YEAR_GUTTER = 50;     // left gutter holding the year labels
+  var NARROW = 620;         // below this, highlights share the position label column
 
-  rawSections.forEach(function(section) {
-    if (section.type === "map") return; // handled by Liquid above
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function parseDate(v) {
+    if (v == null || v === "") return null;
+    v = String(v).trim();
+    if (/^present$/i.test(v)) return { present: true };
+    var m = v.match(/^(\d{4})(?:-(\d{1,2}))?/);
+    return m ? { y: +m[1], m: m[2] ? +m[2] : 0 } : null;
+  }
+  function fmt(d) {
+    if (!d) return "";
+    if (d.present) return "Present";
+    return (d.m ? MONTHS[d.m - 1] + " " : "") + d.y;
+  }
+  function flattenDesc(list) {
+    return (list || []).map(function (item) {
+      if (typeof item === "string") return esc(item);
+      if (!item || !item.title) return "";
+      if (item.contents) return "<strong>" + esc(item.title) + ":</strong> " + esc(item.contents.join(", "));
+      if (item.value != null && item.value !== "") return "<strong>" + esc(item.title) + ":</strong> " + esc(item.value);
+      return esc(item.title);
+    }).filter(Boolean);
+  }
 
-    if (section.type === "list") {
-      listSections.push({ title: section.title, items: section.contents });
-      return;
-    }
+  var now = new Date();
+  var NOW_POS = now.getFullYear() * 12 + now.getMonth() + (now.getDate() - 1) / 31;  // fractional month index
+  var NOW_IDX = Math.floor(NOW_POS);
+  function mIdx(y, m) { return y * 12 + (m ? m - 1 : 0); }
+
+  // ── Collect items. Positions use mid-month (a = start, b = end), so a January date sits inside its year. ──
+  var items = [];
+  var lists = [];
+
+  CV_RAW_DATA.forEach(function (section) {
+    if (section.type === "list") { lists.push(section); return; }
 
     if (section.type === "time_table") {
-      var cat = "experience";
-      if (section.title && section.title.toLowerCase().indexOf("education") !== -1) cat = "education";
-      else if (section.title && section.title.toLowerCase().indexOf("project") !== -1) cat = "project";
-
-      (section.contents || []).forEach(function(entry) {
-        // Flatten description items to strings
-        var desc = [];
-        (entry.description || []).forEach(function(item) {
-          if (typeof item === "string") {
-            desc.push(item);
-          } else if (item && item.contents) {
-            desc.push((item.title || "") + ": " + item.contents.join(", "));
-          } else if (item && item.title) {
-            desc.push(item.title + (item.value ? ": " + item.value : ""));
-          }
+      var g = SECTION_GROUP[section.category] || SECTION_GROUP.research;
+      (section.contents || []).forEach(function (e) {
+        var s = parseDate(e.start);
+        if (!s || s.present) return;
+        var end = parseDate(e.end);
+        var si = mIdx(s.y, s.m), ei;                          // ei = inclusive end month
+        if (end && end.present) ei = NOW_IDX;
+        else if (end) ei = end.m ? mIdx(end.y, end.m) : end.y * 12 + 11;
+        else ei = s.m ? si : s.y * 12 + 11;
+        ei = Math.max(si, Math.min(ei, NOW_IDX));
+        var approx = !s.m || !end || (!end.present && !end.m);
+        var months = ei - si + 1, dur;
+        if (approx && months >= 10) dur = "~" + Math.max(1, Math.round(months / 12)) + " yr";
+        else if (months < 12) dur = (approx ? "~" : "") + months + " mo";
+        else dur = (approx ? "~" : "") + Math.floor(months / 12) + " yr" + (months % 12 ? " " + (months % 12) + " mo" : "");
+        var isNow = !!(end && end.present);
+        items.push({
+          type: "role", group: g[0], sub: g[1], a: si + 0.5, b: isNow ? NOW_POS : Math.max(ei + 0.5, si + 0.9),
+          approx: approx, now: isNow,
+          title: esc(e.title), org: esc(e.institution),
+          when: fmt(s) + (end && fmt(end) !== fmt(s) ? " – " + fmt(end) : ""), dur: dur,
+          details: flattenDesc(e.description)
         });
+      });
+    }
 
-        allEvents.push({
-          year: entry.year ? String(entry.year) : "",
-          title: entry.title || "",
-          institution: entry.institution || "",
-          category: cat,
-          description: desc
+    if (section.type === "events") {
+      var k = EVENT_KINDS[section.category] || EVENT_KINDS.milestone;
+      (section.contents || []).forEach(function (e) {
+        var d = parseDate(e.date);
+        if (!d || d.present) return;
+        var sentence = section.category === "talk"
+          ? "Talk" + (e.venue ? " at " + esc(e.venue) : "") + ": <strong>" + esc(e.title) + "</strong>"
+          : section.category === "award"
+            ? "Received the <strong>" + esc(e.title) + "</strong>"
+            : "<strong>" + esc(e.title) + "</strong>" + (e.venue ? ", " + esc(e.venue) : "");
+        items.push({
+          type: "event", group: k[0], sub: k[1], icon: k[2], a: d.m ? mIdx(d.y, d.m) + 0.5 : d.y * 12 + 6, approx: !d.m,
+          html: sentence, when: fmt(d)
         });
       });
     }
   });
 
-  // ── Add news as milestones ──
-  newsItems.forEach(function(n) {
-    allEvents.push({
-      year: n.year,
-      title: n.text,
-      institution: "",
-      category: "milestone",
-      date: n.date,
-      description: []
+  document.querySelectorAll("#cv-news-src > div").forEach(function (el) {
+    var d = parseDate(el.dataset.date);
+    if (!d) return;
+    var k = EVENT_KINDS[el.dataset.kind] || EVENT_KINDS.milestone;
+    items.push({
+      type: "event", group: k[0], sub: k[1], icon: k[2], a: mIdx(d.y, d.m) + 0.5, approx: false,
+      html: el.innerHTML.trim(), when: fmt(d)            // the announcement itself, as a sentence
     });
   });
 
-  // ── Separate projects from timeline events ──
-  const timelineRaw = allEvents.filter(e => e.category !== "project");
-  const projects    = allEvents.filter(e => e.category === "project");
+  items.forEach(function (it, i) { it.id = i; it.visible = true; });
 
-  // ── Group timeline events by start year ──
-  function startYear(y) {
-    if (!y) return 0;
-    return parseInt(String(y).split(/\s*-\s*/)[0]) || 0;
+  var minYear = Math.min.apply(null, items.map(function (it) { return Math.floor(it.a / 12); }));
+  var maxYear = now.getFullYear();
+
+  // ── Labels (HTML, clickable). Lines, dots and connectors are drawn into an SVG by layout(). ──
+  var chart = document.getElementById("cv-timeline");
+  var scroller = document.getElementById("cvt-scroll");
+
+  var labelsHtml = '';
+  items.forEach(function (it) {
+    var color = GROUPS[it.group].color;
+    var cat = '<span class="cvt-more-cat"><i style="background:' + color + '"></i>' + it.sub + '</span>';
+    var open = '<div class="cvt-lbl cvt-lbl--' + it.type + '" role="button" tabindex="0" aria-expanded="false" data-id="' + it.id + '">';
+    var caret = '<i class="fa-solid fa-chevron-down cvt-caret" aria-hidden="true"></i>';
+    if (it.type === "role") {
+      labelsHtml += open +
+        '<span class="cvt-t">' + it.title + '</span>' +
+        '<span class="cvt-s">' + it.org + '</span>' +
+        '<span class="cvt-w">' + it.when + '<span class="cvt-dur">' + it.dur + '</span>' + caret + '</span>' +
+        '<div class="cvt-more">' + cat +
+          (it.details.length ? '<ul>' + it.details.map(function (d) { return "<li>" + d + "</li>"; }).join("") + '</ul>' : '') +
+        '</div></div>';
+    } else {
+      // one-off events read as a sentence; nothing to expand
+      labelsHtml += '<div class="cvt-lbl cvt-lbl--event" data-id="' + it.id + '">' +
+        '<span class="cvt-t"><i class="fa-solid ' + it.icon + ' cvt-icon" style="color:' + color + '" aria-hidden="true"></i>' + it.html + '</span>' +
+        '<span class="cvt-w">' + it.when + '</span></div>';
+    }
+  });
+  chart.innerHTML =
+    '<svg class="cvt-svg" aria-hidden="true"></svg>' +
+    '<div class="cvt-years" aria-hidden="true"></div>' +
+    labelsHtml;
+  var svg = chart.querySelector(".cvt-svg");
+  var yearsEl = chart.querySelector(".cvt-years");
+  var lbl = {};
+  chart.querySelectorAll(".cvt-lbl").forEach(function (el) { lbl[el.dataset.id] = el; });
+
+  function layout() {
+    var width = scroller.clientWidth;
+    var narrow = width < NARROW;
+    chart.style.width = width + "px";
+
+    var roles = items.filter(function (it) { return it.type === "role" && it.visible; });
+    var events = items.filter(function (it) { return it.type === "event" && it.visible; });
+    items.forEach(function (it) { lbl[it.id].hidden = !it.visible; });
+
+    // Wide screens split the timeline around a center spine:
+    //   left  = Academia (degrees + papers) and Awards & Talks, labels right-aligned toward the spine
+    //   right = Experience
+    // With only one side populated (filters) or on narrow screens, everything uses one column on the right.
+    var leftRoles = roles.filter(function (it) { return it.group !== "experience"; });
+    var rightRoles = roles.filter(function (it) { return it.group === "experience"; });
+    var mirror = !narrow;
+
+    // Lanes for position lines; longest spans sit closest to the spine. Only lines need to avoid each other.
+    function packLanes(list) {
+      var lanes = [];
+      list.slice().sort(function (p, q) { return ((q.b - q.a) - (p.b - p.a)) || (q.a - p.a); }).forEach(function (it) {
+        var lane = 0;
+        while (lanes[lane] && lanes[lane].some(function (s) { return it.a < s[1] + 0.6 && it.b > s[0] - 0.6; })) lane++;
+        (lanes[lane] = lanes[lane] || []).push([it.a, it.b]);
+        it.lane = lane;
+      });
+      return lanes.length;
+    }
+
+    var spineX, railX = null, leftEdge = 0, rightEdge = 0;
+    var all = roles.concat(events);
+    if (mirror) {
+      spineX = Math.round(width / 2);
+      var nL = packLanes(leftRoles), nR = packLanes(rightRoles);
+      leftRoles.forEach(function (it) { it.x = spineX - 18 - it.lane * PITCH; it.side = "L"; });
+      rightRoles.forEach(function (it) { it.x = spineX + 18 + it.lane * PITCH; it.side = "R"; });
+      events.forEach(function (it) { it.x = spineX; it.side = "L"; });
+      leftEdge = nL ? spineX - 18 - (nL - 1) * PITCH - LEADER : spineX - 26;     // labels end here
+      rightEdge = spineX + 18 + Math.max(0, nR - 1) * PITCH + LEADER;            // labels start here
+    } else {
+      spineX = AXIS_X;
+      var n = packLanes(roles);
+      roles.forEach(function (it) { it.x = LANE_X0 + it.lane * PITCH; it.side = "R"; });
+      railX = LANE_X0 + (roles.length ? n : 0) * PITCH;
+      events.forEach(function (it) { it.x = railX; it.side = "R"; });
+      rightEdge = (events.length ? railX : LANE_X0 + Math.max(0, n - 1) * PITCH) + LEADER;
+    }
+    all.forEach(function (it) {
+      var e = lbl[it.id];
+      var left = it.side === "L";
+      e.classList.toggle("is-left", left);
+      it.lw = left ? Math.min(LABEL_MAX, leftEdge - YEAR_GUTTER) : (mirror ? Math.min(LABEL_MAX, width - rightEdge - 4) : width - rightEdge - 4);
+      e.style.width = it.lw + "px";
+      it.gap = it.type === "event" ? EVENT_GAP : ROLE_GAP;
+    });
+
+    // Year heights: each year is tall enough to stack the labels anchored in it (per side).
+    all.forEach(function (it) { it.h = lbl[it.id].offsetHeight; });
+
+    // Stack every entry newest-first across BOTH columns, so the page always reads top-down in date order.
+    // Each label goes below the previous label on its own side, and below the previous entry overall by
+    // at least STEP or a time-based gap (so a two-month gap looks bigger than a same-month neighbour).
+    // Year bands open as the walk crosses into an earlier year. The current year starts with some headroom
+    // above "today" so ongoing roles can run past it.
+    all.forEach(function (it) { it.pos = Math.min(it.a, NOW_POS - 0.05); });   // nothing sits above today
+    var order = all.slice().sort(function (p, q) { return (q.pos - p.pos) || (p.side === "R" ? -1 : 1); });
+    var yearTop = {}, floor = { L: 0, R: 0 }, prev, prevA, lastTop = null, curYear = maxYear + 1;
+    var todayY = HEAD_H + TODAY_HEADROOM;
+    // square-root scale: a 2-month gap is clearly visible, a 12-month gap doesn't become a void
+    function gapFor(fromA, toA) { return GAP_K * Math.sqrt(Math.max(0, fromA - toA)); }
+    function openYear(yr) {
+      var bottom = Math.max(floor.L, floor.R);
+      var t = lastTop === null ? HEAD_H
+            : Math.max(bottom + YEAR_PAD / 2, lastTop + MIN_YEAR_H, prev + gapFor(prevA, (yr + 1) * 12));
+      yearTop[yr] = lastTop = t;
+      if (yr === maxYear) { prev = todayY; prevA = NOW_POS; floor.L = floor.R = todayY + 18; }
+      else { prev = t + 24; prevA = (yr + 1) * 12; floor.L = floor.R = t + 36; }
+    }
+    order.forEach(function (it) {
+      var yr = Math.floor(it.pos / 12);
+      while (curYear > yr) openYear(--curYear);
+      var after = prev + Math.max(it.pos === prevA ? 0 : STEP, gapFor(prevA, it.pos));
+      it.ly = Math.max(floor[it.side], after);
+      floor[it.side] = it.ly + it.h + it.gap;
+      prev = it.ly; prevA = it.pos;
+    });
+    while (curYear > minYear) openYear(--curYear);
+    var chartH = Math.max(Math.max(floor.L, floor.R) + YEAR_PAD / 2, lastTop + MIN_YEAR_H, prev + gapFor(prevA, minYear * 12));
+
+    // Date -> y comes from those positions (year edges + each entry's row), interpolated in between,
+    // so role end dates and "today" land in the right place relative to their neighbours.
+    var knots = [];
+    for (var ky = maxYear; ky >= minYear; ky--) {
+      knots.push([ky * 12 + 12, yearTop[ky]]);
+      knots.push([ky * 12, ky > minYear ? yearTop[ky - 1] : chartH]);
+    }
+    knots.push([NOW_POS, todayY]);
+    order.forEach(function (it) { knots.push([it.pos, it.ly + 9]); });
+    knots.sort(function (p, q) { return (q[0] - p[0]) || (p[1] - q[1]); });
+    for (var ki = 1; ki < knots.length; ki++) knots[ki][1] = Math.max(knots[ki][1], knots[ki - 1][1]);
+    function y(m) {
+      if (m >= knots[0][0]) return knots[0][1];
+      for (var i = 1; i < knots.length; i++) {
+        var hi = knots[i - 1], lo = knots[i];
+        if (m >= lo[0]) return hi[0] === lo[0] ? hi[1] : hi[1] + (hi[0] - m) / (hi[0] - lo[0]) * (lo[1] - hi[1]);
+      }
+      return chartH;
+    }
+    roles.forEach(function (it) {
+      it.yBot = it.anchor = it.ly + 9;
+      it.yTop = it.now ? todayY : Math.min(y(it.b), it.yBot - 6);
+    });
+    events.forEach(function (it) { it.yDot = it.anchor = it.ly + 9; });
+
+    // ── Draw ──
+    var s = '', yearsHtml = '';
+    for (var yr2 = maxYear; yr2 >= minYear; yr2--) {
+      var t = yearTop[yr2];
+      s += '<line class="cvt-yl" x1="0" x2="' + width + '" y1="' + t + '" y2="' + t + '"/>';
+      for (var q = 1; q < 4; q++) {
+        var qy = y(yr2 * 12 + q * 3);
+        s += '<line class="cvt-qt" x1="' + (spineX - 3) + '" x2="' + (spineX + 3) + '" y1="' + qy + '" y2="' + qy + '"/>';
+      }
+      yearsHtml += '<span class="cvt-yr" style="top:' + (t + 8) + 'px">' + yr2 + '</span>';
+    }
+    s += '<line class="cvt-yl" x1="0" x2="' + width + '" y1="' + chartH + '" y2="' + chartH + '"/>';
+    s += '<line class="cvt-axis" x1="' + spineX + '" x2="' + spineX + '" y1="' + HEAD_H + '" y2="' + chartH + '"/>';
+    var ty = y(NOW_POS);
+    s += '<line class="cvt-todayl" x1="' + (YEAR_GUTTER - 6) + '" x2="' + width + '" y1="' + ty + '" y2="' + ty + '"/>';
+    // keep the "today" tag clear of the year label at the top of the current year
+    var tagY = Math.abs(ty - (yearTop[maxYear] + 8)) < 26 ? Math.max(ty + 4, yearTop[maxYear] + 26) : ty - 7;
+    yearsHtml += '<span class="cvt-today" style="top:' + tagY + 'px">today</span>';
+    yearsEl.innerHTML = yearsHtml;
+    if (railX != null && events.length) s += '<line class="cvt-rail" x1="' + railX + '" x2="' + railX + '" y1="' + HEAD_H + '" y2="' + chartH + '"/>';
+
+    // connectors first, so lines and dots sit on top of them
+    all.forEach(function (it) {
+      var ly = it.ly + 9, pts;
+      if (it.side === "R") pts = it.x + ',' + it.anchor + ' ' + (rightEdge - 12) + ',' + it.anchor + ' ' + (rightEdge - 4) + ',' + ly;
+      else pts = it.x + ',' + it.anchor + ' ' + (leftEdge + 12) + ',' + it.anchor + ' ' + (leftEdge + 4) + ',' + ly;
+      s += '<polyline class="cvt-ld" data-id="' + it.id + '" points="' + pts + '"/>';
+    });
+    roles.forEach(function (it) {
+      var c = GROUPS[it.group].color;
+      s += '<g class="cvt-g" data-id="' + it.id + '">' +
+        '<line class="cvt-ln' + (it.approx ? ' is-approx' : '') + '" x1="' + it.x + '" x2="' + it.x + '" y1="' + it.yTop + '" y2="' + it.yBot + '"/>' +
+        (it.now
+          ? '<line class="cvt-tail" x1="' + it.x + '" x2="' + it.x + '" y1="' + (it.yTop - ONGOING_TAIL) + '" y2="' + it.yTop + '"/>'
+          : '<circle class="cvt-end" cx="' + it.x + '" cy="' + it.yTop + '" r="3.2"/>') +
+        '<circle cx="' + it.x + '" cy="' + it.yBot + '" r="3.6" fill="' + c + '"/>' +
+        // wide invisible hit area so the thin line is easy to hover/click
+        '<line class="cvt-hit" x1="' + it.x + '" x2="' + it.x + '" y1="' + (it.yTop - (it.now ? ONGOING_TAIL : 6)) + '" y2="' + (it.yBot + 6) + '"/></g>';
+    });
+    events.forEach(function (it) {
+      var c = GROUPS[it.group].color;
+      s += '<g class="cvt-g" data-id="' + it.id + '"><circle class="' + (it.approx ? 'is-approx' : '') + '" cx="' + it.x + '" cy="' + it.yDot + '" r="3.6" fill="' + c + '" stroke="' + c + '"/>' +
+        '<circle class="cvt-hit" cx="' + it.x + '" cy="' + it.yDot + '" r="10"/></g>';
+    });
+
+    svg.setAttribute("width", width);
+    svg.setAttribute("height", chartH);
+    svg.setAttribute("viewBox", "0 0 " + width + " " + chartH);
+    svg.innerHTML = s;
+    chart.style.height = chartH + "px";
+
+    all.forEach(function (it) {
+      var e = lbl[it.id];
+      e.style.left = (it.side === "L" ? leftEdge - it.lw : rightEdge) + "px";
+      e.style.top = it.ly + "px";
+    });
+
+    all.forEach(function (it) { markHot(it.id, "is-active", lbl[it.id].classList.contains("is-open")); });
   }
 
-  const yearMap = {};
-  timelineRaw.forEach(e => {
-    const sy = startYear(e.year);
-    if (!yearMap[sy]) yearMap[sy] = [];
-    yearMap[sy].push(e);
-  });
-
-  const sortedYears = Object.keys(yearMap).map(Number).sort((a, b) => b - a);
-
-  // ── Render timeline ──
-  const tl = document.getElementById("cv-timeline");
-
-  sortedYears.forEach((yr, idx) => {
-    const group = yearMap[yr];
-    const node = document.createElement("div");
-    node.className = "tl-event " + (idx % 2 === 0 ? "tl-left" : "tl-right");
-    // store all categories present in this group for filtering
-    const cats = [...new Set(group.map(e => e.category))];
-    node.dataset.categories = cats.join(",");
-
-    // pick dot color: prioritize education > experience > milestone
-    const dotCat = cats.includes("education") ? "education"
-                 : cats.includes("experience") ? "experience"
-                 : cats[0];
-
-    let html = '<div class="tl-dot tl-dot--' + dotCat + '"></div>';
-    html += '<div class="tl-card">';
-    html += '<span class="tl-year-marker">' + yr + '</span>';
-
-    group.forEach((entry, ei) => {
-      const hasBullets = entry.description && entry.description.length > 0;
-      const isMilestone = entry.category === "milestone";
-
-      html += '<div class="tl-entry' + (ei > 0 ? ' tl-entry-border' : '') + (isMilestone ? ' tl-entry--milestone' : '') + '">';
-
-      if (isMilestone) {
-        // Milestones: render the HTML content (preserves links), show month+year
-        html += '<div class="tl-milestone-body">';
-        html += '<i class="fa-solid fa-star tl-milestone-icon"></i>';
-        html += '<div>';
-        html += '<div class="tl-milestone-text">' + entry.title + '</div>';
-        if (entry.date) html += '<span class="tl-year-range">' + entry.date + '</span>';
-        html += '</div></div>';
-      } else {
-        // Regular entries
-        html += '<div class="tl-entry-head">';
-        html += '<div>';
-        if (entry.title) html += '<h4 class="tl-title">' + entry.title + '</h4>';
-        if (entry.institution) html += '<p class="tl-institution">' + entry.institution + '</p>';
-        if (entry.year) html += '<span class="tl-year-range">' + entry.year + '</span>';
-        html += '</div>';
-        if (hasBullets) {
-          html += '<button class="tl-expand" aria-label="Toggle details"><i class="fa-solid fa-chevron-down"></i></button>';
-        }
-        html += '</div>';
-
-        if (hasBullets) {
-          html += '<ul class="tl-detail">';
-          entry.description.forEach(d => {
-            html += '<li>' + d + '</li>';
-          });
-          html += '</ul>';
-        }
-      }
-
-      html += '</div>'; // .tl-entry
-    });
-
-    html += '</div>'; // .tl-card
-    node.innerHTML = html;
-    tl.appendChild(node);
-  });
-
-  // ── Render projects grid ──
-  if (projects.length > 0) {
-    document.getElementById("projects-heading").style.display = "";
-    const grid = document.getElementById("cv-projects");
-    projects.forEach(p => {
-      const card = document.createElement("div");
-      card.className = "cv-project-card";
-      let h = '';
-      if (p.title) h += '<h4>' + p.title + '</h4>';
-      if (p.year) h += '<span class="tl-year-range">' + p.year + '</span>';
-      if (p.description && p.description.length > 0) {
-        h += '<ul>';
-        p.description.forEach(d => { h += '<li>' + d + '</li>'; });
-        h += '</ul>';
-      }
-      card.innerHTML = h;
-      grid.appendChild(card);
-    });
+  // ── Hover / select: light up the label's line and connector ──
+  // Works from either end: hovering a label lights up its line, and hovering a line/dot lights up its label.
+  function markHot(id, cls, on) {
+    chart.querySelectorAll('.cvt-svg [data-id="' + id + '"]').forEach(function (el) { el.classList.toggle(cls, on); });
+    if (cls === "is-hot") lbl[id].classList.toggle("is-hot", on);
   }
+  function entryOf(target) { return target.closest(".cvt-lbl") || target.closest(".cvt-g"); }
+  chart.addEventListener("mouseover", function (e) { var b = entryOf(e.target); if (b) markHot(b.dataset.id, "is-hot", true); });
+  chart.addEventListener("mouseout", function (e) { var b = entryOf(e.target); if (b) markHot(b.dataset.id, "is-hot", false); });
 
-  // ── Render lists (talks, awards) ──
-  const listsEl = document.getElementById("cv-lists");
-  listSections.forEach(list => {
-    const sec = document.createElement("div");
-    sec.className = "cv-minor-section";
-    let h = '<h3>' + list.title + '</h3><ul>';
-    list.items.forEach(item => { h += '<li>' + item + '</li>'; });
-    h += '</ul>';
-    sec.innerHTML = h;
-    listsEl.appendChild(sec);
+  // ── Click an entry to open it in place (the timeline re-flows around it) ──
+  function toggle(el) {
+    var open = !el.classList.contains("is-open");
+    el.classList.toggle("is-open", open);
+    el.setAttribute("aria-expanded", open ? "true" : "false");
+    layout();
+  }
+  chart.addEventListener("click", function (e) {
+    if (e.target.closest(".cvt-more a")) return;            // let links inside an open entry work
+    var el = e.target.closest(".cvt-lbl--role");
+    var g = e.target.closest(".cvt-g");                        // clicking a position's line opens its entry
+    if (!el && g && lbl[g.dataset.id].classList.contains("cvt-lbl--role")) el = lbl[g.dataset.id];
+    if (el) toggle(el);
+  });
+  chart.addEventListener("keydown", function (e) {
+    var el = e.target.closest(".cvt-lbl--role");
+    if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); toggle(el); }
   });
 
-  // ── Expand / collapse ──
-  document.querySelectorAll(".tl-expand").forEach(btn => {
-    btn.addEventListener("click", function () {
-      this.closest(".tl-entry").classList.toggle("expanded");
-    });
+  // ── Undated lists (e.g. Academic Service) ──
+  var listsEl = document.getElementById("cv-lists");
+  lists.forEach(function (list) {
+    listsEl.insertAdjacentHTML("beforeend",
+      '<div class="cv-minor-section"><h3>' + esc(list.title) + '</h3><ul>' +
+      (list.contents || []).map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") +
+      '</ul></div>');
   });
 
   // ── Filters ──
-  const allNodes = Array.from(tl.querySelectorAll(".tl-event"));
+  var counts = {};
+  items.forEach(function (it) { counts[it.group] = (counts[it.group] || 0) + 1; });
+  var bar = document.getElementById("cv-filters");
+  var btns = '<button type="button" class="tl-filter active" data-filter="all" aria-pressed="true">All</button>';
+  Object.keys(GROUPS).forEach(function (key) {
+    if (!counts[key]) return;
+    btns += '<button type="button" class="tl-filter" data-filter="' + key + '" aria-pressed="false">' +
+            '<i class="fa-solid ' + GROUPS[key].icon + ' tl-filter-icon" aria-hidden="true"></i>' + GROUPS[key].label + '</button>';
+  });
+  bar.innerHTML = btns;
 
-  document.querySelectorAll(".tl-filter").forEach(btn => {
-    btn.addEventListener("click", function () {
-      document.querySelectorAll(".tl-filter").forEach(b => b.classList.remove("active"));
-      this.classList.add("active");
-      const f = this.dataset.filter;
-      let visIdx = 0;
-      allNodes.forEach(node => {
-        const cats = node.dataset.categories.split(",");
-        if (f === "all" || cats.includes(f)) {
-          node.style.display = "";
-          node.classList.remove("tl-left", "tl-right");
-          node.classList.add(visIdx % 2 === 0 ? "tl-left" : "tl-right");
-          visIdx++;
-        } else {
-          node.style.display = "none";
-        }
-      });
+  bar.addEventListener("click", function (e) {
+    var btn = e.target.closest(".tl-filter");
+    if (!btn) return;
+    var f = btn.dataset.filter;
+    bar.querySelectorAll(".tl-filter").forEach(function (b) {
+      var on = b === btn;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
     });
+    items.forEach(function (it) { it.visible = f === "all" || it.group === f; });
+    layout();
   });
 
-  // ── Scroll-triggered fade-in ──
-  if ("IntersectionObserver" in window) {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("tl-visible");
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    allNodes.forEach(e => obs.observe(e));
-  } else {
-    allNodes.forEach(e => e.classList.add("tl-visible"));
+  // Hovering a filter previews it: entries outside that group fade back.
+  function dim(group) {
+    items.forEach(function (it) {
+      var off = !!group && it.group !== group;
+      lbl[it.id].classList.toggle("is-dim", off);
+      markHot(it.id, "is-dim", off);
+    });
   }
+  bar.addEventListener("mouseover", function (e) {
+    var btn = e.target.closest(".tl-filter");
+    dim(btn && btn.dataset.filter !== "all" ? btn.dataset.filter : null);
+  });
+  bar.addEventListener("mouseleave", function () { dim(null); });
+
+  layout();
+  var rt;
+  window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(layout, 120); });
 });
 </script>

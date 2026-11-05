@@ -2,6 +2,7 @@
 layout: post
 date: 2026-07-01 10:00:00-0400
 inline: true
+kind: role
 related_posts: false
 ---
 
