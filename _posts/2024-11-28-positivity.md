@@ -1,61 +1,58 @@
 ---
 layout: post
-title: "Opinion: The Problem with ‘Positivity Culture'"
+title: "Opinion: The problem with 'positivity culture'"
 date: 2024-11-28 2:48:00
-description: Because Toxic Positivity may be actually harming us
+description: Because toxic positivity may actually be harming us
 tags: [mental-health, culture, philosophy]
 categories: opinion
-thumbnail: assets/img/positivity.png
 ---
 
-## The Future is (Not) Bright: The Toxic Positivity Trap in a Doomer World
+## The future is (not) bright: toxic positivity in a doomer world
 
-It's 2024, and the future's looking grim, right? The world's on fire (literally), climate change is only trending more frequently, and your dream job in tech has become some kind of corporate hostage situation where the hostages are your self-esteem and hope for any future career. The game is rigged, and the stakes are high. But hey—stay positive, right? If you're not projecting an image of perfect, sunshine-filled happiness, are you even trying to make it in this cruel world?
+It's 2024, and the future looks grim. The world is on fire (literally), people are stealing doors from public bathrooms for some internet points, and your dream job in tech has taken your self-esteem and any hope of a career hostage. The game seems to be rigged from the start but the stakes are high. But hey, stay positive! If you aren't projecting perfect, sunshine-filled happiness, are you even trying?
 
-Here we are, caught in a paradox. On one hand, you've got a generation of doomers who are hell-bent on telling everyone how bleak and hopeless things are (thanks, Zoomers). On the other, there's the ever-growing force of toxic positivity trying to "fix" the world with a hashtag and a wellness retreat.
+So here we are, stuck in a bit of a paradox. On one side, a generation of "doomers" is hell-bent on telling everyone how hopeless things are (thanks, Zoomers). On the other, toxic positivity keeps trying to "fix" the world with a hashtag and a wellness retreat.
 
-Guess what? Neither side has the answer.
+...Right.
 
-## Doomer Culture: Why the Kids Are All Right—But Also, They're Not
+## Doomer culture: the kids are all right, except they're not
 
-If you spend five minutes on Twitter (now called X for whatever reason), you'll see Gen Z and Alpha doing what they do best: predicting the end of the world in real-time. They've inherited a planet that's boiling under its own weight, a job market that treats them like a joke, and an economy that makes "getting by" seem like an unattainable goal. They've been gaslighted by an entire generation before them, and now they're collectively shaking their heads while waiting for it all to implode.
+Spend five minutes on Twitter (now called X for some reason?) and you'll see Gen Z and Gen Alpha doing what they do best: predicting the end of the world. I mean, what can I say? They've inherited a planet that's boiling, a job market that treats them like a joke, and an economy where "getting by" feels out of reach. The generation before them gaslit them for years, and now they shake their heads and wait for it all to implode.
 
-So, yeah, it makes sense that they're living in a perpetual state of existential crisis. How could you not when the world keeps promising _solutions_ that turn out to be nothing more than slicked-up scams and all the people making decisions are all old men that look like they would communicate through morse code using the clattering of their loose dentures? Here's the thing: doomers have a point. They are right to be skeptical about a system that only seems to reward the already privileged, and the job market? Good luck finding anything other than a soul-crushing, self-esteem-destroying minefield.
+So of course they live in a permanent existential crisis. How could they not? The world keeps promising solutions that turn out to be slicked-up scams, and the people making decisions are old men who look like they'd send Morse code by clattering their loose dentures.
 
-Take the tech industry, for example. The opportunities are endless! But so are the fake job postings. Companies figured out the "FREE MONEY HACK" that people have been searching for like the One Piece for decades: post listings for jobs that don't exist to rack up free tax credits, it's like some dystopian version of corporate charity. And if you somehow manage to get an interview? Don't be surprised if you're ghosted for weeks, only to get a call at 3 p.m. on a Friday asking you if you have 5+ years of experience for an entry-level position. And if somehow they haven't hung up on you, by the third question it'll be _you_ that's waiting to get off the line. These interviewers don't even know what job they're hiring for half the time; they're just reading off a script, pretending that "What's your greatest weakness?" is a valid question for an actual grown-up.
+Take tech for one. The opportunities are endless! So are the fake job postings. Companies found the "FREE MONEY HACK" people have been talking about for ages: post listings for jobs that don't exist and collect tax credits. A dystopian version of corporate charity. If you somehow land an interview, expect to be ghosted for weeks, then get a call at 3 pm from a blocked number on a Friday asking whether you have 5+ years of experience for an entry-level role. If they haven't hung up on you by the third question, you'll be the one who wants off the call. To make things worse, half the time the interviewers don't even know what job they're hiring for. They read off a script and pretend "What's your greatest weakness?" is a real question to ask a grown adult.
 
-I get it, doomers. It's hard to stay optimistic when you're navigating a system that seems built to make you fail. But here's the thing—this negativity, as valid as it feels in the moment, is just creating a toxic echo chamber. If everyone's stuck in this "we're doomed" spiral, how are we ever going to get out of it? The system may suck, but _not_ trying to change it doesn't do anyone any good.
+I get it, doomers. It's hard to stay optimistic in a system that seems built to make you fail. But this negativity, valid as it feels, builds a toxic echo chamber. If everyone is stuck in the "we're doomed" spiral, how does anyone get out? The system may suck, but not trying to change it helps nobody.
 
-## Toxic Positivity: "Good Vibes Only" for the Already Privileged
+## Toxic positivity: "good vibes only" for the already privileged
 
-Enter the opposite end of the spectrum: toxic positivity. It's everywhere, and it's always lurking, waiting to convince you that all your problems could be solved with a little more "positive thinking" and "good vibes hehe XD."
+At the other end sits "toxic positivity". I mean, even the name feels contradictory: what do you even get when you combine something negative with something positive? Unfortunately the operator is multiplication. It's everywhere too, waiting to tell you that a bit more "positive thinking" and some "good vibes hehe XD" will solve your problems.
 
-Listen, positivity isn't the problem here. I love positivity. I could have it for breakfast, lunch, and dinner. The problem is pretending that if we all just slap a smile on our faces and tell ourselves "everything will be okay," the world will magically shift into some pristine version of itself. But here's the thing—pretending everything is okay when it's not doesn't help anyone. In fact, it actively makes things worse.
+Positivity itself is fine. I love positivity. I'd have it for breakfast, lunch, and dinner. The problem is believing that if we all slap on a smile and repeat "everything will be okay," the world will rearrange itself into something pristine. Pretending things are fine when they aren't just makes them worse.
 
-You're struggling. _I'm_ struggling. Littly Timmy down the street at the age of 4 is struggling. But you're expected to act like you're on a permanent vacation with crystal-clear waters and a sunset view. You can't let anyone see that you're stressed, tired, or lost. Why? Because people won't care, and worse, they'll use it against you. This is especially true in Korean culture, where every single interaction seems to be scrutinized by others, and showing any sign of vulnerability is treated like an admission of failure. Keep your emotions bottled up. Keep the facade intact. Smile, post your filtered selfies that probably wouldn't even pass the FaceID test, and pray your self-doubt doesn't catch up with you.
+You're struggling. I'm struggling. Little Timmy down the street is four and he's struggling. Yet you're supposed to act like you're on a permanent vacation, crystal-clear water and sunset included. You can't let anyone see that you're stressed and lost, because people won't care, or worse, they'll use it against you. Every interaction gets scrutinized, and any sign of vulnerability counts as an admission of failure. So you bottle it up and keep the facade intact. You post filtered selfies that probably wouldn't pass Face ID, and you pray your self-doubt doesn't catch up.
 
-But when you're forced to act like you're "fine" all the time, there's no room to be real. No room for vulnerability. No room to say, "I'm struggling, and that's okay." Instead, you get trapped in an endless cycle of "good vibes only :))" mantras that do nothing but feed your feelings of inadequacy.
+When you have to act "fine" all the time, there's no room to be real. Nobody gets to say "I'm struggling, and that's okay." You get an endless loop of "good vibes only :))" mantras that just feed the feeling that you're not enough.
 
-Let's face it: The wellness industry doesn't have the answers. More yoga poses and motivational quotes won't fix a broken system. If anything, they just gloss over the real issues, making you feel worse when you realize that no amount of "positivity" can make a toxic job market or the pressures of society go away.
+## The echo chamber of negativity
 
-## The Echo Chamber of Negativity
+This is where the doomers and the good-vibes crowd end up in the same place. Turns out two negatives don't make a positive here. Each group sits in its own echo chamber and feeds its own worst instincts. Doomers trade memes about drowning in student debt and climate change. The positivity crowd trades hashtags about manifesting success.
 
-This is where the doomers and the "good vibes" people come together—not in harmony, but in the dark vortex of negativity. Turns out, negative numbers don't always cancel out. As everyone falls into their own echo chambers, they start validating each other's worst fears. Doomers validate each other's apocalyptic views with memes about how we're all doomed to drown in student debt and climate change. The positivity crowd validates each other's rejection of reality with hashtags about manifesting good energy and success.
+Where does that end? The doomers' fear grows when everyone around them shares it. The good-vibes crowd's refusal to look at reality leaves everyone else feeling like they're missing something, like maybe they're the ones doing it wrong.
 
-And what's the endgame here? The negativity that the doomers spread only gets worse when they're surrounded by other people who share their fears. Meanwhile, the "good vibes" crowd's refusal to acknowledge reality makes everyone feel like they're missing something—like maybe they're the ones doing it wrong.
+Both sides miss the point. The answer isn't one or the other. It's a messy, ugly "both."
 
-Both sides are missing the point. The answer isn't either/or. It's a messy, ugly "both."
+## You're struggling, I'm struggling, and that's okay
 
-## You're Struggling, I'm Struggling, We're All Struggling—And That's Okay
+Life isn't going to be perfect. Positive thinking won't change the fact that the system is broken, the job market is broken, and your social media posts aren't fixing either. Everyone has bad stretches, and a lot of us feel like society was designed to make us fail.
 
-Here's the unvarnished truth: life isn't going to be perfect. No amount of positive thinking will change the fact that the system is broken. The job market is broken. And yeah, your social media posts? They're not changing that either. We all have our moments of struggle, whether it's in our career, personal lives, or even just navigating a society that feels like it was built to make us fail.
+So don't pretend it's sunshine and rainbows when it clearly isn't. Let yourself feel the bad stuff. The belief that good vibes fix everything is toxic because it keeps us away from the root problems. You can't heal if you won't look at what's wrong, and you can't fix a system while you're busy pretending it works.
 
-The trick is not to pretend it's all sunshine and rainbows when it's clearly not. Embrace the pain. Embrace the struggle. The idea that we can fix everything with good vibes is toxic because it keeps us from dealing with the root problems. You can't heal if you're not willing to face what's wrong. You can't fix the system if you're too busy pretending it's all working out.
+Maybe we should take a page from *Inside Out*: the one where Sadness, Anger, and Fear turn out to matter as much as Joy. Each of them has a job in how we deal with the world.
 
-In the end, maybe we should all take a page out of _Inside Out_—_not_ the "happiness is everything" page, but the one that shows how Sadness, Anger, and Fear are just as vital as Joy. They all have a role to play in who we are and how we navigate the world.
+## Final thoughts: authenticity over positivity
 
-## Final Thoughts: Authenticity Over Positivity
+So what's the fix? Stop pretending. If you're struggling, say so. Your emotions are part of being human, so stop trying to patch them like bugs. Honesty is the best tool we have for getting through this godforsaken world. It won't change the world overnight, but it might leave us better equipped to survive it.
 
-So what's the solution here? Simple: stop pretending. Stop pretending everything is fine. Stop pretending like you're not struggling. Be real. Embrace the mess. Let's stop treating our emotions like problems to be "fixed" and start accepting them as part of the human condition. And when it comes to navigating this godforsaken world, authenticity is the best tool we've got. Maybe we won't change the world overnight—but we'll be better equipped to survive in it.
-
-And no, it doesn't mean everything's going to be okay. Even with this "solution", there's no guarantee you'll end up with your happy ever after. But that's life.
+And no, that doesn't mean everything will be okay. Even with this "solution," there's no guarantee of a happy ending. That's life.

@@ -44,7 +44,7 @@
       institution: Anthropic
       year: 2026
       description:
-        - Incoming cohort of the Anthropic Research Fellowship program, focusing on AI alignment and safety research.
+        - Part of the Anthropic Research Fellowship program, focusing on AI alignment and safety research.
 
     - title: Research Scholar
       institution: London AI Safety Research Labs
@@ -110,11 +110,9 @@
       institution: Hanwha Life Insurance
       year: 2024
       description:
-        - Developed a hybrid semantic-lexical retrieval architecture for complex tabular data using ElasticSearch and ChromaDB, improving recall on legal document QA datasets by 427%.
-        - Built a retrieval augmented generation chatbot by integrating a cross-encoder reranking, multi-step query decomposition, and Hypothetical Document Embeddings, raising MRR by 38%.
-        - Optimized query performance and accuracy by implementing advanced RAG strategies including reranking, query defragmentation, and Hypothetical Document Embeddings (HyDE).
-        - Deployed a RAG Agent utilizing LangChain, ChromaDB, and fine-tuned instruction models.
-        - Optimized hybrid retrieval and prompt orchestration to improve average query accuracy by 40% while maintaining resolution overhead in domain-specific QA tasks.
+        - Built and deployed a retrieval-augmented generation (RAG) question-answering chatbot over insurance product and policy documents using LangChain, ChromaDB, and fine-tuned instruction models.
+        - Developed a hybrid semantic-lexical retrieval architecture for complex tabular insurance documents using ElasticSearch and ChromaDB, improving recall on legal document QA datasets by 427%.
+        - Added cross-encoder reranking, multi-step query decomposition, and Hypothetical Document Embeddings (HyDE), raising MRR by 38% and average query accuracy by 40% on domain-specific insurance QA.
 
     - title: Machine Learning Intern
       institution: ATLAS

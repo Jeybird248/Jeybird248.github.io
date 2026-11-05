@@ -161,16 +161,17 @@ nav_order: 3
 
 <script>
 (function() {
+  // First theme listed for each paper = its primary theme (sets node color).
   const themeColors = {
-    "Adversarial Attacks":  "#e74c3c",
-    "Representation Learning/Engineering": "#9b59b6",
-    "Multi-Agent Systems":  "#2ecc71",
-    "Agentic AI":           "#3498db",
-    "Multimodal":           "#e67e22",
-    "Certification":        "#1abc9c",
-    "Information Geometry": "#2B2D42",
-    "Scalable Oversight":   "#f1c40f",
-    "Long Horizon Agents":  "#e84393"
+    "Adversarial Robustness":      "#e74c3c",
+    "Interpretability": "#9b59b6",
+    "Multimodal":                  "#e67e22",
+    "Certification":               "#1abc9c",
+    "Agentic AI":                  "#3498db",
+    "Multi-Agent Systems":         "#2ecc71",
+    "Long Horizon Agents":         "#e84393",
+    "Scalable Oversight":          "#f1c40f",
+    "Evaluation & Benchmarks":     "#7f8c8d"
   };
 
   const papers = [
@@ -179,15 +180,15 @@ nav_order: 3
       title: "TRAP: Targeted Redirecting of Agentic Preferences",
       authors: "Jehyeok Yeon*, Hangoo Kang*, Gagandeep Singh",
       year: 2025, venue: "NeurIPS 2025",
-      themes: ["Adversarial Attacks", "Agentic AI"],
-      links: { publications: "/publications/" }
+      themes: ["Adversarial Robustness", "Agentic AI", "Multimodal"],
+      links: { arxiv: "https://arxiv.org/abs/2505.23518", publications: "/publications/" }
     },
     {
       id: "certify",
       title: "Certifying Robustness of Agent Tool-Selection Under Adversarial Attacks",
       authors: "Jehyeok Yeon, Isha Chaudhary, Gagandeep Singh",
-      year: 2025, venue: "ICLR 2026 Workshop",
-      themes: ["Certification", "Adversarial Attacks", "Agentic AI"],
+      year: 2026, venue: "ICLR 2026 AIWILD Workshop",
+      themes: ["Certification", "Adversarial Robustness", "Agentic AI"],
       links: { website: "https://llmcert-t.certifyllm.com/", publications: "/publications/" }
     },
     {
@@ -195,15 +196,15 @@ nav_order: 3
       title: "Securing Multimodal AI through Internal Information Decomposition",
       authors: "Jehyeok Yeon, Hyeonjeong Ha, Qiusi Zhan, Heng Ji",
       year: 2026, venue: "ICML 2026 (Spotlight)",
-      themes: ["Multimodal", "Representation Learning/Engineering"],
+      themes: ["Multimodal", "Interpretability", "Adversarial Robustness"],
       links: { publications: "/publications/" }
     },
     {
       id: "gsae",
       title: "GSAE: Graph-Regularized Sparse Autoencoders for Robust LLM Safety Steering",
       authors: "Jehyeok Yeon, Federico Cinus, Yifan Wu, Luca Luceri",
-      year: 2026, venue: "ICML 2026 AI4GOOD",
-      themes: ["Representation Learning/Engineering", "Information Geometry"],
+      year: 2026, venue: "NeurIPS 2026",
+      themes: ["Interpretability", "Adversarial Robustness"],
       links: { publications: "/publications/" }
     },
     {
@@ -211,24 +212,32 @@ nav_order: 3
       title: "The Power of Friendship: Analyzing Leadership and Adversarial Attacks in Multi-Agent Collaboration",
       authors: "Jehyeok Yeon, Lawrence Angrave",
       year: 2025, venue: "ACM Collective Intelligence 2025",
-      themes: ["Multi-Agent Systems", "Adversarial Attacks"],
+      themes: ["Multi-Agent Systems", "Adversarial Robustness", "Agentic AI"],
       links: { publications: "/publications/" }
     },
     {
       id: "inferencebench",
       title: "InferenceBench: A Benchmark for Open-Ended LLM Inference Optimization by AI Agents",
       authors: "Jehyeok Yeon, Ben Rank, Maksym Andriushchenko",
-      year: 2026, venue: "ICML 2026 AIWILD (Spotlight)",
-      themes: ["Long Horizon Agents", "Scalable Oversight", "Agentic AI"],
+      year: 2026, venue: "ICML 2026 AIWILD Workshop (Spotlight)",
+      themes: ["Long Horizon Agents", "Evaluation & Benchmarks", "Agentic AI"],
       links: { website: "https://inferencebench.ai/", publications: "/publications/" }
     },
     {
       id: "researcharena",
       title: "ResearchArena: Evaluating Sabotage and Monitoring in Automated AI R&D",
       authors: "Ben Rank*, Lena Libon*, Jehyeok Yeon, et al.",
-      year: 2026, venue: "Under Review",
-      themes: ["Long Horizon Agents", "Scalable Oversight"],
-      links: { publications: "/publications/" }
+      year: 2026, venue: "COLM 2026 Workshop on Agent Behavior",
+      themes: ["Scalable Oversight", "Long Horizon Agents", "Evaluation & Benchmarks", "Agentic AI"],
+      links: { website: "https://research-arena.ai/", publications: "/publications/" }
+    },
+    {
+      id: "saturation",
+      title: "Evaluating Model Capabilities After Benchmark Saturation",
+      authors: "Morio Hamada, Jehyeok Yeon, Matteo Migliarini, Justin Olive, Magda Dubois",
+      year: 2026, venue: "Preprint",
+      themes: ["Evaluation & Benchmarks"],
+      links: { arxiv: "https://arxiv.org/abs/2610.20667", publications: "/publications/" }
     }
   ];
 
