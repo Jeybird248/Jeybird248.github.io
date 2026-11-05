@@ -49,7 +49,7 @@ Life isn't going to be perfect. Positive thinking won't change the fact that the
 
 So don't pretend it's sunshine and rainbows when it clearly isn't. Let yourself feel the bad stuff. The belief that good vibes fix everything is toxic because it keeps us away from the root problems. You can't heal if you won't look at what's wrong, and you can't fix a system while you're busy pretending it works.
 
-Maybe we should take a page from *Inside Out*: the one where Sadness, Anger, and Fear turn out to matter as much as Joy. Each of them has a job in how we deal with the world.
+Maybe we should take a page from _Inside Out_: the one where Sadness, Anger, and Fear turn out to matter as much as Joy. Each of them has a job in how we deal with the world.
 
 ## Final thoughts: authenticity over positivity
 

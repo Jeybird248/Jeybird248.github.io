@@ -17,7 +17,7 @@ But here's the thing about being an "old soul": it's lonely as hell. Sure, the a
 
 ## The Teenage Medal of Maturity
 
-By my teenage years, being called mature for my age felt less like a compliment and more like a job description. I was supposed to be the one who had it all together. 
+By my teenage years, being called mature for my age felt less like a compliment and more like a job description. I was supposed to be the one who had it all together.
 
 Take high school, for example. While my friends were sneaking out to parties or stressing over prom dates, I was busy being _the responsible one_. The one who gave advice, who stayed sober so everyone else could get drunk without worrying about how they'd get home. And yeah, part of me took pride in that role---it felt good to be needed. But another part of me just wanted to scream: _Can someone else be the adult for once?_
 
